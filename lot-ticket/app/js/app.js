@@ -56,7 +56,7 @@ ticketApp.controller('TicketController', function TicketController($scope) {
 			var num = numbers.splice(getRandomInt(0, numbers.length-1), 1)[0];
 			console.log ("numbers:" + numbers);
 			console.log ("num:" + num)
-			ret.push({number: num, selected:false});
+			ret.push({number: num, selected:getRandomInt(0,1)==0});
 		}
 		/*ret.toString = function(){
 			var r = "[";
@@ -69,7 +69,13 @@ ticketApp.controller('TicketController', function TicketController($scope) {
 		console.log("<generateTicket: ret=" + ret)
 		return ret;
 	}
-	
-	  this.ticket = generateTicket();
+	this.addTicket = function(){
+		this.tickets.push(generateTicket())
+	}
+	this.deleteTicket = function(index){
+		console.log(">deleteTicket: index=" + index);
+		this.tickets.splice(index, 1);
+	} 
+	this.tickets = [generateTicket(), generateTicket()];
 
 });
