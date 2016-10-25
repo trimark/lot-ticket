@@ -14,6 +14,15 @@
 </head>
 
 <body ng-cloak >
+	<script src="lib/js/angular/angular.js"></script>
+	<script src="lib/js/angular-route/angular-route.js"></script>
+	<script src="lib/js/angular-animate/angular-animate.js"></script>
+	<script src="lib/js/angular-aria/angular-aria.js"></script>
+	<script src="lib/js/angular-material/angular-material.js"></script>
+	<script src="js/app.js"></script>
+	
+	<div ng-view=""></div>
+	<!--
 	<div ng-controller="TicketController as tkt">
 		<ul ng-repeat="ticket in tkt.tickets">
 		    <span ng-repeat="cell in ticket">
@@ -29,20 +38,9 @@
 			<br/>
 		</ul>
 		<button ng-click="tkt.addTicket()">Add ticket</button>
-
-		<script src="lib/js/angular/angular.js"></script>
-		<script src="lib/js/angular-route/angular-route.js"></script>
-		<script src="lib/js/angular-animate/angular-animate.js"></script>
-		<script src="lib/js/angular-aria/angular-aria.js"></script>
-		<script src="lib/js/angular-material/angular-material.js"></script>
-		<script src="js/app.js"></script>
-		<!--
-		<script src="js/backofficecontroller.js"></script>
-		<script src="js/menutoggledirective.js"></script>
-		<script src="js/menulinkdirective.js"></script>
-		<script src="js/treeviewdirective.js"></script>
-		-->
 	</div>
+	-->
+
 </body>
 
 </html>

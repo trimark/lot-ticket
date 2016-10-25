@@ -1,0 +1,12 @@
+<div ng-controller="TicketController as tkt">
+	<ul>
+	    <label ng-repeat="cell in tkt.tickets[0]">
+		  <input
+		    type="checkbox"
+		    ng-model="cell.selected"
+		  > {{cell.number}}
+		</label>
+		<br/>
+	</ul>
+	<md-button ng-href="#/tickets">OK</md-button>
+</div>
