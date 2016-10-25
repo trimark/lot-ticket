@@ -7,7 +7,7 @@ ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
 		$routeProvider.when('/', {
 			templateUrl: 'partials/tickets.html'
 		});
-		$routeProvider.when('/edit-ticket', {
+		$routeProvider.when('/edit-ticket/:ticketId', {
 			templateUrl: 'partials/edit-ticket.html'
 		});
 		$routeProvider.otherwise({redirectTo: '/'});
@@ -65,7 +65,11 @@ ticketApp.controller('TicketController', function TicketController($scope) {
 	this.deleteTicket = function(index){
 		console.log(">deleteTicket: index=" + index);
 		this.tickets.splice(index, 1);
-	} 
+	}
+	this.getTicket = function(){
+		//console.log(">getTicket: $routeParams=" + $routeParams);
+		return this.tickets[0];
+	}
 	this.tickets = tickets;
 
 });
