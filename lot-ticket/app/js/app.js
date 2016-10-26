@@ -56,9 +56,9 @@ generateTicket = function (){
 	return ret;
 }
 var tickets = [generateTicket(), generateTicket()];
-ticketApp.controller('TicketController', function TicketController($scope) {
+ticketApp.controller('TicketController', function TicketController($scope, $routeParams) {
 	
-	
+	console.log ("$routeParams=" + $routeParams)
 	this.addTicket = function(){
 		this.tickets.push(generateTicket())
 	}
@@ -66,9 +66,9 @@ ticketApp.controller('TicketController', function TicketController($scope) {
 		console.log(">deleteTicket: index=" + index);
 		this.tickets.splice(index, 1);
 	}
-	this.getTicket = function(){
-		//console.log(">getTicket: $routeParams=" + $routeParams);
-		return this.tickets[0];
+	this.getSelectedTicket = function(){
+		console.log(">getSelectedTicket: $routeParams.ticketId=" + $routeParams.ticketId);
+		return this.tickets[$routeParams.ticketId];
 	}
 	this.tickets = tickets;
 

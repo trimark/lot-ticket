@@ -1,6 +1,6 @@
 <div ng-controller="TicketController as tkt">
 	<ul>
-	    <label ng-repeat="cell in tkt.getTicket()">
+	    <label ng-repeat="cell in tkt.getSelectedTicket()">
 		  <input
 		    type="checkbox"
 		    ng-model="cell.selected"
