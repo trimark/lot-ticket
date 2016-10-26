@@ -1,0 +1,356 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"de",
+				"deleteTicket"
+			],
+			[
+				"get",
+				"generateTicket"
+			],
+			[
+				"ge",
+				"getRandomInt"
+			],
+			[
+				"_va",
+				"_valueType"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/js/app.js",
+			"settings":
+			{
+				"buffer_size": 2410,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 1490,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/GitHub/lot-ticket/lot-ticket/app/js/app.js",
+		"/D/GitHub/lot-ticket/lot-ticket/app/index.html",
+		"/D/GitHub/lot-ticket/lot-ticket/partials/edit-ticket.html",
+		"/D/GitHub/backoffice-client/backoffice-client/app/js/app.js",
+		"/D/GitHub/backoffice-client/backoffice-client/app/js/menutoggledirective.js",
+		"/D/GitHub/backoffice-client/backoffice-client/app/index.html",
+		"/D/GitHub/backoffice-client/backoffice-client/app/js/app2.js",
+		"/D/trimarkclient/html/rap/src/js/ActiveState.js",
+		"/D/trimarkclient/html/rap/src/js/GUI.js",
+		"/D/trimarkclient/html/rap/src/js/PaytableData.js",
+		"/D/trimarkclient/html/rap/src/index.html",
+		"/D/trimarkclient/html/rap/src/js/directives/rap.game.loader.js",
+		"/D/trimarkclient/html/rap/src/js/rap.js",
+		"/D/trimarkclient/html/rap/src/js/directives/rap.game.menu.js",
+		"/D/trimarkclient/html/rap/src/js/Setting.js",
+		"/D/trimarkclient/html/rap/src/js/Config.js",
+		"/D/trimarkclient/html/rap/src/js/Device.js",
+		"/D/trimarkclient/html/rap/src/js/EventDispatcher.js",
+		"/D/trimarkclient/html/rap/src/js/Settings.js",
+		"/D/trimarkclient/html/rap/src/data/translations/en/translations.json",
+		"/D/trimarkclient/html/rap/src/js/Locale.js",
+		"/D/trimarkclient/html/rap/src/js/rig.js",
+		"/D/trimarkclient/html/rap/src/js/Touch.js",
+		"/D/trimarkclient/html/rap/src/js/ViewPort.js",
+		"/D/trimarkclient/html/rap/src/lib/angular/angular.js",
+		"/D/trimarkclient/html/rap/src/lib/angular/angular.min.js",
+		"/D/trimarkclient/html/rap/src/lib/angular-audio/angular.audio.js",
+		"/D/trimarkclient/html/rap/src/lib/globalize/dist/globalize/message.js",
+		"/D/trimarkclient/html/rap/src/lib/globalize/examples/node-npm/main.js",
+		"/D/trimarkclient/html/rap/src/skins/slots.dwarves/js/createjs-all_0.8.0.js",
+		"/D/trimarkclient/html/rap/src/skins/slots.dwarves/js/jangaroo-application-all.js",
+		"/D/trimarkclient/tools/HTMLconverter/js/invokeProcess.js",
+		"/D/trimarkclient/tools/build/ConvertoHtml5.js",
+		"/D/trimarkclient/tools/build/mergeSkinManifest.js",
+		"/D/trimarkclient/joo/joo-slot-lib/slot/resources/js/slotGameCfg.js",
+		"/D/trimarkclient/tools/HTMLconverter/jsfl/parseTES.jsfl",
+		"/D/trimarkclient/html/rap/src/js/rap.module.js",
+		"/D/Documents/Projekt/Trimark/Slot/Independence Pay - full source/Javascript disabled_files/game.pack.js",
+		"/D/odobo/trunk/client/gdk/js/gdk.js",
+		"/D/trimarkclient/html/accordion menu test/index.html",
+		"/D/trimarkclient/html/rap/src/js/Event.js",
+		"/D/trimarkclient/html/rap/src/test.html",
+		"/D/trimarkclient/joo/joo-slot-lib/slot/resources/js/GUI.js",
+		"/D/trimarkclient/joo/joo-slot-lib/slot/resources/js/rap.js",
+		"/D/trimarkclient/joo/joo-slot-lib/slot/resources/js/Locale.js",
+		"/D/trimarkclient/joo/joo-slot-lib/slot/resources/index.html",
+		"/D/trimarkclient/joo/joo-slot-lib/slot/resources/gameWrapper.js",
+		"/C/Users/Mats/AppData/Roaming/Sublime Text 3/Packages/Default/Default (Windows).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"*.js",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fn",
+			"console.log",
+			"?",
+			"Kamote to ah",
+			"//",
+			"////",
+			"console.log",
+			"\t\t",
+			":String = ",
+			"public static const ",
+			"showMenu",
+			"busy",
+			"VALUE_TYPE_MONEY",
+			"str",
+			"this._value;",
+			"$valueIx",
+			"VALUE_TYPE_MONEY",
+			"mergeXml",
+			"merge",
+			"skinmanif",
+			"translation",
+			"jsflDir",
+			"callFlashProcess",
+			"flashDir",
+			"callFlashProcess",
+			"callInvokeProcess",
+			"lang",
+			"translate",
+			"transl",
+			"_settings",
+			"_onResize",
+			"addEventListener",
+			"addEventL",
+			"_getActive",
+			"ActiveState",
+			"rap",
+			"Api",
+			"rap",
+			"ActiveState"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"//console.log",
+			"//",
+			"//console.log",
+			"",
+			"ret",
+			"this._valueIx",
+			"this._settings",
+			"_getAssetsPath",
+			"Config",
+			"trimarkApi",
+			"trimarkAPI",
+			"Touch"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2410,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1490,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "lot-ticket.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

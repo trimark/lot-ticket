@@ -1,7 +1,10 @@
 <div>
 	<div ng-repeat="ticket in tkt.tickets">
-	    <label ng-repeat="cell in ticket|filter: {selected: true}">
+	    <label ng-repeat="cell in ticket.numbers|filter: {selected: true}">
 		  {{cell.number}}
+		</label>
+		<label style="color: red">
+		{{ticket.powerBall}}
 		</label>
 		<md-button ng-href="#/edit-ticket/{{$index}}">Edit</md-button>
 		<md-button ng-click = "tkt.deleteTicket($index)">Delete</md-button>
