@@ -1,4 +1,4 @@
-<div ng-controller="TicketController as tkt">
+<div>
 	<div ng-repeat="ticket in tkt.tickets">
 	    <label ng-repeat="cell in ticket|filter: {selected: true}">
 		  {{cell.number}}
