@@ -29,10 +29,10 @@
 					
 					
 					<br/>
-					<md-button ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
+					<md-button class="md-icon-button md-primary" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
 						<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
 		     		</md-button>
-		     		<md-button ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
+		     		<md-button class="md-icon-button md-primary" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
 						<md-icon md-svg-icon="img/icons/ic_delete_forever_black_24px.svg"></md-icon>
 		     		</md-button>
 		     		<p ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected"">
@@ -43,7 +43,7 @@
 	</div>
 		<md-card layout="row" layout-align="center center" layout-wrap ng-if="tkt.canAddTicket">
 			<md-button  class="md-raised" ng-click="tkt.addTicket(true)">Add QuickPick</md-button>
-			<md-button ng-click="tkt.addTicket(false)">
+			<md-button class="md-icon-button md-primary" ng-click="tkt.addTicket(false)">
 				<md-icon md-svg-icon="img/icons/ic_add_black_24px.svg"></md-icon>
 			</md-button>	
 		</md-card>
