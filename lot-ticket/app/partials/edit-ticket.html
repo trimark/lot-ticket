@@ -1,15 +1,14 @@
 <div>
 
 	<ul>
-		<li>Edit ticket</li>
-		<div style="float: left; background-color:#ffff00; margin-right: 10px; width: 20px; height: 20px; text-align: center" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">
+	<md-card layout="row" layout-align="center center">
+		<div style="padding:5px" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">
 		  {{cell.number}}
 		</div>
-		<div style="float: left; background-color:#ff0000; margin-right: 10px; width: 20px; height: 20px; text-align: center">
+		<div style="padding:5px; color: red">
 		  {{tkt.getSelectedTicket().powerBall}}
 		</div>
-		<br/>
-		<br/>
+	</md-card>
 	    <label ng-repeat="cell in tkt.getSelectedTicket().numbers">
 		  <input
 		    type="checkbox"
@@ -26,6 +25,8 @@
             </md-select>
           </md-input-container>
 	</ul>
-	<md-button ng-href="#/tickets">OK</md-button>
-	<md-button ng-href="#/tickets">Cancel</md-button>
+	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+		<md-button class="md-raised" ng-href="#/tickets">OK</md-button>
+		<md-button class="md-raised" ng-href="#/tickets">Cancel</md-button>
+	</section>
 </div>

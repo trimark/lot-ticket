@@ -1,14 +1,41 @@
 <div>
 	<div ng-repeat="ticket in tkt.tickets">
-	    <label ng-repeat="cell in ticket.numbers|filter: {selected: true}">
-		  {{cell.number}}
-		</label>
-		<label style="color: red">
-		{{ticket.powerBall}}
-		</label>
-		<md-button ng-href="#/edit-ticket/{{$index}}">Edit</md-button>
-		<md-button ng-click = "tkt.deleteTicket($index)">Delete</md-button>
-		<br/>
+			<md-card layout="row" layout-align="center center">
+				
+				<!-- 
+				<md-chips ng-model="ticket.numbers|filter: {selected: true}" readonly="true" md-removable="false">
+				   <md-chip-template>
+				   		{{$chip.number}} 
+				    </md-chip-template>
+				</md-chips>
+
+				<md-chips ng-model="[ticket.powerBall]" readonly="true" md-removable="false">
+					<md-chip-template style="color: red">
+				   		{{$chip}} 
+				    </md-chip-template>
+				</md-chips>
+				-->
+
+				
+				    <div style="padding:5px" ng-repeat="cell in ticket.numbers|filter: {selected: true}">
+					  {{cell.number}} 
+					</div>
+					<div style="padding:5px; color: red">
+					{{ticket.powerBall}}
+					</div>
+					
+					
+					<br/>
+					<md-button ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
+						<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
+		     		</md-button>
+		     		<md-button ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
+						<md-icon md-svg-icon="img/icons/ic_delete_forever_black_24px.svg"></md-icon>
+		     		</md-button>
+			</md-card>
+			
 	</div>
-	<md-button ng-click="tkt.addTicket()">Add ticket</md-button>
+	<md-card layout="row" layout-align="center center" layout-wrap >
+		<md-button ng-click="tkt.addTicket()">Add ticket</md-button>
+	</md-card>
 </div>
