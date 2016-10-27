@@ -21,20 +21,24 @@ function getRandomInt (min, max) {
 }
 
 
-function generateTicket(){
+function generateTicket(quickPick){
 	//console.log(">generateTicket");
 	var nums = [];
-
+	if (quickPick==null){
+		quickPick = true;
+	}
 	for (var i = 1; i<=highestNumber; i++){
 		//numbers.push(i);
 		nums.push({number: i, selected:false});
 	}
 	var numSelected = 0;
+	if(quickPick){
 	while (numSelected < defNumSelected){
 		var ix=getRandomInt(0, nums.length-1)
-		if (!nums[ix].selected){
-			nums[ix].selected = true;
-			numSelected++;
+			if (!nums[ix].selected){
+				nums[ix].selected = true;
+				numSelected++;
+			}
 		}
 	}
 	var ret = {numbers: nums, powerBall: getRandomInt(1, highestNumber)}
@@ -74,6 +78,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.tickets = [];
 	this.unselectedNumbers = [];
 	this.canAddTicket = true;
+	this.powerPlay = false;
 	var ticketEdit = null;
 	this.numbers = [];
 	for (var i = 1; i<=highestNumber;i++){
@@ -82,8 +87,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.update = function(){
 		this.canAddTicket = this.tickets.length < this.maxTickets;
 	}
-	this.addTicket = function(){
-		this.tickets.push(generateTicket());
+	this.addTicket = function(quickPick){
+		this.tickets.push(generateTicket(quickPick));
 		this.update();
 	}
 	this.deleteTicket = function(index){

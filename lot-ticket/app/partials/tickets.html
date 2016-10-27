@@ -38,7 +38,22 @@
 			</md-card>
 			
 	</div>
-	<md-card layout="row" layout-align="center center" layout-wrap ng-if="tkt.canAddTicket">
-		<md-button ng-click="tkt.addTicket()">Add ticket</md-button>
-	</md-card>
+		<md-card layout="row" layout-align="center center" layout-wrap ng-if="tkt.canAddTicket">
+			<md-button  class="md-raised" ng-click="tkt.addTicket(true)">Add QuickPick</md-button>
+			<md-button ng-click="tkt.addTicket(false)">
+				<md-icon md-svg-icon="img/icons/ic_add_black_24px.svg"></md-icon>
+			</md-button>	
+		</md-card>
+	
+	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+		<md-checkbox ng-model="tkt.powerPlay" aria-label="PowerPlay">
+	        PowerPlay
+	     </md-checkbox>
+     </section>
+	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+
+		<md-button class="md-raised">
+			<md-icon md-svg-icon="img/icons/ic_add_shopping_cart_black_24px.svg"></md-icon>Submit
+		</md-button>
+	
 </div>
