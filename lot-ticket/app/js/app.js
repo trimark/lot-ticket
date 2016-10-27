@@ -72,7 +72,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	
 	//console.log ("$routeParams=" + $routeParams)
 	this.minSelected = 5; // lowest allowed number of selected numbers
-	this.maxSelected = 10; // highest allowed number of selected numbers
+	this.maxSelected = 9; // highest allowed number of selected numbers
 	this.maxTickets = 6;
 	this.defNumSelected = defNumSelected;
 	this.tickets = [];
@@ -129,6 +129,12 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 		//console.log("<getNumSelected: ret=" + ret);
 		return ret;
+	}
+	this.getSystem = function(ticket){
+		var numSelected = this.getNumSelected(ticket);
+		var name = "0" + numSelected.toString();
+		var numLines = 1 + Math.pow(this.defNumSelected, numSelected-this.defNumSelected);
+		return {name: name, numLines: numLines};
 	}
 	this.getEmptySlotsArray = function(ticket){
 		//console.log(">getEmptySlotsArray: ticket=" + ticket);

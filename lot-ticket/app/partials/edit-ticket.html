@@ -11,6 +11,9 @@
 		<div style="padding:5px; color: red">
 		  {{tkt.getSelectedTicket().powerBall}}
 		</div>
+		<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected"">
+			System: {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
+		</div>
 	</md-card>
 	    <label ng-repeat="cell in tkt.getSelectedTicket().numbers">
 		  <input
