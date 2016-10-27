@@ -29,6 +29,9 @@
             </md-select>
           </md-input-container>
 	</ul>
+	<md-card layout="row" layout-align="center center" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">
+	Select more numbers to play a combo bet and boost your odds
+	</md-card>
 	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 		<md-button class="md-raised" ng-click="tkt.commitTicket()">OK</md-button>
 		<md-button class="md-raised" ng-click="tkt.cancelTicketChanges()">Cancel</md-button>
