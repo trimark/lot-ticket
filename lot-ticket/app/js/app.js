@@ -1,4 +1,6 @@
 var ticketApp = angular.module('ticketApp', [ 'ngRoute', 'ngMaterial']);
+var highestNumber = 69;
+var defNumSelected = 5;
 
 ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
     function($routeProvider, $mdIconProvider, $mdThemingProvider)
@@ -14,27 +16,19 @@ ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
     }
 ]);
 
-getRandomInt = function (min, max) {
+function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-var highestNumber = 69;
-var defNumSelected = 5;
 
-generateTicket = function (){
+
+function generateTicket(){
 	console.log(">generateTicket");
 	var nums = [];
-	//var numbers = [];
-	
+
 	for (var i = 1; i<=highestNumber; i++){
 		//numbers.push(i);
 		nums.push({number: i, selected:false});
 	}
-	// for (var i = 0; i< 25; i++){
-	// 	var num = numbers.splice(getRandomInt(0, numbers.length-1), 1)[0];
-	// 	console.log ("numbers:" + numbers);
-	// 	console.log ("num:" + num)
-	// 	nums.push({number: num, selected:false});
-	// }
 	var numSelected = 0;
 	while (numSelected < defNumSelected){
 		var ix=getRandomInt(0, nums.length-1)
@@ -43,25 +37,25 @@ generateTicket = function (){
 			numSelected++;
 		}
 	}
-
-	/*ret.toString = function(){
-		var r = "[";
-		for (var i = 0; i<this.length;i++){
-			r+= "{number: " + this[i]number + ", selected: " + this[i].selected +"}"
-		}
-		var r += "]";
-		return r;
-	}*/
 	var ret = {numbers: nums, powerBall: getRandomInt(1, highestNumber)}
 	console.log("<generateTicket: ret=" + ret)
 	return ret;
 }
-var tickets = [generateTicket(), generateTicket()];
-ticketApp.controller('TicketController', function TicketController($scope, $routeParams) {
+function copyTicket (ticket){
+	var nums = [];
+	for (var i = 0; i<ticket.numbers.length; i++){
+		var org = ticket.numbers[i];
+		nums.push({number: org.number, selected: org.selected})
+	}
+	var ret = {numbers: nums, powerBall: ticket.powerBall}
+	return ret;
+} 
+ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location) {
 	
 	console.log ("$routeParams=" + $routeParams)
 	this.minSelected = 5; // lowest allowed number of selected numbers
 	this.maxSelected = 20; // highest allowed number of selected numbers
+	var ticketEdit = null;
 	this.numbers = [];
 	for (var i = 1; i<=highestNumber;i++){
 		this.numbers.push(i);
@@ -74,11 +68,27 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		this.tickets.splice(index, 1);
 	}
 	this.getSelectedTicket = function(){
-		return this.tickets[$routeParams.ticketId];
+		if (ticketEdit == null){
+			ticketEdit = copyTicket(this.tickets[$routeParams.ticketId]);
+		}
+		return ticketEdit;
+		//return this.tickets[$routeParams.ticketId];
 	}
 	this.canSelect = function(){
 		return (this.getNumSelected < this.maxSelected);
 	}
+	this.commitTicket= function (){
+		console.log(">commitTicket");
+		this.tickets[$routeParams.ticketId] = ticketEdit;
+		ticketEdit = null;
+		$location.path('"#/tickets"');
+	}
+	this.cancelTicketChanges = function(){
+		console.log(">cancelTicketChanges");
+		ticketEdit = null;
+		$location.path('"#/tickets"');
+	}
+
 	this.getNumSelected = function(){
 		var ret = 0;
 		var t = getSelectedTicket();
@@ -89,6 +99,6 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 		return ret;
 	}
-	this.tickets = tickets;
+	this.tickets = [generateTicket(), generateTicket()];
 
 });
