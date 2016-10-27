@@ -55,17 +55,25 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	console.log ("$routeParams=" + $routeParams)
 	this.minSelected = 5; // lowest allowed number of selected numbers
 	this.maxSelected = 20; // highest allowed number of selected numbers
+	this.maxTickets = 6;
+	this.tickets = [];
+	this.canAddTicket = true;
 	var ticketEdit = null;
 	this.numbers = [];
 	for (var i = 1; i<=highestNumber;i++){
 		this.numbers.push(i);
 	}
+	this.update = function(){
+		this.canAddTicket = this.tickets.length < this.maxTickets;
+	}
 	this.addTicket = function(){
-		this.tickets.push(generateTicket())
+		this.tickets.push(generateTicket());
+		this.update();
 	}
 	this.deleteTicket = function(index){
 		
 		this.tickets.splice(index, 1);
+		this.update();
 	}
 	this.getSelectedTicket = function(){
 		if (ticketEdit == null){
@@ -99,6 +107,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 		return ret;
 	}
-	this.tickets = [generateTicket(), generateTicket()];
+	this.addTicket();
+	this.addTicket();
 
 });

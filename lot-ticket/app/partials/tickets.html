@@ -35,7 +35,7 @@
 			</md-card>
 			
 	</div>
-	<md-card layout="row" layout-align="center center" layout-wrap >
+	<md-card layout="row" layout-align="center center" layout-wrap ng-if="tkt.canAddTicket">
 		<md-button ng-click="tkt.addTicket()">Add ticket</md-button>
 	</md-card>
 </div>
