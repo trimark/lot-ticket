@@ -20,6 +20,9 @@
 				    <div style="padding:5px" ng-repeat="cell in ticket.numbers|filter: {selected: true}">
 					  {{cell.number}} 
 					</div>
+					<div style="padding:5px" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"">
+					  []
+					</div>
 					<div style="padding:5px; color: red">
 					{{ticket.powerBall}}
 					</div>

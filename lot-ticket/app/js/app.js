@@ -42,21 +42,36 @@ function generateTicket(){
 	return ret;
 }
 function copyTicket (ticket){
+	console.log (">copyTicket: ticket=" + ticketToString(ticket));
 	var nums = [];
 	for (var i = 0; i<ticket.numbers.length; i++){
 		var org = ticket.numbers[i];
 		nums.push({number: org.number, selected: org.selected})
 	}
 	var ret = {numbers: nums, powerBall: ticket.powerBall}
+	console.log ("<copyTicket: ret=" + ticketToString(ret));
 	return ret;
-} 
+}
+function ticketToString(ticket){
+	var ret="{ numbers: [";
+	for (var i = 0; i<ticket.numbers.length; i++){
+		var org = ticket.numbers[i];
+		ret +="{number: " + org.number + ", selected: " + org.selected+ "}"
+		if (i<ticket.numbers.length-1){
+			ret +=", ";
+		}
+	}
+	ret += ", powerBall: " + ticket.powerBall;
+	return ret;
+}
 ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location) {
 	
 	console.log ("$routeParams=" + $routeParams)
 	this.minSelected = 5; // lowest allowed number of selected numbers
-	this.maxSelected = 20; // highest allowed number of selected numbers
+	this.maxSelected = 10; // highest allowed number of selected numbers
 	this.maxTickets = 6;
 	this.tickets = [];
+	this.unselectedNumbers = [];
 	this.canAddTicket = true;
 	var ticketEdit = null;
 	this.numbers = [];
@@ -76,14 +91,16 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		this.update();
 	}
 	this.getSelectedTicket = function(){
+		console.log(">getSelectedTicket; ticketEdit=" + ticketEdit);
 		if (ticketEdit == null){
 			ticketEdit = copyTicket(this.tickets[$routeParams.ticketId]);
 		}
+		console.log("<getSelectedTicket; ticketEdit=" + ticketEdit);
 		return ticketEdit;
 		//return this.tickets[$routeParams.ticketId];
 	}
-	this.canSelect = function(){
-		return (this.getNumSelected < this.maxSelected);
+	this.canSelect = function(ticket){
+		return (this.getNumSelected(ticket) < this.maxSelected);
 	}
 	this.commitTicket= function (){
 		console.log(">commitTicket");
@@ -96,15 +113,27 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		ticketEdit = null;
 		$location.path('"#/tickets"');
 	}
-
-	this.getNumSelected = function(){
+	this.getNumSelected = function(ticket){
+		console.log(">getNumSelected: ticket=" + ticketToString(ticket));
 		var ret = 0;
-		var t = getSelectedTicket();
-		for (var i = 0; i<t.length; i++){
-			if (t[i].selected){
+		var t = ticket;
+		for (var i = 0; i<t.numbers.length; i++){
+			if (t.numbers[i].selected){
 				ret++;
 			}
 		}
+		console.log("<getNumSelected: ret=" + ret);
+		return ret;
+	}
+	this.getEmptySlotsArray = function(ticket){
+		console.log(">getEmptySlotsArray: ticket=" + ticket);
+		var numSelected = this.getNumSelected(ticket);
+		console.log ("numSelected=" + numSelected);
+		console.log ("this.minSelected=" + this.minSelected);
+		var len = Math.max(0, this.minSelected - numSelected);
+		console.log ("len=" + len);
+		var ret = new Array(len);
+		console.log("<getEmptySlotsArray:ret=" + ret)
 		return ret;
 	}
 	this.addTicket();
