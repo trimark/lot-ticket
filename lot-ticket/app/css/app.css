@@ -61,6 +61,7 @@
 
 .number-slots {
 	padding: 10px;
+	text-align: center;
 }
 
 .power-ball-selection {
@@ -80,4 +81,12 @@
 .selected-text {
 	text-align: center;
 	color: #888888;
+}
+
+.action {
+	position: absolute;
+}
+
+.action.right {
+	right: 15px;
 }

@@ -19,14 +19,12 @@
 			{{cell.number}}
 		</span>
 
-		<span ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index" ">
-			[   ]
+		<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index" ">
 		</span>
 
 		<span class="ball power-ball">{{ticket.powerBall}}</span>
 
-
-
+		<span class="action right">
 		<md-button class="md-icon-button md-primary bet-action" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
 			<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
 		</md-button>
@@ -34,6 +32,7 @@
 		<md-button class="md-icon-button md-primary bet-action" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
 			<md-icon md-svg-icon="img/icons/ic_delete_forever_black_24px.svg"></md-icon>
 		</md-button>
+		</span>
 
 		<p ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected""> System {{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</p>
 	 </md-card>
