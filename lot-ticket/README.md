@@ -1,5 +1,5 @@
 # Lottery Ticket selection
 # Dependencies
 * AngularJS
-* Angular Material
+* Angular Material Design
 * Node, Express
