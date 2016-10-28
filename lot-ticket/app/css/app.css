@@ -1,0 +1,83 @@
+@keyframes slide-left {
+    0% {
+		-webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+    }
+ 	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+ 	}
+}
+
+.bet {
+	padding: 5px;
+	transform: translateX(0);
+	animation-name: slide-left;
+	animation-duration: 0.6s;
+}
+
+.bet-action {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	width: 24px !important;
+}
+
+
+.ball {
+	border: 1px solid #929292;
+	min-width: 20px;
+	min-height: 20px;
+	width: 20px;
+	height: 20px;
+	border-radius: 100px;
+	text-align: center;
+	padding: 4px;
+	font-size: 14px;
+	box-shadow: inset 0 0 10px rgba(175, 175, 175, 0.62);
+	margin: 0 5px;
+	margin-top: 5px;
+	display: inline-block;
+	box-sizing: content-box !important;
+}
+
+.ball.selected {
+	background: #83eeff;
+}
+
+.ball.disabled {
+	background: gray;
+}
+
+.ball.slide-in {
+	-webkit-transform: translateY(0px);
+	transform: translateY(0px);
+}
+
+.ball.power-ball {
+	color: red;
+	box-shadow: inset 0 0 10px rgba(255, 16, 16, 0.62);
+	border: 1px solid #e40000;
+}
+
+.number-slots {
+	padding: 10px;
+}
+
+.power-ball-selection {
+	margin-top: 40px;
+}
+
+.combo-play-info {
+	padding: 10px !important;
+}
+
+.number-slots [type="checkbox"]:not(:checked),
+.number-slots [type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+
+.selected-text {
+	text-align: center;
+	color: #888888;
+}

@@ -1,42 +1,48 @@
-<div>
+<md-card layout="row" layout-align="center center" class="bet">
+	<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">
+	  {{cell.number}}
+	</span>
+	<span class="ball"  ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"">
+	  [  ]
+	</span>
+	<span class="ball power-ball">
+	  {{tkt.getSelectedTicket().powerBall}}
+	</span>
+</md-card>
 
-	<ul>
-	<md-card layout="row" layout-align="center center">
-		<p style="padding:5px" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">
-		  {{cell.number}}
-		</p>
-		<p style="padding:5px" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"">
-		  [  ]
-		</p>
-		<p style="padding:5px; color: red">
-		  {{tkt.getSelectedTicket().powerBall}}
-		</p>
-		<p ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected"">
-			System {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
-		</p>
-	</md-card>
-	    <label ng-repeat="cell in tkt.getSelectedTicket().numbers">
-		  <input
-		    type="checkbox"
-		    ng-model="cell.selected"
-		    ng-disabled = "!cell.selected && !tkt.canSelect(tkt.getSelectedTicket())"
-		  > {{cell.number}}
-		</label>
-		<br/>
-		<md-input-container class="md-block" flex-gt-sm>
-            <label>Powerball</label>
-            <md-select ng-model="tkt.getSelectedTicket().powerBall">
-              <md-option ng-repeat="num in tkt.numbers" value="{{num}}">
-                {{num}}
-              </md-option>
-            </md-select>
-          </md-input-container>
-	</ul>
-	<md-card layout="row" layout-align="center center" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">
-	Select more numbers to play a combo bet and boost your odds
-	</md-card>
-	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-		<md-button class="md-raised" ng-click="tkt.commitTicket()">OK</md-button>
-		<md-button class="md-raised" ng-click="tkt.cancelTicketChanges()">Cancel</md-button>
-	</section>
+<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
+	System {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
 </div>
+
+<div class="number-slots">
+    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers">
+	  <input
+		type="checkbox"
+		ng-model="cell.selected"
+		ng-disabled = "!cell.selected && !tkt.canSelect(tkt.getSelectedTicket())" id="cbBet{{$index}}"
+	  > 	
+		<label for="cbBet{{$index}}">{{cell.number}}</label>
+	</span>
+
+
+	<div class="power-ball-selection">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Powerball</label>
+			<md-select ng-model="tkt.getSelectedTicket().powerBall">
+				<md-option ng-repeat="num in tkt.numbers" value="{{num}}">
+					{{num}}
+				</md-option>
+			</md-select>
+		</md-input-container>
+	</div>
+
+	<md-card layout="row" layout-align="center center" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected" class="combo-play-info">
+		Select more numbers to play a combo bet and boost your odds
+	</md-card>
+
+</div>
+
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+	<md-button class="md-raised" ng-click="tkt.commitTicket()">OK</md-button>
+	<md-button class="md-raised" ng-click="tkt.cancelTicketChanges()">Cancel</md-button>
+</section>
