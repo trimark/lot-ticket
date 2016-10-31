@@ -1,18 +1,14 @@
-<md-card layout="row" layout-align="center center" class="bet">
-	<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">
-	  {{cell.number}}
-	</span>
-	<span class="ball"  ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"">
-	  [  ]
-	</span>
-	<span class="ball power-ball">
-	  {{tkt.getSelectedTicket().powerBall}}
-	</span>
+<md-card layout="row" layout-align="center center" class="bet selected-bets">
+	<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
+	<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"">[  ]</span>
+	<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
+
+	<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
+		System {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
+	</div>
+
 </md-card>
 
-<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
-	System {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
-</div>
 
 <div class="number-slots">
     <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers">
@@ -23,10 +19,7 @@
 	  > 	
 		<label for="cbBet{{$index}}">{{cell.number}}</label>
 	</span>
-
-
 </div>
-
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 	<div class="power-ball-selection">
@@ -44,8 +37,6 @@
 		Select more numbers to play a combo bet and boost your odds
 	</md-card>
 </section>
-
-
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 	<md-button class="md-raised" ng-click="tkt.commitTicket()">OK</md-button>
