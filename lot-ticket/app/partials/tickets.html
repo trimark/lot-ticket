@@ -16,7 +16,7 @@
 
 		<div class="col-11">
 			<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
-			<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index" "></span>
+			<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
 			<span class="ball power-ball">{{ticket.powerBall}}</span>
 
 			<span class="action right">

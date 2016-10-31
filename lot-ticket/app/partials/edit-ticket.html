@@ -1,6 +1,6 @@
 <md-card layout="row" layout-align="center center" class="bet selected-bets">
 	<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
-	<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"">[  ]</span>
+	<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index">[  ]</span>
 	<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
 
 	<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
