@@ -1,3 +1,7 @@
+<div class="header-rect">
+<span class="header-left">Powerball</span>
+<span class="header-right">345 million</span>
+</div>
 <div ng-repeat="ticket in tkt.tickets">
 	<md-card layout="row" class="bet selected-bets">
 		<!-- 
@@ -46,6 +50,31 @@
 		  PowerPlay
 	 </md-checkbox>
 </section>
+
+ <div layout-gt-sm="row">
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>Draw</label>
+    <md-select ng-model="tkt.selectedDraw">
+      <md-option ng-repeat="num in tkt.draws" value="{{num}}">
+			{{num}}
+		</md-option>
+    </md-select>
+  </md-input-container>
+
+ <md-input-container class="md-block" flex-gt-sm>
+    <label>Duration</label>
+    <md-select ng-model="tkt.duration">
+      <md-option ng-repeat="num in tkt.durations" value="{{num}}">
+			{{num}}
+		</md-option>
+    </md-select>
+  </md-input-container>
+  <md-checkbox ng-model="tkt.powerPlay" aria-label="Subscribe">
+  	Subscribe
+  </md-checkbox>
+</div>
+<p class="md-caption">8 weeks from Sun 6 Nov</p>
+
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 	 <md-button class="md-raised">
