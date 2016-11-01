@@ -8,7 +8,23 @@
 		transform: translateX(0);
  	}
 }
-
+.header-rect {
+    border-radius: 5px;
+    background: #990000;
+    margin: 5px;
+    height: 20px;
+    padding: 15px;
+    font-weight: bold;
+    color: #FFF0F0;
+}
+.header-left{
+    top: 15px;
+}
+.header-right{
+	position: absolute;
+	right: 20px;
+    top: 15px;
+}
 .bet {
 	padding: 5px;
 	padding-left: 15px;

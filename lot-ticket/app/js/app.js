@@ -147,6 +147,10 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log("<getEmptySlotsArray:ret=" + ret)
 		return ret;
 	}
+	this.draws=["Tuesday + Thursday", "Tuesday", "Thursday"];
+	this.selectedDraw= "Tuesday + Thursday";
+	this.duration = "1 week";
+	this.durations = ["1 week", "2 weeks", "4 weeks", "8 weeks"];
 	this.addTicket();
 	this.addTicket();
 

@@ -1,3 +1,6 @@
+<div class="header-rect">
+<span class="header-left">Line 1 of 6</span>
+</div>
 <md-card layout="row" layout-align="center center" class="bet selected-bets">
 	<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
 	<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
