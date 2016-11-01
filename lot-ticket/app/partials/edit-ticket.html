@@ -3,7 +3,7 @@
 </div>
 <md-card layout="row" layout-align="center center" class="bet selected-bets">
 	<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
-	<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index">[  ]</span>
+	<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
 	<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
 
 	<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
@@ -35,10 +35,9 @@
 			</md-select>
 		</md-input-container>
 	</div>
-
-	<md-card layout="row" layout-align="center center" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected" class="combo-play-info">
+	<p class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">
 		Select more numbers to play a combo bet and boost your odds
-	</md-card>
+	</p>
 </section>
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>

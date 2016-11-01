@@ -1,83 +1,74 @@
 <div class="header-rect">
-<span class="header-left">Powerball</span>
-<span class="header-right">345 million</span>
+	<span class="header-left">Powerball</span>
+	<span class="header-right">345 million</span>
 </div>
-<div ng-repeat="ticket in tkt.tickets">
-	<md-card layout="row" class="bet selected-bets">
-		<!-- 
-		<md-chips ng-model="ticket.numbers|filter: {selected: true}" readonly="true" md-removable="false">
-		<md-chip-template>
-		{{$chip.number}} 
-		</md-chip-template>
-		</md-chips>
+<md-content>
+	<div ng-repeat="ticket in tkt.tickets">
+		<div layout="row" class="bet selected-bets">
+			<div class="col-11">
+				<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
+				<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
+				<span class="ball power-ball">{{ticket.powerBall}}</span>
 
-		<md-chips ng-model="[ticket.powerBall]" readonly="true" md-removable="false">
-		<md-chip-template style="color: red">
-		{{$chip}} 
-		</md-chip-template>
-		</md-chips>
-		-->
+				<span class="action right">
+					<md-button class="md-icon-button md-primary bet-action" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
+						<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
+					</md-button>
 
-		<div class="col-11">
-			<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
-			<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
-			<span class="ball power-ball">{{ticket.powerBall}}</span>
-
-			<span class="action right">
-				<md-button class="md-icon-button md-primary bet-action" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
-					<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
-				</md-button>
-
-				<md-button class="md-icon-button md-primary bet-action" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
-					<md-icon md-svg-icon="img/icons/ic_delete_forever_black_24px.svg"></md-icon>
-				</md-button>
-			</span>
+					<md-button class="md-icon-button md-primary bet-action" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
+						<md-icon md-svg-icon="img/icons/ic_delete_forever_black_24px.svg"></md-icon>
+					</md-button>
+				</span>
+			</div>
+			<div ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected" class="selected-text"> System {{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
 		</div>
+		<md-divider layout-margin></md-divider>
+	</div>
+</md-content>
 
-		<div ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected" class="selected-text"> System {{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
-	 </md-card>
+<div layout="row" layout-margin layout-align="center center" layout-wrap ng-if="tkt.canAddTicket" class="quickpick-box">
+	<md-button class="md-raised" ng-click="tkt.addTicket(true)">Add QuickPick</md-button>
+	<md-button class="md-icon-button md-primary" ng-click="tkt.addTicket(false)">
+		<md-icon md-svg-icon="img/icons/ic_add_black_24px.svg"></md-icon>
+	</md-button>
 </div>
 
-<md-card layout="row" layout-align="center center" layout-wrap ng-if="tkt.canAddTicket" class=" quickpick-box">
-	 <md-button class="md-raised" ng-click="tkt.addTicket(true)">Add QuickPick</md-button>
-	 <md-button class="md-icon-button md-primary" ng-click="tkt.addTicket(false)">
-		  <md-icon md-svg-icon="img/icons/ic_add_black_24px.svg"></md-icon>
-	 </md-button>
-</md-card>
-
-<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	 <md-checkbox ng-model="tkt.powerPlay" aria-label="PowerPlay">
-		  PowerPlay
-	 </md-checkbox>
-</section>
-
- <div layout-gt-sm="row">
-  <md-input-container class="md-block" flex-gt-sm>
-    <label>Draw</label>
-    <md-select ng-model="tkt.selectedDraw">
-      <md-option ng-repeat="num in tkt.draws" value="{{num}}">
-			{{num}}
-		</md-option>
-    </md-select>
-  </md-input-container>
-
- <md-input-container class="md-block" flex-gt-sm>
-    <label>Duration</label>
-    <md-select ng-model="tkt.duration">
-      <md-option ng-repeat="num in tkt.durations" value="{{num}}">
-			{{num}}
-		</md-option>
-    </md-select>
-  </md-input-container>
-  <md-checkbox ng-model="tkt.powerPlay" aria-label="Subscribe">
-  	Subscribe
-  </md-checkbox>
+<div layout-margin layout="row" layout-align="space-between center">
+	<label>Powerplay</label>
+	<md-checkbox  ng-model="tkt.powerPlay" aria-label="PowerPlay"></md-checkbox>
 </div>
-<p class="md-caption">8 weeks from Sun 6 Nov</p>
+<div layout-margin>
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Draw</label>
+			<md-select ng-model="tkt.selectedDraw">
+				<md-option ng-repeat="num in tkt.draws" value="{{num}}">
+				{{num}}
+				</md-option>
+			</md-select>
+		</md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+			<label>Duration</label>
+			<md-select ng-model="tkt.duration">
+				<md-option ng-repeat="num in tkt.durations" value="{{num}}">
+				{{num}}
+				</md-option>
+			</md-select>
+		</md-input-container>
 
 
-<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	 <md-button class="md-raised">
-		  <md-icon md-svg-icon="img/icons/ic_add_shopping_cart_black_24px.svg"></md-icon>Submit
-	 </md-button>
-</section>
+		<p class="md-caption">8 weeks from Sun 6 Nov</p>
+	</div>
+	<div layout-margin layout="row" layout-align="space-between center">
+		<label>Subscribe</label>
+		<md-checkbox  ng-model="tkt.subscribe" aria-label="Subscribe"></md-checkbox>
+	</div>
+
+
+	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+		<md-button class="md-raised" style="width: 100%">
+			<md-icon md-svg-icon="img/icons/ic_add_shopping_cart_black_24px.svg"></md-icon>Buy
+		</md-button>
+	</section>
+</div>

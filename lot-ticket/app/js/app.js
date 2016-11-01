@@ -79,6 +79,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.unselectedNumbers = [];
 	this.canAddTicket = true;
 	this.powerPlay = false;
+	this.subscribe = false;
 	var ticketEdit = null;
 	this.numbers = [];
 	for (var i = 1; i<=highestNumber;i++){
@@ -151,7 +152,5 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.selectedDraw= "Tuesday + Thursday";
 	this.duration = "1 week";
 	this.durations = ["1 week", "2 weeks", "4 weeks", "8 weeks"];
-	this.addTicket();
-	this.addTicket();
 
 });
