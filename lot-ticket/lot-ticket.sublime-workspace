@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"padd",
+				"padding-right"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"r",
+				"ret"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"ti",
+				"ticket"
+			],
+			[
+				"get",
+				"getNumSelected"
+			],
+			[
+				"max",
+				"maxTickets"
+			],
+			[
 				"hi",
 				"highestNumber"
 			],
@@ -24,10 +52,6 @@
 				"deleteTicket"
 			],
 			[
-				"get",
-				"generateTicket"
-			],
-			[
 				"ge",
 				"getRandomInt"
 			],
@@ -43,7 +67,7 @@
 			"file": "app/js/app.js",
 			"settings":
 			{
-				"buffer_size": 2501,
+				"buffer_size": 6217,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -52,7 +76,7 @@
 			"file": "app/partials/tickets.html",
 			"settings":
 			{
-				"buffer_size": 1333,
+				"buffer_size": 3035,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -61,7 +85,7 @@
 			"file": "app/partials/edit-ticket.html",
 			"settings":
 			{
-				"buffer_size": 1056,
+				"buffer_size": 2001,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -79,7 +103,7 @@
 			"file": "app/css/app.css",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 2243,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -119,6 +143,7 @@
 	[
 		"/D/GitHub/lot-ticket/lot-ticket",
 		"/D/GitHub/lot-ticket/lot-ticket/app",
+		"/D/GitHub/lot-ticket/lot-ticket/app/css",
 		"/D/GitHub/lot-ticket/lot-ticket/app/partials"
 	],
 	"file_history":
@@ -175,7 +200,7 @@
 	],
 	"find":
 	{
-		"height": 34.0
+		"height": 46.0
 	},
 	"find_in_files":
 	{
@@ -191,6 +216,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			">\n",
+			"center",
+			"lines",
+			"\"\"",
+			"this.systems",
+			"syste",
+			"ng",
+			"highestNumber",
+			"generateTicket",
+			"console.log",
+			"console.log(",
+			"copyTicket",
+			"getSelectedTicket",
+			"numSelected",
 			"getNumSelected",
 			"ret",
 			"ticketLength",
@@ -240,6 +279,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"numLines",
+			"\"System 06\"",
+			"//console.log",
+			"//console.log(",
 			"nums",
 			"//console.log",
 			"//",
@@ -272,15 +315,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2501,
+						"buffer_size": 6217,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2497,
-								2497
+								6003,
+								6003
 							]
 						],
 						"settings":
@@ -289,7 +332,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 810.0,
+						"translation.y": 2237.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -301,15 +344,27 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1333,
+						"buffer_size": 3035,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								106,
-								106
+								2483,
+								2484
+							],
+							[
+								2486,
+								2486
+							],
+							[
+								2489,
+								2489
+							],
+							[
+								2777,
+								2777
 							]
 						],
 						"settings":
@@ -318,7 +373,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 90.0,
+						"translation.y": 405.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -330,15 +385,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1056,
+						"buffer_size": 2001,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								453,
-								453
+								1473,
+								1473
 							]
 						],
 						"settings":
@@ -388,15 +443,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 2243,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								342,
+								342
 							]
 						],
 						"settings":
@@ -453,7 +508,7 @@
 	"project": "lot-ticket.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 86.0
 	},
 	"save_all_on_build": true,
 	"select_file":

@@ -29,7 +29,7 @@
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Powerball</label>
 			<md-select ng-model="tkt.getSelectedTicket().powerBall">
-				<md-option ng-repeat="num in tkt.numbers" value="{{num}}">
+				<md-option ng-repeat="num in tkt.powerBalls" value="{{num}}">
 					{{num}}
 				</md-option>
 			</md-select>

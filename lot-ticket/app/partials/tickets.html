@@ -37,6 +37,7 @@
 	<label>Powerplay</label>
 	<md-checkbox  ng-model="tkt.powerPlay" aria-label="PowerPlay"></md-checkbox>
 </div>
+<md-divider layout-margin></md-divider>
 <div layout-margin>
 	<div layout-gt-sm="row">
 		<md-input-container class="md-block" flex-gt-sm>
@@ -57,13 +58,16 @@
 			</md-select>
 		</md-input-container>
 
+		<div layout-margin layout="row" layout-align="end center">
+			<p class="md-caption">{{tkt.duration}} from {{tkt.getFirstDrawDate()}}</p>
+		</div>
 
-		<p class="md-caption">8 weeks from Sun 6 Nov</p>
 	</div>
 	<div layout-margin layout="row" layout-align="space-between center">
 		<label>Subscribe</label>
 		<md-checkbox  ng-model="tkt.subscribe" aria-label="Subscribe"></md-checkbox>
 	</div>
+	<md-divider layout-margin></md-divider>
 
 
 	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>

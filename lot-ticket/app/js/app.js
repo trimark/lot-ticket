@@ -72,7 +72,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	
 	//console.log ("$routeParams=" + $routeParams)
 	this.minSelected = 5; // lowest allowed number of selected numbers
-	this.maxSelected = 9; // highest allowed number of selected numbers
+	this.maxSelected = 20; // highest allowed number of selected numbers
 	this.maxTickets = 6;
 	this.defNumSelected = defNumSelected;
 	this.tickets = [];
@@ -82,8 +82,30 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.subscribe = false;
 	var ticketEdit = null;
 	this.numbers = [];
+	this.highestPowerBall = 29;
+	this.powerBalls = [];
+	this.systems = {
+		s6: {name:"System 06", numLines: 6},
+		s7: {name:"System 07", numLines: 21},
+		s8: {name:"System 08", numLines: 56},
+		s9: {name:"System 09", numLines: 126},
+		s10: {name:"System 10", numLines: 252},
+		s11: {name:"System 11", numLines: 462},
+		s12: {name:"System 12", numLines: 792},
+		s13: {name:"System 13", numLines: 1287},
+		s14: {name:"System 14", numLines: 2002},
+		s15: {name:"System 15", numLines: 3003},
+		s16: {name:"System 16", numLines: 4368},
+		s17: {name:"System 17", numLines: 6188},
+		s18: {name:"System 18", numLines: 8568},
+		s19: {name:"System 19", numLines: 11628},
+		s20: {name:"System 20", numLines: 15504}
+	};
 	for (var i = 1; i<=highestNumber;i++){
 		this.numbers.push(i);
+	}
+	for (var i = 1; i<=this.highestPowerBall;i++){
+		this.powerBalls.push(i);
 	}
 	this.update = function(){
 		this.canAddTicket = this.tickets.length < this.maxTickets;
@@ -133,9 +155,11 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	}
 	this.getSystem = function(ticket){
 		var numSelected = this.getNumSelected(ticket);
-		var name = "0" + numSelected.toString();
-		var numLines = 1 + Math.pow(this.defNumSelected, numSelected-this.defNumSelected);
-		return {name: name, numLines: numLines};
+		//var name = "0" + numSelected.toString();
+		//var numLines = 1 + Math.pow(this.defNumSelected, numSelected-this.defNumSelected);
+		var system = this.systems["s" + numSelected.toString()];
+		return system;
+		//return {name: name, numLines: numLines};
 	}
 	this.getEmptySlotsArray = function(ticket){
 		//console.log(">getEmptySlotsArray: ticket=" + ticket);
@@ -147,6 +171,30 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		var ret = new Array(len);
 		//console.log("<getEmptySlotsArray:ret=" + ret)
 		return ret;
+	}
+	this.getFirstDrawDate = function(){
+		var now = new Date();
+		var dow = -1;
+		switch (this.selectedDraw){
+			case "Tuesday + Thursday":
+			dow = 2;
+			break;
+			case "Tuesday":
+			dow = 2;
+			break;
+			case "Thursday":
+			dow = 4;
+			break;
+		}
+		return this.getNextWeekDay(now, dow).toLocaleDateString();
+
+	}
+	this.getNextWeekDay = function(d, dow){
+		console.log(">getNextWeekDay d=" + d + ", dow=" + dow);
+		//Given a date d and a dow (day of week, 0 - 6, where 0 is sunday, returns the next date (including the current one) that the given weekday occurs)
+	    d.setDate(d.getDate() + (dow+(7-d.getDay())) % 7);
+	    console.log("<getNextWeekDay d=" + d);
+	    return d;
 	}
 	this.draws=["Tuesday + Thursday", "Tuesday", "Thursday"];
 	this.selectedDraw= "Tuesday + Thursday";
