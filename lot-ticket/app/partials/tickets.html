@@ -1,6 +1,6 @@
 <div class="header-rect">
-<span class="header-left">Powerball</span>
-<span class="header-right">345 million</span>
+	<span class="header-left">Powerball</span>
+	<span class="header-right">345 million</span>
 </div>
 <div ng-repeat="ticket in tkt.tickets">
 	<md-card layout="row" class="bet selected-bets">
@@ -17,10 +17,8 @@
 		</md-chip-template>
 		</md-chips>
 		-->
-
 		<div class="col-11">
 			<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span><span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span><span class="ball power-ball">{{ticket.powerBall}}</span>
-
 			<span class="action right">
 				<md-button class="md-icon-button md-primary bet-action" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
 					<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
@@ -31,51 +29,53 @@
 				</md-button>
 			</span>
 		</div>
-
 		<div ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected" class="selected-text"> System {{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
-	 </md-card>
+	</md-card>
 </div>
-
 <md-card layout="row" layout-align="center center" layout-wrap ng-if="tkt.canAddTicket" class=" quickpick-box">
-	 <md-button class="md-raised" ng-click="tkt.addTicket(true)">Add QuickPick</md-button>
-	 <md-button class="md-icon-button md-primary" ng-click="tkt.addTicket(false)">
-		  <md-icon md-svg-icon="img/icons/ic_add_black_24px.svg"></md-icon>
-	 </md-button>
+	<md-button class="md-raised" ng-click="tkt.addTicket(true)">Add QuickPick</md-button>
+	<md-button class="md-icon-button md-primary" ng-click="tkt.addTicket(false)">
+		<md-icon md-svg-icon="img/icons/ic_add_black_24px.svg"></md-icon>
+	</md-button>
 </md-card>
-
-<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	 <md-checkbox ng-model="tkt.powerPlay" aria-label="PowerPlay">
-		  PowerPlay
-	 </md-checkbox>
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap layout-margin>
+	<md-checkbox ng-model="tkt.powerPlay" aria-label="PowerPlay">
+		PowerPlay
+	</md-checkbox>
+</section>
+<section layout-gt-sm="row" layout-margin>
+	<div layout-row class="layout-row">
+		<md-input-container class="md-block" flex-gt-sm flex="100">
+			<label>Draw</label>
+			<md-select ng-model="tkt.selectedDraw">
+				<md-option ng-repeat="num in tkt.draws" value="{{num}}">
+					{{num}}
+				</md-option>
+			</md-select>
+		</md-input-container>
+	</div>
+	<div layout-row class="layout-row">
+		<md-input-container class="md-block" flex-gt-sm flex="100">
+			<label>Duration</label>
+			<md-select ng-model="tkt.duration">
+				<md-option ng-repeat="num in tkt.durations" value="{{num}}">
+					{{num}}
+				</md-option>
+			</md-select>
+		</md-input-container>
+	</div>
+	<div layout-row class="layout-row">
+		<md-checkbox ng-model="tkt.powerPlay" aria-label="Subscribe">
+			Subscribe
+		</md-checkbox>
+	</div>
+	<div layout-row class="layout-row">
+		<span class="md-caption">8 weeks from Sun 6 Nov</span>
+	</div>
 </section>
 
- <div layout-gt-sm="row">
-  <md-input-container class="md-block" flex-gt-sm>
-    <label>Draw</label>
-    <md-select ng-model="tkt.selectedDraw">
-      <md-option ng-repeat="num in tkt.draws" value="{{num}}">
-			{{num}}
-		</md-option>
-    </md-select>
-  </md-input-container>
-
- <md-input-container class="md-block" flex-gt-sm>
-    <label>Duration</label>
-    <md-select ng-model="tkt.duration">
-      <md-option ng-repeat="num in tkt.durations" value="{{num}}">
-			{{num}}
-		</md-option>
-    </md-select>
-  </md-input-container>
-  <md-checkbox ng-model="tkt.powerPlay" aria-label="Subscribe">
-  	Subscribe
-  </md-checkbox>
-</div>
-<p class="md-caption">8 weeks from Sun 6 Nov</p>
-
-
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	 <md-button class="md-raised">
-		  <md-icon md-svg-icon="img/icons/ic_add_shopping_cart_black_24px.svg"></md-icon>Submit
-	 </md-button>
+	<md-button class="md-raised">
+		<md-icon md-svg-icon="img/icons/ic_add_shopping_cart_black_24px.svg"></md-icon>Submit
+	</md-button>
 </section>
