@@ -4,18 +4,18 @@
 </div>
 <md-content>
 	<div ng-repeat="ticket in tkt.tickets">
-		<div layout="row" class="bet selected-bets">
+		<div layout="row" class="bet selected-bets" ng-click="tkt.editTicket($index)">
 			<div class="col-11">
 				<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
 				<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
 				<span class="ball power-ball">{{ticket.powerBall}}</span>
 				<span class="action right">
-					<md-button class="md-icon-button md-primary bet-action" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
+					<!-- <md-button class="md-icon-button md-primary bet-action" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
 						<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
-					</md-button>
+					</md-button> -->
 
-					<md-button class="md-icon-button md-primary bet-action" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
-						<md-icon md-svg-icon="img/icons/ic_delete_forever_black_24px.svg"></md-icon>
+					<md-button class="md-icon-button bet-action" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
+						<md-icon md-svg-icon="img/icons/ic_close_24px.svg"></md-icon>
 					</md-button>
 				</span>
 			</div>

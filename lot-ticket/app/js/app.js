@@ -68,7 +68,7 @@ function ticketToString(ticket){
 	ret += ", powerBall: " + ticket.powerBall;
 	return ret;
 }
-ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location) {
+ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location, $window) {
 	
 	//console.log ("$routeParams=" + $routeParams)
 	this.minSelected = 5; // lowest allowed number of selected numbers
@@ -118,6 +118,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		
 		this.tickets.splice(index, 1);
 		this.update();
+	}
+	this.editTicket = function($index) {
+		$window.location.href = '#/edit-ticket/' + $index;
 	}
 	this.getSelectedTicket = function(){
 		//console.log(">getSelectedTicket; ticketEdit=" + ticketEdit);
