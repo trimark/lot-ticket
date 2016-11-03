@@ -53,7 +53,6 @@
 	text-align: center;
 	padding: 4px;
 	font-size: 14px;
-	box-shadow: inset 0 0 10px rgba(175, 175, 175, 0.62);
     margin-right: 5px;
     margin-bottom: 10px;
 	display: inline-table;
@@ -78,7 +77,6 @@
 
 .ball.power-ball {
 	color: red;
-	box-shadow: inset 0 0 10px rgba(255, 16, 16, 0.62);
 	border: 1px solid #e40000;
 	vertical-align: top;
 }
@@ -141,4 +139,8 @@
 
 .empty-slot-group {
 	margin-left: -4px;
+}
+
+.md-soft-color {
+    color: #777;
 }

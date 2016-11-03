@@ -71,7 +71,7 @@ function ticketToString(ticket){
 	}
 	return ret;
 }
-ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location) {
+ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location, $window) {
 	
 	//console.log ("$routeParams=" + $routeParams)
 	this.minSelected = 5; // lowest allowed number of selected numbers
