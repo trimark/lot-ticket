@@ -85,7 +85,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.subscribe = false;
 	var ticketEdit = null;
 	this.numbers = [];
-	this.highestPowerBall = 29;
+	this.highestPowerBall = 26;
 	this.powerBalls = [];
 	this.editTicketId = null;
 	this.newTicket = false;
