@@ -9,6 +9,7 @@
 	<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
 		System {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
 	</div>
+
 </md-card>
 
 
@@ -24,7 +25,7 @@
 </div>
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	<div class="panel-wrap">
+	<div class="power-ball-selection">
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Powerball</label>
 			<md-select ng-model="tkt.getSelectedTicket().powerBall">
@@ -40,6 +41,6 @@
 </section>
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	<md-button class="md-raised" ng-click="tkt.commitTicket()">OK</md-button>
+	<md-button class="md-raised" ng-click="tkt.commitTicket()" ng-disabled="tkt.getNumSelected(tkt.getSelectedTicket())<tkt.minSelected">OK</md-button>
 	<md-button class="md-raised" ng-click="tkt.cancelTicketChanges()">Cancel</md-button>
 </section>

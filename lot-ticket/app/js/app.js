@@ -9,7 +9,7 @@ ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
 		$routeProvider.when('/', {
 			templateUrl: 'partials/tickets.html'
 		});
-		$routeProvider.when('/edit-ticket/:ticketId', {
+		$routeProvider.when('/edit-ticket/', {
 			templateUrl: 'partials/edit-ticket.html'
 		});
 		$routeProvider.otherwise({redirectTo: '/'});
@@ -57,15 +57,18 @@ function copyTicket (ticket){
 	return ret;
 }
 function ticketToString(ticket){
-	var ret="{ numbers: [";
-	for (var i = 0; i<ticket.numbers.length; i++){
-		var org = ticket.numbers[i];
-		ret +="{number: " + org.number + ", selected: " + org.selected+ "}"
-		if (i<ticket.numbers.length-1){
-			ret +=", ";
+	var ret = "null";
+	if (ticket){
+		ret="{ numbers: [";
+		for (var i = 0; i<ticket.numbers.length; i++){
+			var org = ticket.numbers[i];
+			ret +="{number: " + org.number + ", selected: " + org.selected+ "}"
+			if (i<ticket.numbers.length-1){
+				ret +=", ";
+			}
 		}
+		ret += ", powerBall: " + ticket.powerBall;
 	}
-	ret += ", powerBall: " + ticket.powerBall;
 	return ret;
 }
 ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location) {
@@ -84,6 +87,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.numbers = [];
 	this.highestPowerBall = 29;
 	this.powerBalls = [];
+	this.editTicketId = null;
+	this.newTicket = false;
 	this.systems = {
 		s6: {name:"System 06", numLines: 6},
 		s7: {name:"System 07", numLines: 21},
@@ -113,52 +118,86 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.addTicket = function(quickPick){
 		this.tickets.push(generateTicket(quickPick));
 		this.update();
+		if (!quickPick){
+			this.editTicket(this.tickets.length-1)
+			this.newTicket = true;
+		}
 	}
 	this.deleteTicket = function(index){
 		
 		this.tickets.splice(index, 1);
 		this.update();
 	}
+	this.editTicket = function(ticketId){
+		console.log(">editTicket: ticketId=" + ticketId);
+		ticketEdit = copyTicket(this.tickets[ticketId]);
+		this.editTicketId = ticketId;
+		$location.path('/edit-ticket');
+		console.log("<editTicket; ticketEdit=" + ticketToString(ticketEdit));
+	}
 	this.getSelectedTicket = function(){
 		//console.log(">getSelectedTicket; ticketEdit=" + ticketEdit);
-		if (ticketEdit == null){
-			ticketEdit = copyTicket(this.tickets[$routeParams.ticketId]);
-		}
 		//console.log("<getSelectedTicket; ticketEdit=" + ticketEdit);
 		return ticketEdit;
 	}
 	this.canSelect = function(ticket){
-		return (this.getNumSelected(ticket) < this.maxSelected);
+		//console.log(">this.canSelect:ticket=" + this.canSelect);
+		if (ticket){
+			return (this.getNumSelected(ticket) < this.maxSelected);
+		} else {
+			return false;
+		}
 	}
 	this.commitTicket= function (){
-		//console.log(">commitTicket");
-		this.tickets[$routeParams.ticketId] = ticketEdit;
+		console.log(">commitTicket");
+		this.tickets[this.editTicketId] = ticketEdit;
+		console.log("this.tickets["+this.editTicketId+"]=" + ticketToString(this.tickets[this.editTicketId]));
+		
 		ticketEdit = null;
+		this.editTicketId = null;
+		this.newTicket = false;
+		
+		console.log("<commitTicket: this.tickets=" + this.tickets);
 		$location.path('"#/tickets"');
 	}
 	this.cancelTicketChanges = function(){
+		console.log(">cancelTicketChanges");
 		//console.log(">cancelTicketChanges");
-		ticketEdit = null;
 		$location.path('"#/tickets"');
+		if (this.newTicket){
+			this.deleteTicket(this.editTicketId)
+		}
+		ticketEdit = null;
+		this.editTicketId = null;
+		this.newTicket = false;
+		
+		console.log("<cancelTicketChanges: ticketEdit=" + ticketEdit);
 	}
 	this.getNumSelected = function(ticket){
 		//console.log(">getNumSelected: ticket=" + ticketToString(ticket));
 		var ret = 0;
-		var t = ticket;
-		for (var i = 0; i<t.numbers.length; i++){
-			if (t.numbers[i].selected){
-				ret++;
+		if (ticket){
+			var t = ticket;
+			for (var i = 0; i<t.numbers.length; i++){
+				if (t.numbers[i].selected){
+					ret++;
+				}
 			}
 		}
 		//console.log("<getNumSelected: ret=" + ret);
 		return ret;
 	}
 	this.getSystem = function(ticket){
-		var numSelected = this.getNumSelected(ticket);
-		//var name = "0" + numSelected.toString();
-		//var numLines = 1 + Math.pow(this.defNumSelected, numSelected-this.defNumSelected);
-		var system = this.systems["s" + numSelected.toString()];
-		return system;
+		//console.log(">this.getSystem: ticket=" + ticket);
+		var ret=null;
+		if (ticket){
+			var numSelected = this.getNumSelected(ticket);
+			//var name = "0" + numSelected.toString();
+			//var numLines = 1 + Math.pow(this.defNumSelected, numSelected-this.defNumSelected);
+			ret = this.systems["s" + numSelected.toString()];
+			//console.log("<this.getSystem: ret=" + ret);
+		}
+		return ret;
 		//return {name: name, numLines: numLines};
 	}
 	this.getEmptySlotsArray = function(ticket){
@@ -190,10 +229,10 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 
 	}
 	this.getNextWeekDay = function(d, dow){
-		console.log(">getNextWeekDay d=" + d + ", dow=" + dow);
+		//console.log(">getNextWeekDay d=" + d + ", dow=" + dow);
 		//Given a date d and a dow (day of week, 0 - 6, where 0 is sunday, returns the next date (including the current one) that the given weekday occurs)
 	    d.setDate(d.getDate() + (dow+(7-d.getDay())) % 7);
-	    console.log("<getNextWeekDay d=" + d);
+	    //console.log("<getNextWeekDay d=" + d);
 	    return d;
 	}
 	this.draws=["Tuesday + Thursday", "Tuesday", "Thursday"];

@@ -76,13 +76,16 @@
 			"file": "app/partials/tickets.html",
 			"settings":
 			{
-				"buffer_size": 3035,
+				"buffer_size": 3080,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
+			"contents": "<div class=\"header-rect\">\n<span class=\"header-left\">Line 1 of 6</span>\n</div>\n<md-card layout=\"row\" layout-align=\"center center\" class=\"bet selected-bets\">\n\t<span class=\"ball\" ng-repeat=\"cell in tkt.getSelectedTicket().numbers|filter: {selected: true}\">{{cell.number}}</span>\n\t<span class=\"ball\" ng-repeat=\"i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index\"></span>\n\t<span class=\"ball power-ball\">{{tkt.getSelectedTicket().powerBall}}</span>\n\n\t<div ng-if=\"tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected\" class=\"selected-text\">\n\t\tSystem {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)\n\t</div>\n\n</md-card>\n\n\n<div class=\"number-slots\">\n    <span class=\"ball\" ng-class=\"{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}\" id=\"cbBet{{$index}}}\" ng-repeat=\"cell in tkt.getSelectedTicket().numbers\">\n\t  <input\n\t\ttype=\"checkbox\"\n\t\tng-model=\"cell.selected\"\n\t\tng-disabled = \"!cell.selected && !tkt.canSelect(tkt.getSelectedTicket())\" id=\"cbBet{{$index}}\"\n\t  > \t\n\t\t<label for=\"cbBet{{$index}}\">{{cell.number}}</label>\n\t</span>\n</div>\n\n<section layout=\"row\" layout-sm=\"column\" layout-align=\"center center\" layout-wrap>\n\t<div class=\"power-ball-selection\">\n\t\t<md-input-container class=\"md-block\" flex-gt-sm>\n\t\t\t<label>Powerball</label>\n\t\t\t<md-select ng-model=\"tkt.getSelectedTicket().powerBall\">\n\t\t\t\t<md-option ng-repeat=\"num in tkt.powerBalls\" value=\"{{num}}\">\n\t\t\t\t\t{{num}}\n\t\t\t\t</md-option>\n\t\t\t</md-select>\n\t\t</md-input-container>\n\t</div>\n\t<p class=\"md-caption\" ng-if=\"tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected\">\n\t\tSelect more numbers to play a combo bet and boost your odds\n\t</p>\n</section>\n\n<section layout=\"row\" layout-sm=\"column\" layout-align=\"center center\" layout-wrap>\n\t<md-button class=\"md-raised\" ng-click=\"tkt.commitTicket()\">OK</md-button>\n\t<md-button class=\"md-raised\" ng-click=\"tkt.cancelTicketChanges()\">Cancel</md-button>\n</section>\n",
 			"file": "app/partials/edit-ticket.html",
+			"file_size": 2093,
+			"file_write_time": 131224823517041210,
 			"settings":
 			{
 				"buffer_size": 2001,
@@ -103,7 +106,7 @@
 			"file": "app/css/app.css",
 			"settings":
 			{
-				"buffer_size": 2243,
+				"buffer_size": 2333,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -200,7 +203,7 @@
 	],
 	"find":
 	{
-		"height": 46.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -306,7 +309,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -322,8 +325,8 @@
 						"selection":
 						[
 							[
-								6003,
-								6003
+								3844,
+								3844
 							]
 						],
 						"settings":
@@ -332,10 +335,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2237.0,
+						"translation.y": 1517.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -344,27 +347,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3035,
+						"buffer_size": 3080,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2483,
-								2484
-							],
-							[
-								2486,
-								2486
-							],
-							[
-								2489,
-								2489
-							],
-							[
-								2777,
-								2777
+								511,
+								511
 							]
 						],
 						"settings":
@@ -373,10 +364,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 405.0,
+						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -405,7 +396,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -443,7 +434,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2243,
+						"buffer_size": 2333,
 						"regions":
 						{
 						},

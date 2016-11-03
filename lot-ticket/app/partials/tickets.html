@@ -10,7 +10,7 @@
 				<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
 				<span class="ball power-ball">{{ticket.powerBall}}</span>
 				<span class="action right">
-					<md-button class="md-icon-button md-primary bet-action" ng-href="#/edit-ticket/{{$index}}" title="Edit Ticket" aria-label="Edit ticket">
+					<md-button class="md-icon-button md-primary bet-action" ng-click="tkt.editTicket($index)" title="Edit Ticket" aria-label="Edit ticket">
 						<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
 					</md-button>
 
