@@ -56,19 +56,20 @@
 				</md-option>
 			</md-select>
 		</md-input-container>
-
-		<div layout-margin layout="row" layout-align="end center">
-			<p class="md-caption">{{tkt.duration}} from {{tkt.getFirstDrawDate()}}</p>
-		</div>
-
 	</div>
-	<div layout-margin layout="row" layout-align="space-between center">
-		<label>Subscribe</label>
-		<md-checkbox  ng-model="tkt.subscribe" aria-label="Subscribe"></md-checkbox>
-	</div>
-
-	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-		<md-button class="md-raised">Buy</md-button>
-	</section>
 </div>
+
+<div layout-margin layout="row" layout-align="end center">
+	<span class="md-caption">{{tkt.duration}} from {{tkt.getFirstDrawDate()}}</span>
+</div>
+
+<div layout-margin layout="row" layout-align="space-between center">
+	<label>Subscribe</label>
+	<md-checkbox  ng-model="tkt.subscribe" aria-label="Subscribe"></md-checkbox>
+</div>
+
+<div layout="row" layout-sm="column" layout-align="center center">
+	<md-button class="md-raised">Buy</md-button>
+</div>
+
 
