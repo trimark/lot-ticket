@@ -76,8 +76,8 @@
 }
 
 .ball.power-ball {
-	color: red;
-	border: 1px solid #e40000;
+	color: #fc345d;
+	border: 1px solid #fc345d;
 	vertical-align: top;
 }
 
@@ -147,4 +147,8 @@
 md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon {
     border-width: 1px;
     border-radius: 1px;
+}
+
+md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+	background-color: #fc345d;
 }
