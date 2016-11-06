@@ -58,7 +58,6 @@
 	display: inline-table;
 	box-sizing: content-box !important;
 	line-height: 26px;
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 	vertical-align: top;
 }
 
@@ -68,7 +67,6 @@
 
 .ball.disabled {
 	color: #c1c1c1;
-	text-shadow: 0 0 0;
 	border-color: #c1c1c1;
 }
 
