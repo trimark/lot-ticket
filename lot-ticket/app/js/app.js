@@ -239,5 +239,6 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.selectedDraw= "Tuesday & Thursday";
 	this.duration = "1 week";
 	this.durations = ["1 week", "2 weeks", "4 weeks", "8 weeks"];
+	this.defaultCurrencySymbol = "£";
 
 });
