@@ -215,7 +215,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		var now = new Date();
 		var dow = -1;
 		switch (this.selectedDraw){
-			case "Tuesday + Thursday":
+			case "Tuesday & Thursday":
 			dow = 2;
 			break;
 			case "Tuesday":
@@ -235,8 +235,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	    //console.log("<getNextWeekDay d=" + d);
 	    return d;
 	}
-	this.draws=["Tuesday + Thursday", "Tuesday", "Thursday"];
-	this.selectedDraw= "Tuesday + Thursday";
+	this.draws=["Tuesday & Thursday", "Tuesday", "Thursday"];
+	this.selectedDraw= "Tuesday & Thursday";
 	this.duration = "1 week";
 	this.durations = ["1 week", "2 weeks", "4 weeks", "8 weeks"];
 
