@@ -214,6 +214,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.getFirstDrawDate = function(){
 		var now = new Date();
 		var dow = -1;
+		var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 		switch (this.selectedDraw){
 			case "Tuesday & Thursday":
 			dow = 2;
@@ -225,8 +227,13 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			dow = 4;
 			break;
 		}
-		return this.getNextWeekDay(now, dow).toLocaleDateString();
 
+		var d = new Date(this.getNextWeekDay(now, dow).toLocaleDateString());
+		var mm = d.getMonth();
+		var dd = d.getDate();
+		var yy = d.getFullYear();
+
+		return dd + '/' + monthNames[mm] + '/' + yy;
 	}
 	this.getNextWeekDay = function(d, dow){
 		//console.log(">getNextWeekDay d=" + d + ", dow=" + dow);
