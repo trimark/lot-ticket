@@ -143,3 +143,8 @@
 .md-soft-color {
     color: #777;
 }
+
+md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon {
+    border-width: 1px;
+    border-radius: 1px;
+}
