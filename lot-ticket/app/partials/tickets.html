@@ -1,7 +1,8 @@
-<div class="header-rect">
-	<span class="header-left">Powerball</span>
-	<span class="header-right">{{tkt.defaultCurrencySymbol}}345 million</span>
-</div>
+<md-card layout="row" layout-margin layout-align="end center">
+  <div layout="row" layout-align="start center">Powerball</div>
+  <div layout="row" flex  layout-align="end center">{{tkt.defaultCurrencySymbol}}345 million</div>
+</md-card>
+
 <md-content>
 	<div ng-repeat="ticket in tkt.tickets">
 		<div layout="row" class="bet selected-bets">
