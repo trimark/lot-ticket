@@ -55,7 +55,7 @@ function copyTicket (ticket){
 		var org = ticket.numbers[i];
 		nums.push({number: org.number, selected: org.selected})
 	}
-	var ret = {numbers: nums, powerBall: ""}
+	var ret = {numbers: nums, powerBall: ticket.powerBall}
 	//console.log ("<copyTicket: ret=" + ticketToString(ret));
 	return ret;
 }
