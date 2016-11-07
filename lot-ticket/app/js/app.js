@@ -32,7 +32,7 @@ function generateTicket(quickPick){
 		nums.push({number: i, selected:false});
 	}
 	var numSelected = 0;
-	var pb = "Please select"
+	var pb = '';
 	if(quickPick){
 		while (numSelected < defNumSelected){
 		var ix=getRandomInt(0, nums.length-1)
