@@ -37,7 +37,7 @@
 	<div layout-gt-sm="row">
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Draw</label>
-			<md-select ng-model="tkt.selectedDraw">
+			<md-select ng-model="tkt.selectedDraw" md-no-underline>
 				<md-option ng-repeat="num in tkt.draws" value="{{num}}">
 				{{num}}
 				</md-option>
@@ -46,7 +46,7 @@
 
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Duration</label>
-			<md-select ng-model="tkt.duration">
+			<md-select ng-model="tkt.duration" md-no-underline>
 				<md-option ng-repeat="num in tkt.durations" value="{{num}}">
 				{{num}}
 				</md-option>
