@@ -7,7 +7,7 @@
 	<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
 
 	<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
-		System {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
+		{{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
 	</div>
 
 </md-card>
