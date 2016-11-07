@@ -32,16 +32,19 @@ function generateTicket(quickPick){
 		nums.push({number: i, selected:false});
 	}
 	var numSelected = 0;
+	var pb = "Please select"
 	if(quickPick){
-	while (numSelected < defNumSelected){
+		while (numSelected < defNumSelected){
 		var ix=getRandomInt(0, nums.length-1)
 			if (!nums[ix].selected){
 				nums[ix].selected = true;
 				numSelected++;
 			}
 		}
+		pb = getRandomInt(1, highestNumber)
 	}
-	var ret = {numbers: nums, powerBall: getRandomInt(1, highestNumber)}
+
+	var ret = {numbers: nums, powerBall: pb}
 	//console.log("<generateTicket: ret=" + ret)
 	return ret;
 }
@@ -52,7 +55,7 @@ function copyTicket (ticket){
 		var org = ticket.numbers[i];
 		nums.push({number: org.number, selected: org.selected})
 	}
-	var ret = {numbers: nums, powerBall: ticket.powerBall}
+	var ret = {numbers: nums, powerBall: ""}
 	//console.log ("<copyTicket: ret=" + ticketToString(ret));
 	return ret;
 }
