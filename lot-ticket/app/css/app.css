@@ -199,6 +199,16 @@ button, select, html, textarea, input {
 	width: 75%;
 }
 
+
+.draw-group .md-button.groupX {
+	min-width: 75px;
+}
+
+.duration-group .md-button.groupX {
+	min-width: 56px;
+}
+
+
 /* start material overrides */
 
 .md-button.md-raised:not([disabled]) {
@@ -234,7 +244,52 @@ md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-chec
     border-radius: 1px;
 }
 
-md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon, {
 	background-color: #328fd9;
+}
+
+md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon {
+	border-color: #328fd9;
+}
+
+
+
+.md-button.groupX {
+    margin: 0;
+    color: rgb(49, 46, 46);
+    text-transform: none;
+    font-weight: 400;
+}
+
+.md-button.groupX.active-highlight {
+    background: -webkit-linear-gradient(#42a1ec,#1f79c1);
+    background: linear-gradient(#42a1ec,#1f79c1);
+    color: white;
+}
+
+.md-button.left {
+    border-radius: 5px 0 0 5px;
+     border: 1px solid #07c;
+}
+
+.md-button.middle {
+    border-radius: 0;
+    border-top: 1px solid #07c;
+     border-bottom: 1px solid #07c;
+     border-right: 1px solid #07c;
+
+}
+
+.md-button.right {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #07c;
+    border-left: 0;
+}
+
+.md-button:not([disabled]):hover {
+ 	background: -webkit-linear-gradient(#42a1ec,#1f79c1);
+    background: linear-gradient(#42a1ec,#1f79c1);
+    color: white;
+    transition: 0.3s;
 }
 /* end material overrides */

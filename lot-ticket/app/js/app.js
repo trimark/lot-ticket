@@ -252,10 +252,24 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		cell.selected = !cell.selected;
 	}
 
-	this.draws=["Tuesday & Thursday", "Tuesday", "Thursday"];
-	this.selectedDraw= "Tuesday & Thursday";
-	this.duration = "1 week";
-	this.durations = ["1 week", "2 weeks", "4 weeks", "8 weeks"];
+	this.selectDraw = function(num)
+	{
+		console.log("kamagong numero >>> ", num);
+
+		this.selectedDraw = num;
+	}
+
+	this.selectDuration = function(duration)
+	{
+		console.log("hari ng stunt >>> ", duration);
+
+		this.duration = duration;
+	}
+
+	this.draws=["Tue", "Thu", "Tue & Thu"];
+	this.selectedDraw= "Tue & Thu";
+	this.duration = "1";
+	this.durations = ["1", "2", "4", "8"];
 	this.defaultCurrencySymbol = "£";
 
 });
