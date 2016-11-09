@@ -81,7 +81,7 @@ button, select, html, textarea, input {
 
 .ball.power-ball {
 	color: #fc345d;
-	border: 1px solid #fc345d;
+	border: 2px solid #fc345d;
 	vertical-align: top;
 }
 
@@ -126,8 +126,8 @@ button, select, html, textarea, input {
 }
 
 .layout-row.selected-bets {
-    display: block;
-    padding-top: 17px;
+    padding-top: 15px;
+    border-bottom: 1px solid #cccccc;
 }
 
 .col-11 {
@@ -140,9 +140,15 @@ button, select, html, textarea, input {
 	border-radius: 5px;
 }
 
-.powertball-header {
+.powerball-header {
 	font-size: 20px;
-	font-weight: 400;
+	font-weight: 500;
+	color: #0070c9;
+}
+
+.balance-header {
+    font-size: 14px;
+    color: #666666;	
 }
 
 .empty-slot-group {
@@ -152,16 +158,6 @@ button, select, html, textarea, input {
 .md-soft-color {
     color: #777;
 }
-
-md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon {
-    border-width: 1px;
-    border-radius: 1px;
-}
-
-md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
-	background-color: #fc345d;
-}
-
 
 .md-button-block {
 	width: 100%;
@@ -202,5 +198,15 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
     text-align: center;
     white-space: nowrap;
 
+}
+
+
+md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon {
+    border-width: 1px;
+    border-radius: 1px;
+}
+
+md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
+	background-color: #328fd9;
 }
 /* end material overrides */
