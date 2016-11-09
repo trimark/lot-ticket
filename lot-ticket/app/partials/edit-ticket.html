@@ -24,21 +24,24 @@
 	</span>
 </div>
 
-<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	<div class="power-ball-selection">
+
+<div layout-margin>
+	<div layout-gt-sm="row">
 		<md-input-container class="md-block" flex-gt-sm>
 			<label>Powerball</label>
 			<md-select ng-model="tkt.getSelectedTicket().powerBall">
 				<md-option ng-repeat="num in tkt.powerBalls" value="{{num}}">
-					{{num}}
+				{{num}}
 				</md-option>
 			</md-select>
 		</md-input-container>
 	</div>
+
 	<p class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">
 		Select more numbers to play a combo bet and boost your odds
 	</p>
-</section>
+</div>
+
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 	<md-button class="md-raised" ng-click="tkt.commitTicket()" ng-disabled="tkt.getNumSelected(tkt.getSelectedTicket())<tkt.minSelected || tkt.getSelectedTicket().powerBall==''">OK</md-button>
