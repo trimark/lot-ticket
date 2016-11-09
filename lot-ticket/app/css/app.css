@@ -32,6 +32,7 @@ button, select, html, textarea, input {
 .bet {
 	padding: 5px;
 	padding-left: 15px;
+	-webkit-transform: translateX(0);
 	transform: translateX(0);
 	animation-name: slide-left;
 	animation-duration: 0.6s;
