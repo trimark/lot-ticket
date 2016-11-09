@@ -81,7 +81,7 @@ button, select, html, textarea, input {
 
 .ball.power-ball {
 	color: #fc345d;
-	border: 1px solid #fc345d;
+	border: 2px solid #fc345d;
 	vertical-align: top;
 }
 
