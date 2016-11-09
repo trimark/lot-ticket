@@ -41,7 +41,7 @@
 	</div>
 
 	<div layout-margin layout="row" layout-align="space-between center" class="duration-group">
-		<label>Duration (weeks)</label>
+		<label>Duration</label>
 		<section layout="row" layout-align="end center">
 		  <md-button class="groupX" ng-repeat="num in tkt.durations" ng-class="{'left': $index == 0, 'middle': ($index > 0 && $index < tkt.draws.length),  'right': $index >= tkt.draws.length, 'active-highlight' : tkt.duration == num}" ng-click="tkt.selectDuration(num)">{{num}}</md-button>
 		</section>
@@ -68,7 +68,7 @@
 			</md-input-container> -->
 
 			<div layout-margin layout="row" layout-align="end center">
-				<p class="md-caption">{{tkt.duration}} from {{tkt.getFirstDrawDate()}}</p>
+				<p class="md-caption">{{tkt.durationString}} from {{tkt.getFirstDrawDate()}}</p>
 			</div>
 
 		</div>

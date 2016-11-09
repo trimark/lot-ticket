@@ -263,8 +263,14 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		console.log("hari ng stunt >>> ", duration);
 
 		this.duration = duration;
+		if (this.duration == 1){
+			this.durationString = "1 week"
+		} else {
+			this.durationString =  this.duration.toString() + " weeks"
+		}
 	}
 
+	this.durationString = "1 week";
 	this.draws=["Tue", "Thu", "Tue & Thu"];
 	this.selectedDraw= "Tue & Thu";
 	this.duration = "1";
