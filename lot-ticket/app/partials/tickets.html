@@ -3,8 +3,8 @@
 	  <div flex layout="row" layout-align="start center" class="powerball-header">Powerball</div>
 	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}345 million</div>
 	</div>  
-	<div>
-		<div ng-repeat="ticket in tkt.tickets">
+	<md-list>
+		<md-list-item ng-repeat="ticket in tkt.tickets" style="padding: 0px;">
 			<div flex layout="row" class="bet selected-bets" style="outline: 0px solid transparent;" ng-click="tkt.editTicket($index)">
 				<div class="col-11">
 					<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
@@ -18,9 +18,9 @@
 				</div>
 				<div ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected" class="selected-text"> System {{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
 			</div>
-		</div>
-	</div>
-
+			<md-divider></md-divider>
+		</md-list-item>
+	</md-list>
 	<div layout="row" layout-margin layout-align="center center" layout-wrap ng-if="tkt.canAddTicket" class="quickpick-box">
 		<md-button class="md-raised" ng-click="tkt.addTicket(false)" aria-label="Add Ticket">
 			<md-icon md-svg-icon="img/icons/ic_add_black_24px.svg" class="md-icon-light"></md-icon>
