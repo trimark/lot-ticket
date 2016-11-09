@@ -140,10 +140,15 @@ button, select, html, textarea, input {
 	border-radius: 5px;
 }
 
-.powertball-header {
+.powerball-header {
 	font-size: 20px;
 	font-weight: 500;
 	color: #0070c9;
+}
+
+.balance-header {
+    font-size: 14px;
+    color: #666666;	
 }
 
 .empty-slot-group {
