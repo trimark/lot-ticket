@@ -20,6 +20,47 @@
 	<script src="lib/js/angular-aria/angular-aria.js"></script>
 	<script src="lib/js/angular-material/angular-material.js"></script>
 	<script src="js/app.js"></script>
+	<script type="text/javascript">
+		// pinch-zoom
+		document.documentElement.addEventListener('touchstart', 
+			function(event)
+			{
+				if (event.touches.length > 1)
+				{
+					event.preventDefault();
+				}
+			}, 
+		false);
+
+		var lastTouchEnd = 0;
+		document.documentElement.addEventListener('touchend', 
+			function(event) 
+			{
+				var now = (new Date()).getTime();
+				if (now - lastTouchEnd <= 300)
+				{
+					event.preventDefault();
+		  		}
+		  		lastTouchEnd = now;
+			}, 
+		false);
+
+		// double-tap-zoom
+		$(this).bind('touchstart', function preventZoom(e)
+		{
+			var t2 = e.timeStamp,
+				t1 = $(this).data('lastTouch') || t2,
+				dt = t2 - t1,
+				fingers = e.originalEvent.touches.length;
+			
+			$(this).data('lastTouch', t2);
+			
+			if (!dt || dt > 500 || fingers > 1) return; // not double-tap
+			e.preventDefault();
+			// also synthesize click events we just swallowed up
+			$(this).trigger('click').trigger('click');
+		});
+	</script>
 	
 	<div ng-view=""></div>
 
