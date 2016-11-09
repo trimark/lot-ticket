@@ -14,7 +14,7 @@
 
 
 <div class="number-slots">
-    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers">
+    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers" style="outline: 0px solid transparent;" ng-click="tkt.selectCell(cell)">
 	  <input
 		type="checkbox"
 		ng-model="cell.selected"
