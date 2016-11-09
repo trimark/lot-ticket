@@ -5,7 +5,7 @@
 	</div>  
 	<div>
 		<div ng-repeat="ticket in tkt.tickets">
-			<div flex layout="row" class="bet selected-bets">
+			<div flex layout="row" class="bet selected-bets" ng-click="tkt.editTicket($index)">
 				<div class="col-11">
 					<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
 					<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
