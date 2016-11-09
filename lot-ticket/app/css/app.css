@@ -147,7 +147,8 @@ button, select, html, textarea, input {
 	color: #0070c9;
 }
 
-.balance-header {
+.balance-header,
+.line-number {
     font-size: 14px;
     color: #666666;	
 }

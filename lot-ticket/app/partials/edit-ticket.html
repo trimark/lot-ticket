@@ -1,49 +1,52 @@
-<div class="header-rect">
-<span class="header-left">Line 1 of 6</span>
-</div>
-<md-card layout="row" layout-align="center center" class="bet selected-bets">
-	<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
-	<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
-	<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
+<md-card layout-margin layout-align="center">
+	<md-card layout-margin class>
+		<span class="line-number">Line 1 of 6</span>
+	</md-card>
 
-	<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
-		{{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
+	<md-card layout="row" layout-align="center center" class="bet selected-bets">
+		<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
+		<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
+		<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
+
+		<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
+			{{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
+		</div>
+
+	</md-card>
+
+
+	<div class="number-slots">
+	    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers" style="outline: 0px solid transparent;" ng-click="tkt.selectCell(cell)">
+		  <input
+			type="checkbox"
+			ng-model="cell.selected"
+			ng-disabled = "!cell.selected && !tkt.canSelect(tkt.getSelectedTicket())" id="cbBet{{$index}}"
+		  > 	
+			<label for="cbBet{{$index}}">{{cell.number}}</label>
+		</span>
 	</div>
 
+
+	<div layout-margin>
+		<div layout-gt-sm="row">
+			<md-input-container class="md-block" flex-gt-sm>
+				<label>Powerball</label>
+				<md-select ng-model="tkt.getSelectedTicket().powerBall">
+					<md-option ng-repeat="num in tkt.powerBalls" value="{{num}}">
+					{{num}}
+					</md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+
+		<p class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected" style="color: #888888">
+			Select more numbers to play a combo bet and boost your odds
+		</p>
+	</div>
+
+
+	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+		<md-button class="md-raised" ng-click="tkt.commitTicket()" ng-disabled="tkt.getNumSelected(tkt.getSelectedTicket())<tkt.minSelected || tkt.getSelectedTicket().powerBall==''">OK</md-button>
+		<md-button class="md-raised" ng-click="tkt.cancelTicketChanges()">Cancel</md-button>
+	</section>
 </md-card>
-
-
-<div class="number-slots">
-    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers" style="outline: 0px solid transparent;" ng-click="tkt.selectCell(cell)">
-	  <input
-		type="checkbox"
-		ng-model="cell.selected"
-		ng-disabled = "!cell.selected && !tkt.canSelect(tkt.getSelectedTicket())" id="cbBet{{$index}}"
-	  > 	
-		<label for="cbBet{{$index}}">{{cell.number}}</label>
-	</span>
-</div>
-
-
-<div layout-margin>
-	<div layout-gt-sm="row">
-		<md-input-container class="md-block" flex-gt-sm>
-			<label>Powerball</label>
-			<md-select ng-model="tkt.getSelectedTicket().powerBall">
-				<md-option ng-repeat="num in tkt.powerBalls" value="{{num}}">
-				{{num}}
-				</md-option>
-			</md-select>
-		</md-input-container>
-	</div>
-
-	<p class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected" style="color: #888888">
-		Select more numbers to play a combo bet and boost your odds
-	</p>
-</div>
-
-
-<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-	<md-button class="md-raised" ng-click="tkt.commitTicket()" ng-disabled="tkt.getNumSelected(tkt.getSelectedTicket())<tkt.minSelected || tkt.getSelectedTicket().powerBall==''">OK</md-button>
-	<md-button class="md-raised" ng-click="tkt.cancelTicketChanges()">Cancel</md-button>
-</section>
