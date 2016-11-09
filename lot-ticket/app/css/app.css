@@ -152,3 +152,41 @@ md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-chec
 md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon {
 	background-color: #fc345d;
 }
+
+
+.md-button-block {
+	width: 100%;
+}
+
+.md-icon-light svg {
+   fill : #fff;
+}
+
+.md-icon-small svg {
+	width: 75%;
+}
+
+
+/* start material overrides */
+.md-button.md-default-theme.md-raised, .md-button.md-raised {
+    font-weight: 500;
+    letter-spacing: 0;
+    font-family: Myriad Set Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
+    background-color: #0070c9;
+    background: -webkit-linear-gradient(#42a1ec,#1f79c1);
+    background: linear-gradient(#42a1ec,#1f79c1);
+    border-color: #07c;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 1px;
+    text-align: center;
+    white-space: nowrap;
+}
+/* end material overrides */
