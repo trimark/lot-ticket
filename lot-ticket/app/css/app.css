@@ -140,6 +140,11 @@ button, select, html, textarea, input {
 	border-radius: 5px;
 }
 
+.powertball-header {
+	font-size: 20px;
+	font-weight: 400;
+}
+
 .empty-slot-group {
 	margin-left: -4px;
 }
@@ -169,7 +174,6 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
 .md-icon-small svg {
 	width: 75%;
 }
-
 
 /* start material overrides */
 
