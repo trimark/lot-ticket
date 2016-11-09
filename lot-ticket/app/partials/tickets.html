@@ -11,12 +11,8 @@
 					<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
 					<span class="ball power-ball">{{ticket.powerBall}}</span>
 					<span class="action right">
-						<md-button class="md-icon-button md-primary bet-action" ng-click="tkt.editTicket($index)" title="Edit Ticket" aria-label="Edit ticket">
-							<md-icon md-svg-icon="img/icons/ic_edit_black_24px.svg"></md-icon>
-						</md-button>
-
 						<md-button class="md-icon-button md-primary bet-action" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
-							<md-icon md-svg-icon="img/icons/ic_delete_forever_black_24px.svg"></md-icon>
+							<md-icon md-svg-icon="img/icons/ic_close_24px.svg"></md-icon>
 						</md-button>
 					</span>
 				</div>
@@ -69,9 +65,7 @@
 
 
 		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-			<md-button class="md-raised" style="width: 100%">
-				<md-icon md-svg-icon="img/icons/ic_add_shopping_cart_black_24px.svg"></md-icon>Buy
-			</md-button>
+			<md-button class="md-raised" style="width: 100%">Buy</md-button>
 		</section>
 	</div>
 </md-card>
