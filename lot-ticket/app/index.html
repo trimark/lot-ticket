@@ -56,9 +56,7 @@
 			$(this).data('lastTouch', t2);
 			
 			if (!dt || dt > 500 || fingers > 1) return; // not double-tap
-			$(e.target).trigger("RapTouchStart");
 			e.preventDefault();
-
 			// also synthesize click events we just swallowed up
 			$(this).trigger('click').trigger('click');
 		});
