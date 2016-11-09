@@ -55,7 +55,7 @@ function copyTicket (ticket){
 		var org = ticket.numbers[i];
 		nums.push({number: org.number, selected: org.selected})
 	}
-	var ret = {numbers: nums, powerBall: ""}
+	var ret = {numbers: nums, powerBall: ticket.powerBall}
 	//console.log ("<copyTicket: ret=" + ticketToString(ret));
 	return ret;
 }
@@ -245,6 +245,13 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	    //console.log("<getNextWeekDay d=" + d);
 	    return d;
 	}
+
+	this.selectCell = function(cell)
+	{
+		console.log("Kamote na to >>> ", cell);
+		cell.selected = !cell.selected;
+	}
+
 	this.draws=["Tuesday & Thursday", "Tuesday", "Thursday"];
 	this.selectedDraw= "Tuesday & Thursday";
 	this.duration = "1 week";
