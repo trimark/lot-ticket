@@ -3,7 +3,7 @@
 		<span class="line-number">Line 1 of 6</span>
 	</md-card>
 
-	<md-card layout="row" layout-align="center center" class="bet selected-bets">
+	<md-card layout="row" layout-align="center center" class="bet selected-bets slide edit-selected-bets">
 		<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
 		<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
 		<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
@@ -11,7 +11,6 @@
 		<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
 			{{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
 		</div>
-
 	</md-card>
 
 

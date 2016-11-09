@@ -12,6 +12,17 @@ button, select, html, textarea, input {
 		transform: translateX(0);
  	}
 }
+
+@-webkit-keyframes webkit-slide-left {
+    0% {
+		-webkit-transform: translateX(-100%);
+		transform: translateX(-100%);
+    }
+ 	100% {
+		-webkit-transform: translateX(0);
+		transform: translateX(0);
+ 	}
+}
 .header-rect {
     border-radius: 5px;
     background: #990000;
@@ -32,11 +43,25 @@ button, select, html, textarea, input {
 .bet {
 	padding: 5px;
 	padding-left: 15px;
-	-webkit-transform: translateX(0);
-	transform: translateX(0);
-	animation-name: slide-left;
+	-webkit-transform: translateX(-100%);
+	transform: translateX(-100%);
+    -webkit-transition: all 0.6s; 
+    transition: all 0.6s;
+	
+/*
+		animation-name: slide-left;
+	-webkit-animation-name: webkit-slide-left;
+	
+	-webkit-animation-duration: 0.6s;
 	animation-duration: 0.6s;
+	
 	transition-timing-function:  animation-timing-function: cubic-bezier(0.42,0,0.58,1);
+	-webkit-transition-timing-function:  animation-timing-function: cubic-bezier(0.42,0,0.58,1);*/
+}
+
+.bet.slide {
+	-webkit-transform: translateX(0%);
+	transform: translateX(0%);
 }
 
 .bet-action {
@@ -129,6 +154,7 @@ button, select, html, textarea, input {
 .layout-row.selected-bets {
     padding-top: 15px;
     border-bottom: 1px solid #cccccc;
+    display: table-cell;
 }
 
 .col-11 {

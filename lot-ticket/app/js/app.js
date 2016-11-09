@@ -259,3 +259,16 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.defaultCurrencySymbol = "£";
 
 });
+
+
+ticketApp.directive('ticketAnimate', function($timeout) {
+	return {
+		restrict : 'A',
+		link: function(scope, element)
+		{
+			$timeout(function() {
+				$(element).addClass('slide');
+			}, 10);
+		}
+	};
+});

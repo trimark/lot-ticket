@@ -4,9 +4,9 @@
 	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}345 million</div>
 	</div>  
 	<md-list>
-		<md-list-item ng-repeat="ticket in tkt.tickets" style="padding: 0px;">
-			<div flex layout="row" class="bet selected-bets" style="outline: 0px solid transparent;" ng-click="tkt.editTicket($index)">
-				<div class="col-11">
+		<md-list-item ng-repeat="ticket in tkt.tickets" ng-style="{padding: 0}">
+			<div flex layout="row" class="bet selected-bets" ng-click="tkt.editTicket($index)" ticket-animate >
+				<div class="col-11" >
 					<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
 					<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
 					<span class="ball power-ball">{{ticket.powerBall}}</span>
