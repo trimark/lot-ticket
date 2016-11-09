@@ -248,7 +248,6 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 
 	this.selectCell = function(cell)
 	{
-		console.log("Kamote na to >>> ", cell);
 		cell.selected = !cell.selected;
 	}
 
@@ -286,3 +285,22 @@ ticketApp.directive('ticketAnimate', function($timeout) {
 		}
 	};
 });
+
+ticketApp.directive('tapClick', function() {
+	return {
+		restrict : 'EA',
+		link: function(scope, element)
+		{
+			$(element).on("TapClickTouchStart", 
+				function(event)
+				{
+					var method = element.attr("ng-click");
+					scope.$event = event;
+					scope.$apply(method);
+				}
+			);
+		}
+	};
+});
+
+
