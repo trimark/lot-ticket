@@ -3,20 +3,21 @@
 	  <div flex layout="row" layout-align="start center" class="powerball-header">Powerball</div>
 	  <div flex layout="row" layout-align="end center" class="balance-header">Line 1 of 6</div>
 	</div> 
-	<!--
-	<md-card layout-margin class>
-		<span class="line-number">Line 1 of 6</span>
-	</md-card>
-	-->
-	<div layout="row" layout-align="center center" class="bet selected-bets slide edit-selected-bets">
-		<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
-		<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
-		<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
 
-		<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
-			{{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
-		</div>
-	</div>
+	<md-list class="tickets-group">
+		<md-list-item  ng-style="{padding: 0}">
+			<div flex layout="row" class="bet selected-bets first-row slide">
+			
+				<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
+				<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
+				<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
+
+				<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
+					{{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
+				</div>
+			</div>
+		</md-list-item>
+	</md-list>
 
 
 	<div class="number-slots">
