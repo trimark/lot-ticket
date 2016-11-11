@@ -110,6 +110,7 @@ button, select, html, textarea, input {
 	box-sizing: content-box !important;
 	line-height: 26px;
 	vertical-align: top;
+	margin-bottom: 4px;
 }
 
 .ball.selected {
@@ -178,7 +179,7 @@ button, select, html, textarea, input {
     display: table-cell;
     padding-left: 2px;
     padding-right: 0;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
 }
 
 .layout-row.selected-bets.first-row {
@@ -186,7 +187,7 @@ button, select, html, textarea, input {
 }
 
 .col-11 {
-	width: 80%;
+	width: 90%;
 }
 
 .quickpick-box {
