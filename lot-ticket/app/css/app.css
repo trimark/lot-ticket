@@ -86,6 +86,7 @@ button, select, html, textarea, input {
 	transform: translateX(0%);
 }
 
+
 .bet-action {
 	padding-left: 0 !important;
 	padding-right: 0 !important;
@@ -114,7 +115,7 @@ button, select, html, textarea, input {
 }
 
 .ball.selected {
-	background: #83eeff;
+	background: #e6f6ff;
 }
 
 .ball.disabled {
@@ -259,8 +260,16 @@ md-list.tickets-group {
 	padding: 0;	
 }
 
+.layout-row.stake-group {
+	margin-bottom: 30px;
+}
+
 .layout-row.md-row, {
 	margin-bottom: 0;
+}
+
+.layout-margin.offset-bottom {
+	padding-bottom: 100px;
 }
 
 
