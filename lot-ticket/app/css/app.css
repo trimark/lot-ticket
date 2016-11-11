@@ -196,15 +196,24 @@ button, select, html, textarea, input {
 	border-radius: 5px;
 }
 
+.top-header {
+	position: relative;
+}
+
 .powerball-header {
 	font-family: myriadsetprobold;
-	font-size: 20px;
+	font-size: 24px;
 	color: #fc345d;
 }
 
 .balance-header, .line-number {
     font-size: 14px;
+    position: absolute;
+    bottom: 3px;
+    right: 0;
 }
+
+
 
 md-list.tickets-group {
 	margin-bottom: 0;
