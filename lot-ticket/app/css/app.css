@@ -119,6 +119,7 @@ html, body {
 	line-height: 26px;
 	vertical-align: top;
 	margin-bottom: 4px;
+	outline: 0px solid transparent;
 }
 
 .ball.selected {
@@ -212,6 +213,7 @@ html, body {
 	font-family: myriadsetprobold;
 	font-size: 24px;
 	color: #fc345d;
+    font-weight: 700;
 }
 
 .balance-header, .line-number {
