@@ -189,6 +189,7 @@ html, body {
     padding-left: 2px;
     padding-right: 0;
     padding-bottom: 4px;
+    outline: 0px solid transparent;
 }
 
 .layout-row.selected-bets.first-row {
@@ -217,7 +218,7 @@ html, body {
 }
 
 .balance-header, .line-number {
-    font-size: 14px;
+    font-size: 17px;
     position: absolute;
     bottom: 3px;
     right: 0;
@@ -281,6 +282,10 @@ md-list.tickets-group {
 
 .layout-margin.offset-bottom {
 	padding-bottom: 60px;
+}
+
+.label-md {
+	font-size: 18px;
 }
 
 
