@@ -320,6 +320,7 @@ md-card.md-default-theme, md-card {
     padding-top: 1px;
     text-align: center;
     white-space: nowrap;
+	font-size: 17px;
 }
 
 
