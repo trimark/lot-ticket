@@ -172,7 +172,7 @@ button, select, html, textarea, input {
 
 .layout-row.selected-bets {
     padding-top: 8px;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid  #e3e3e3;
     display: table-cell;
     padding-left: 2px;
     padding-right: 0;
@@ -180,7 +180,7 @@ button, select, html, textarea, input {
 }
 
 .layout-row.selected-bets.first-row {
-	 border-top: 1px solid #cccccc;
+	 border-top: 1px solid  #e3e3e3;
 }
 
 .col-11 {
