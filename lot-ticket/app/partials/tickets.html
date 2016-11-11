@@ -1,4 +1,4 @@
-<md-card layout-margin layout-align="center">
+<md-card layout-margin layout-align="center" class="panel-padded offset-bottom">
 	<div layout="row">
 	  <div flex layout="row" layout-align="start center" class="powerball-header">Powerball</div>
 	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}345 million</div>
@@ -28,28 +28,44 @@
 		<md-button class="md-raised" ng-click="tkt.addTicket(true)" aria-label="Add QuickPick">QuickPick</md-button>
 	</div>
 
-	<div layout-margin layout="row" layout-align="space-between center">
+	
+	<div layout="row" layout-align="space-between center md-row">
 		<label>Powerplay</label>
 		<md-checkbox  ng-model="tkt.powerPlay" aria-label="PowerPlay"></md-checkbox>
 	</div>
 
-	<div layout-margin layout="row" layout-align="space-between center" class="draw-group">
+	<div layout="row" layout-align="space-between center" class="draw-group">
 		<label>Draw</label>
 		<section layout="row" layout-align="end center">
 		  <md-button class="groupX" ng-repeat="num in tkt.draws" ng-class="{'left': $index == 0, 'middle': $index > 0,  'right': $index >= tkt.draws.length - 1, 'active-highlight' : tkt.selectedDraw == num}" ng-click="tkt.selectDraw(num)">{{num}}</md-button>
 		</section>
 	</div>
 
-	<div layout-margin layout="row" layout-align="space-between center" class="duration-group">
+	<div layout="row" layout-align="space-between center" class="duration-group md-row">
 		<label>Duration</label>
 		<section layout="row" layout-align="end center">
 		  <md-button class="groupX" ng-repeat="num in tkt.durations" ng-class="{'left': $index == 0, 'middle': ($index > 0 && $index < tkt.draws.length),  'right': $index >= tkt.draws.length, 'active-highlight' : tkt.duration == num}" ng-click="tkt.selectDuration(num)">{{num}}</md-button>
 		</section>
 	</div>
+	
+	<div  layout="row" layout-align="end center">
+		<span class="md-caption">{{tkt.durationString}} from {{tkt.getFirstDrawDate()}}</span>
+	</div>
 
-	<div layout-margin>
+	<div layout="row" layout-align="space-between center">
+		<label>Subscribe</label>
+		<md-checkbox  ng-model="tkt.subscribe" aria-label="Subscribe"></md-checkbox>
+	</div>
+
+	<div layout="row" layout-align="center center" class="md-no-pad">
+		<md-button class="md-raised md-button-block">
+			Buy
+		</md-button>
+	</div>
+
+	<!-- <div>
 		<div layout-gt-sm="row">
-			<!-- <md-input-container class="md-block" flex-gt-sm>
+			<md-input-container class="md-block" flex-gt-sm>
 				<label>Draw</label>
 				<md-select ng-model="tkt.selectedDraw">
 					<md-option ng-repeat="num in tkt.draws" value="{{num}}">
@@ -65,23 +81,19 @@
 					{{num}}
 					</md-option>
 				</md-select>
-			</md-input-container> -->
+			</md-input-container>
 
 			<div layout-margin layout="row" layout-align="end center">
 				<p class="md-caption">{{tkt.durationString}} from {{tkt.getFirstDrawDate()}}</p>
 			</div>
 
 		</div>
-		<div layout-margin layout="row" layout-align="space-between center">
-			<label>Subscribe</label>
-			<md-checkbox  ng-model="tkt.subscribe" aria-label="Subscribe"></md-checkbox>
-		</div>
-
+		
 
 		<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 			<md-button class="md-raised md-button-block">
 				Buy
 			</md-button>
 		</section>
-	</div>
+	</div> -->
 </md-card>  

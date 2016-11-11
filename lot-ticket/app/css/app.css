@@ -104,7 +104,6 @@ button, select, html, textarea, input {
 	padding: 4px;
 	font-size: 18px;
 	margin-right: 5px;
-	margin-bottom: 10px;
 	display: inline-table;
 	box-sizing: content-box !important;
 	line-height: 26px;
@@ -167,14 +166,17 @@ button, select, html, textarea, input {
 }
 
 .action.right {
-    right: 15px;
-    top: 12px;
+    right: 2px;
+    top: 7px;
 }
 
 .layout-row.selected-bets {
-    padding-top: 15px;
+    padding-top: 8px;
     border-bottom: 1px solid #cccccc;
     display: table-cell;
+    padding-left: 2px;
+    padding-right: 0;
+    padding-bottom: 8px;
 }
 
 .layout-row.selected-bets.first-row {
@@ -233,6 +235,21 @@ button, select, html, textarea, input {
 }
 
 
+.layout-margin.panel-padded {
+	padding: 10px 20px;
+}
+
+.layout-row.md-no-pad {
+	margin: 0;
+	padding: 0;	
+}
+
+.layout-row.md-row {
+	margin-bottom: 0;
+}
+
+
+
 /* start material overrides */
 
 .md-button.md-raised:not([disabled]) {
@@ -259,9 +276,13 @@ button, select, html, textarea, input {
     padding-top: 1px;
     text-align: center;
     white-space: nowrap;
-
 }
 
+
+
+md-checkbox {
+	width: 20px;
+}
 
 md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon {
     border-width: 1px;
@@ -274,6 +295,10 @@ md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-ico
 
 md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-checked) .md-icon {
 	border-color: #328fd9;
+}
+
+md-checkbox .md-container {
+	margin-top: 5px;
 }
 
 
