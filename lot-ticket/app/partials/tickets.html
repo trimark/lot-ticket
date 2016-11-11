@@ -5,7 +5,7 @@
 	</div>  
 	<md-list>
 		<md-list-item ng-repeat="ticket in tkt.tickets" ng-style="{padding: 0}">
-			<div flex layout="row" class="bet selected-bets" ng-click="tkt.editTicket($index)" ticket-animate >
+			<div flex layout="row" class="bet selected-bets" ng-click="tkt.editTicket($index)" ng-class="{'first-row': $index == 0}" ticket-animate>
 				<div class="col-11" >
 					<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
 					<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>

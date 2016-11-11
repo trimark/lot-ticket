@@ -92,7 +92,7 @@ button, select, html, textarea, input {
 
 
 .ball {
-	border: 2px solid #929292;
+	border: 2px solid #e37f91;
 	min-width: 25px;
 	min-height: 25px;
 	max-width: 25px;
@@ -177,6 +177,10 @@ button, select, html, textarea, input {
     display: table-cell;
 }
 
+.layout-row.selected-bets.first-row {
+	 border-top: 1px solid #cccccc;
+}
+
 .col-11 {
 	width: 80%;
 }
@@ -190,7 +194,7 @@ button, select, html, textarea, input {
 .powerball-header {
 	font-family: myriadsetprobold;
 	font-size: 20px;
-	color: #0070c9;
+	color: #fc345d;
 }
 
 .balance-header,
