@@ -28,12 +28,12 @@
 	</div>
 
 	
-	<div layout="row" layout-align="space-between center md-row">
+	<div layout="row" layout-align="space-between center md-row" class="md-row">
 		<label>Powerplay</label>
 		<md-checkbox  ng-model="tkt.powerPlay" aria-label="PowerPlay"></md-checkbox>
 	</div>
 
-	<div layout="row" layout-align="space-between center" class="draw-group">
+	<div layout="row" layout-align="space-between center" class="draw-group md-row">
 		<label>Draw</label>
 		<section layout="row" layout-align="end center">
 		  <md-button class="groupX" ng-repeat="num in tkt.draws" ng-class="{'left': $index == 0, 'middle': $index > 0,  'right': $index >= tkt.draws.length - 1, 'active-highlight' : tkt.selectedDraw == num}" ng-click="tkt.selectDraw(num)">{{num}}</md-button>
@@ -47,11 +47,11 @@
 		</section>
 	</div>
 	
-	<div  layout="row" layout-align="end center">
+	<div  layout="row" layout-align="end center" class="md-row">
 		<span class="md-caption">{{tkt.durationString}} from {{tkt.getFirstDrawDate()}}</span>
 	</div>
 
-	<div layout="row" layout-align="space-between center">
+	<div layout="row" layout-align="space-between center" class="md-row">
 		<label>Subscribe</label>
 		<md-checkbox  ng-model="tkt.subscribe" aria-label="Subscribe"></md-checkbox>
 	</div>
@@ -62,7 +62,7 @@
 
 	
 
-	<div layout="row" layout-align="center center" class="md-no-pad md-top-margin">
+	<div layout="row" layout-align="center center" class="md-no-pad">
 		<md-button class="md-raised md-button-block">
 			Buy
 		</md-button>

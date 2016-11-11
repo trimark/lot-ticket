@@ -93,6 +93,9 @@ button, select, html, textarea, input {
 	width: 24px !important;
 }
 
+.md-button.bet-action:not([disabled]):hover {
+	background: none;
+}
 
 .ball {
 	border: 2px solid #e37f91;
@@ -243,11 +246,11 @@ md-list.tickets-group {
 
 
 .draw-group .md-button.groupX {
-	min-width: 75px;
+	min-width: 50px;
 }
 
 .duration-group .md-button.groupX {
-	min-width: 56px;
+	min-width: 43px;
 }
 
 
@@ -264,9 +267,11 @@ md-list.tickets-group {
 	margin-bottom: 30px;
 }
 
-.layout-row.md-row, {
+.layout-row.md-row {
 	margin-bottom: 0;
 }
+
+
 
 .layout-margin.offset-bottom {
 	padding-bottom: 100px;
@@ -328,7 +333,6 @@ md-checkbox.md-default-theme:not(.md-checked) .md-icon, md-checkbox:not(.md-chec
 md-checkbox .md-container {
 	margin-top: 5px;
 }
-
 
 
 .md-button.groupX {
