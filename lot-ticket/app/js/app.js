@@ -258,6 +258,13 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		this.selectedDraw = num;
 	}
 
+	this.selectPowerBall = function(num)
+	{
+		console.log("Manoling >>> ", num);
+
+		this.getSelectedTicket().powerBall = num;
+	}
+
 	this.selectDuration = function(duration)
 	{
 		console.log("hari ng stunt >>> ", duration);

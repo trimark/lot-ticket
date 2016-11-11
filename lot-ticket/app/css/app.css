@@ -23,6 +23,10 @@ button, select, html, textarea, input {
     color: #535353;
 }
 
+html, body {
+	background-color: #f2f2f2;
+}
+
 @keyframes slide-left {
     0% {
 		-webkit-transform: translateX(-100%);
@@ -274,7 +278,7 @@ md-list.tickets-group {
 
 
 .layout-margin.offset-bottom {
-	padding-bottom: 100px;
+	padding-bottom: 60px;
 }
 
 

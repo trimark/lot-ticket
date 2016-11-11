@@ -31,7 +31,20 @@
 		</span>
 	</div>
 
+	<div class="number-slots">
+		<p>
+			PowerBall<br>
+			<span class="md-caption">Pick 1 Powerball</span><br>
+			<span class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">Pick more than 5 to play a combo bet and boost your odds</span>
+		</p>
+		
+	    <span class="ball"  ng-repeat="num in tkt.powerBalls" tap-click ng-click="tkt.selectPowerBall(num)" ng-class="{'selected' : tkt.getSelectedTicket().powerBall == num}">
+		     <input type="checkbox" ng-model="tkt.getSelectedTicket().powerBall"> 	
+			<label for="cbBet{{$index}}">{{num}}</label>
+		</span>
+	</div>
 
+<!-- 
 	<div layout-margin>
 		<div layout-gt-sm="row">
 			<md-input-container class="md-block" flex-gt-sm>
@@ -47,7 +60,7 @@
 		<p class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected" style="color: #888888">
 			Select more numbers to play a combo bet and boost your odds
 		</p>
-	</div>
+	</div> -->
 
 
 	<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
