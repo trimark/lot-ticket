@@ -20,6 +20,7 @@
 
 button, select, html, textarea, input {
     font-family: myriadsetpro,Helvetica Neue,Helvetica,Arial,sans-serif !important;
+    color: #535353;
 }
 
 @keyframes slide-left {
@@ -43,6 +44,7 @@ button, select, html, textarea, input {
 		transform: translateX(0);
  	}
 }
+
 .header-rect {
     border-radius: 5px;
     background: #990000;
@@ -199,10 +201,13 @@ button, select, html, textarea, input {
 	color: #fc345d;
 }
 
-.balance-header,
-.line-number {
+.balance-header, .line-number {
     font-size: 14px;
-    color: #666666;	
+}
+
+md-list.tickets-group {
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 .empty-slot-group {
@@ -244,13 +249,17 @@ button, select, html, textarea, input {
 	padding: 0;	
 }
 
-.layout-row.md-row {
+.layout-row.md-row, {
 	margin-bottom: 0;
 }
 
 
 
 /* start material overrides */
+
+md-card.md-default-theme, md-card {
+	color: #535353;
+}
 
 .md-button.md-raised:not([disabled]) {
 	box-shadow: 0 0 0 !important; 
