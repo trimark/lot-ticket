@@ -16,7 +16,7 @@
 						</md-button>
 					</span>
 				</div>
-				<div ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected" class="selected-text"> System {{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
+				<div ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected" class="selected-text">{{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
 			</div>
 		</md-list-item>
 	</md-list>
