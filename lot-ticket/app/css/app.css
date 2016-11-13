@@ -114,7 +114,7 @@ html, body {
 	padding: 4px;
 	font-size: 18px;
 	margin-right: 5px;
-	display: inline-table;
+	float: left;
 	box-sizing: content-box !important;
 	line-height: 26px;
 	vertical-align: top;
@@ -167,6 +167,8 @@ html, body {
 	text-align: right;
 	color: #888888;
 	font-size: 12px;
+    display: block;
+    clear: both;
 }
 
 .action {
