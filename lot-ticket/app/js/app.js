@@ -1,5 +1,6 @@
 var ticketApp = angular.module('ticketApp', [ 'ngRoute', 'ngMaterial']);
 var highestNumber = 69;
+var powerBallHighestNumber = 26;
 var defNumSelected = 5;
 
 ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
@@ -41,7 +42,7 @@ function generateTicket(quickPick){
 				numSelected++;
 			}
 		}
-		pb = getRandomInt(1, highestNumber)
+		pb = getRandomInt(1, powerBallHighestNumber)
 	}
 
 	var ret = {numbers: nums, powerBall: pb}
