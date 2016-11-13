@@ -97,6 +97,10 @@ html, body {
 	width: 24px !important;
 }
 
+.md-button.md-raised.plus-text:not([disabled]) {
+	font-size: 23px;
+}
+
 .md-button.bet-action svg {
 	fill: #cacaca;
 }
