@@ -290,6 +290,10 @@ md-list.tickets-group {
 	font-size: 18px;
 }
 
+.btn-sm {
+	width: 75px;
+}
+
 
 
 /* start material overrides */
@@ -323,6 +327,7 @@ md-card.md-default-theme, md-card {
     text-align: center;
     white-space: nowrap;
 	font-size: 17px;
+	text-transform: none;
 }
 
 
