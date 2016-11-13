@@ -130,8 +130,13 @@ html, body {
 	outline: 0px solid transparent;
 }
 
+.ball.powerballs {
+   color: #fc345d;
+	border: 2px solid #fc345d;
+}
+
 .ball.selected {
-	background: #e6f6ff;
+	background: #fbdee3;
 }
 
 .ball.disabled {
@@ -153,6 +158,15 @@ html, body {
 .number-slots {
 	padding: 1px;
 	margin-left: 13px;
+}
+
+.number-slots.top-group {
+	margin-top: 20px;
+}
+
+.number-slots > p {
+	margin-top: 0;
+	padding-top: 0;
 }
 
 .panel-wrap {
@@ -190,6 +204,8 @@ html, body {
 .action.right {
     right: 2px;
     top: 7px;
+    width: 40px;
+    text-align: center;
 }
 
 .layout-row.selected-bets {

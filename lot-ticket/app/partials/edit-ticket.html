@@ -20,7 +20,7 @@
 	</md-list>
 
 
-	<div class="number-slots">
+	<div class="number-slots top-group">
 	    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers" tap-click ng-click="tkt.selectCell(cell)">
 		  <input
 			type="checkbox"
@@ -37,7 +37,7 @@
 			<span class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">Pick more than 5 to play a combo bet and boost your odds</span>
 		</p>
 		
-	    <span class="ball" ng-repeat="num in tkt.powerBalls" tap-click ng-click="tkt.selectPowerBall(num)" ng-class="{'selected' : tkt.getSelectedTicket().powerBall == num}">
+	    <span class="ball powerballs" ng-repeat="num in tkt.powerBalls" tap-click ng-click="tkt.selectPowerBall(num)" ng-class="{'selected' : tkt.getSelectedTicket().powerBall == num}">
 		     <input type="checkbox" ng-model="tkt.getSelectedTicket().powerBall"> 	
 			<label for="cbBet{{$index}}">{{num}}</label>
 		</span>

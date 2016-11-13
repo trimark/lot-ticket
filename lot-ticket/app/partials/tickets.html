@@ -10,8 +10,8 @@
 					<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
 					<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
 					<span class="ball power-ball">{{ticket.powerBall}}</span>
-					<span class="action right">
-						<md-button class="md-icon-button bet-action" ng-click = "tkt.deleteTicket($index)" title="Delete Ticket" aria-label="Delete ticket">
+					<span class="action right" ng-click = "tkt.deleteTicket($index)">
+						<md-button class="md-icon-button bet-action" title="Delete Ticket" aria-label="Delete ticket">
 							<md-icon md-svg-icon="img/icons/ios_delete.svg"></md-icon>
 						</md-button>
 					</span>
