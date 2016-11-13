@@ -97,6 +97,10 @@ html, body {
 	width: 24px !important;
 }
 
+.md-button.bet-action svg {
+	fill: #cacaca;
+}
+
 .md-button.bet-action:not([disabled]):hover {
 	background: none;
 }
