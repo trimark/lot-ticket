@@ -75,6 +75,19 @@ function ticketToString(ticket){
 	}
 	return ret;
 }
+function formatCurrency(amount, c, d, t) {
+	//console.log(">formatCurrency: amount=" + amount);
+	var n = amount,
+	c = isNaN(c = Math.abs(c)) ? 0 : c,
+	d = d == undefined ? "." : d,
+	t = t == undefined ? "," : t,
+	s = n < 0 ? "-" : "",
+	i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+	j = (j = i.length) > 3 ? j % 3 : 0;
+	var ret =  "£" + s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+	//console.log("<formatCurrency: ret=" + ret);
+	return ret;
+};
 ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $location, $window) {
 	
 	//console.log ("$routeParams=" + $routeParams)
@@ -87,6 +100,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.canAddTicket = true;
 	this.powerPlay = false;
 	this.subscribe = false;
+	this.linePrice = 2.5;
+	this.powerPlayLinePrice = 1;
 	var ticketEdit = null;
 	this.numbers = [];
 	this.highestPowerBall = 26;
@@ -118,6 +133,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	}
 	this.update = function(){
 		this.canAddTicket = this.tickets.length < this.maxTickets;
+		
 	}
 	this.addTicket = function(quickPick){
 		this.tickets.push(generateTicket(quickPick));
@@ -127,17 +143,40 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			this.newTicket = true;
 		}
 	}
+	this.getStake = function(){
+		var p = 0;
+		var pp = 0;
+		if (this.powerPlay){
+			pp = this.powerPlayLinePrice;
+		}
+		for (var i = 0; i<this.tickets.length; i++){
+			var sys = this.getSystem(this.tickets[i]);
+			if (sys != null){
+				var tp = this.getSystem(this.tickets[i]).numLines * (this.linePrice + pp);
+				//console.log("tp=" + tp);
+				p += tp;
+			} else {
+				p += this.linePrice + pp;
+			}
+		}
+		var daysPerWeek = 1;
+		if (this.selectedDraw == "Tue & Thu"){
+			daysPerWeek = 2;
+		}
+		p = p * Number(this.duration) * daysPerWeek;
+		return formatCurrency(p, 2);
+	}
 	this.deleteTicket = function(index){
 		
 		this.tickets.splice(index, 1);
 		this.update();
 	}
 	this.editTicket = function(ticketId){
-		console.log(">editTicket: ticketId=" + ticketId);
+		//console.log(">editTicket: ticketId=" + ticketId);
 		ticketEdit = copyTicket(this.tickets[ticketId]);
 		this.editTicketId = ticketId;
 		$location.path('/edit-ticket');
-		console.log("<editTicket; ticketEdit=" + ticketToString(ticketEdit));
+		//console.log("<editTicket; ticketEdit=" + ticketToString(ticketEdit));
 	}
 	this.getSelectedTicket = function(){
 		//console.log(">getSelectedTicket; ticketEdit=" + ticketEdit);
@@ -153,19 +192,19 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 	}
 	this.commitTicket= function (){
-		console.log(">commitTicket");
+		//console.log(">commitTicket");
 		this.tickets[this.editTicketId] = ticketEdit;
-		console.log("this.tickets["+this.editTicketId+"]=" + ticketToString(this.tickets[this.editTicketId]));
+		//console.log("this.tickets["+this.editTicketId+"]=" + ticketToString(this.tickets[this.editTicketId]));
 		
 		ticketEdit = null;
 		this.editTicketId = null;
 		this.newTicket = false;
 		
-		console.log("<commitTicket: this.tickets=" + this.tickets);
+		//console.log("<commitTicket: this.tickets=" + this.tickets);
 		$location.path('"#/tickets"');
 	}
 	this.cancelTicketChanges = function(){
-		console.log(">cancelTicketChanges");
+		//console.log(">cancelTicketChanges");
 		//console.log(">cancelTicketChanges");
 		$location.path('"#/tickets"');
 		if (this.newTicket){
@@ -175,7 +214,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		this.editTicketId = null;
 		this.newTicket = false;
 		
-		console.log("<cancelTicketChanges: ticketEdit=" + ticketEdit);
+		//console.log("<cancelTicketChanges: ticketEdit=" + ticketEdit);
 	}
 	this.getNumSelected = function(ticket){
 		//console.log(">getNumSelected: ticket=" + ticketToString(ticket));
@@ -199,8 +238,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			//var name = "0" + numSelected.toString();
 			//var numLines = 1 + Math.pow(this.defNumSelected, numSelected-this.defNumSelected);
 			ret = this.systems["s" + numSelected.toString()];
-			//console.log("<this.getSystem: ret=" + ret);
+			
 		}
+		//console.log("<this.getSystem: ret=" + ret);
 		return ret;
 		//return {name: name, numLines: numLines};
 	}
@@ -254,21 +294,21 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 
 	this.selectDraw = function(num)
 	{
-		console.log("kamagong numero >>> ", num);
+		//console.log("kamagong numero >>> ", num);
 
 		this.selectedDraw = num;
 	}
 
 	this.selectPowerBall = function(num)
 	{
-		console.log("Manoling >>> ", num);
+		//console.log("Manoling >>> ", num);
 
 		this.getSelectedTicket().powerBall = num;
 	}
 
 	this.selectDuration = function(duration)
 	{
-		console.log("hari ng stunt >>> ", duration);
+		//console.log("hari ng stunt >>> ", duration);
 
 		this.duration = duration;
 		if (this.duration == 1){
