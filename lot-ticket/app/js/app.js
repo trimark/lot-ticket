@@ -1,7 +1,34 @@
 var ticketApp = angular.module('ticketApp', ['ngRoute', 'ngMaterial']);
-var highestNumber = 69;
-var powerBallHighestNumber = 26;
-var defNumSelected = 5;
+// var config = 
+// {
+	// title: "Powerball";
+	// linePrice : 2.5,
+	// powerPlayLinePrice : 1,
+	// minSelected : 5,
+	// maxSelected : 20,
+	// maxTickets : 6,
+	// highestNumber: 69,
+	// highestExtraNumber: 26,
+	// minExtraNumbers: 1,
+	// maxExtraNumbers: 1,
+	// defNumSelected: 5
+// }
+var config = 
+{
+	title: "EuroMillions",
+	linePrice : 2.5,
+	powerPlayLinePrice : 1,
+	minSelected : 5,
+	maxSelected : 20,
+	defNumSelected: 5,
+	maxTickets : 6,
+	highestNumber: 69,
+	highestExtraNumber: 26,
+	minExtraNumbers: 1,
+	maxExtraNumbers: 2,
+	defExtraNumbers: 2,
+	
+}
 
 ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
 		function ($routeProvider, $mdIconProvider, $mdThemingProvider) {
@@ -22,42 +49,11 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function generateTicket(quickPick) {
-	//console.log(">generateTicket");
-	var nums = [];
-	if (quickPick == null) {
-		quickPick = true;
-	}
-	for (var i = 1; i <= highestNumber; i++) {
-		//numbers.push(i);
-		nums.push({
-			number : i,
-			selected : false
-		});
-	}
-	var numSelected = 0;
-	var pb = '';
-	if (quickPick) {
-		while (numSelected < defNumSelected) {
-			var ix = getRandomInt(0, nums.length - 1)
-				if (!nums[ix].selected) {
-					nums[ix].selected = true;
-					numSelected++;
-				}
-		}
-		pb = getRandomInt(1, powerBallHighestNumber)
-	}
 
-	var ret = {
-		numbers : nums,
-		powerBall : pb
-	}
-	//console.log("<generateTicket: ret=" + ret)
-	return ret;
-}
 function copyTicket(ticket) {
 	//console.log (">copyTicket: ticket=" + ticketToString(ticket));
 	var nums = [];
+	
 	for (var i = 0; i < ticket.numbers.length; i++) {
 		var org = ticket.numbers[i];
 		nums.push({
@@ -65,8 +61,17 @@ function copyTicket(ticket) {
 			selected : org.selected
 		})
 	}
+	var extraNums = [];
+	for (var i = 0; i < ticket.extraNumbers.length; i++) {
+	var org = ticket.extraNumbers[i];
+	extraNums.push({
+		number : org.number,
+		selected : org.selected
+	})
+	}
 	var ret = {
 		numbers : nums,
+		extraNumbers: extraNums,
 		powerBall : ticket.powerBall
 	}
 	//console.log ("<copyTicket: ret=" + ticketToString(ret));
@@ -101,33 +106,41 @@ function formatCurrency(amount, c, d, t) {
 	return ret;
 };
 
-ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $rootScope, $route) {
+ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $rootScope, $route, $location) {
 
 	//console.log ("$routeParams=" + JSON.stringify($routeParams));
-	console.log("$route=" + JSON.stringify($routeParams));
+	//console.log("$route=" + JSON.stringify($routeParams));
 	var self = this;
 	self.routeChangeSuccess = $rootScope.$on("$routeChangeSuccess",
 			function (event, next, current) {
 			//read params here
-			self.skin = $route.current.params.skin;
-			console.log("$route.params=" + $route.current.params.skin);
+			self.skin = $route.current.params.skin ? $route.current.params.skin : "powerball";
+			//console.log("$route.params=" + $route.current.params.skin);
 			self.routeChangeSuccess(); //this will destroy the function
 		});
-	this.minSelected = 5; // lowest allowed number of selected numbers
-	this.maxSelected = 20; // highest allowed number of selected numbers
-	this.maxTickets = 6;
-	this.defNumSelected = defNumSelected;
+		
+		
+	this.highestNumber = config.highestNumber;
+	this.highestExtraNumber = config.highestExtraNumber;
+	this.defExtraNumbers = config.defExtraNumbers;
+	this.defNumSelected =  config.defNumSelected;
+	this.maxExtraNumbers = config.maxExtraNumbers;
+	this.minSelected = config.minSelected; // lowest allowed number of selected numbers
+	this.maxSelected = config.maxSelected; // highest allowed number of selected numbers
+	this.maxTickets = config.maxTickets;
+	this.linePrice = config.linePrice;
+	this.powerPlayLinePrice = config.powerPlayLinePrice;
 	this.tickets = [];
 	this.unselectedNumbers = [];
 	this.canAddTicket = true;
 	this.powerPlay = false;
 	this.subscribe = false;
-	this.linePrice = 2.5;
+	
 	this.powerPlayLinePrice = 1;
 	var ticketEdit = null;
 	this.numbers = [];
-	this.highestPowerBall = powerBallHighestNumber;
-	this.powerBalls = [];
+	this.highestExtraNumber = this.highestExtraNumber;
+	this.extraNumbers = [];
 	this.editTicketId = null;
 	this.newTicket = false;
 
@@ -193,18 +206,74 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			numLines : 15504
 		}
 	};
-	for (var i = 1; i <= highestNumber; i++) {
+	this.generateTicket = function(quickPick) {
+	//console.log(">generateTicket");
+	var nums = [];
+	var extraNums = [];
+	if (quickPick == null) {
+		quickPick = true;
+	}
+	for (var i = 1; i <= this.highestNumber; i++) {
+		//numbers.push(i);
+		nums.push({
+			number : i,
+			selected : false
+		});
+	}
+	for (var i = 1; i <= this.highestExtraNumber; i++) {
+		//numbers.push(i);
+		extraNums.push({
+			number : i,
+			selected : false
+		});
+	}
+	var numSelected = 0;
+	var pb = '';
+	if (quickPick) {
+		while (numSelected < this.defNumSelected) {
+			var ix = getRandomInt(0, nums.length - 1)
+				if (!nums[ix].selected) {
+					nums[ix].selected = true;
+					numSelected++;
+				}
+		}
+		numSelected = 0;
+		//console.log("numSelected=" + numSelected);
+		//console.log("this.defExtraNumbers=" + this.defExtraNumbers);
+		while (numSelected < this.defExtraNumbers) {
+			var ix = getRandomInt(0, extraNums.length - 1)
+			if (!extraNums[ix].selected) {
+				
+				extraNums[ix].selected = true;
+				//console.log("extraNums["+ix+"].selected=" + extraNums[ix].selected);
+				numSelected++;
+			}
+		}
+		pb = getRandomInt(1, this.highestExtraNumber)
+	}
+
+	var ret = {
+		numbers : nums,
+		extraNumbers : extraNums,
+		powerBall : pb
+	}
+	//console.log("<generateTicket: ret=" + JSON.stringify(ret))
+	return ret;
+}
+	
+	
+	for (var i = 1; i <= this.highestNumber; i++) {
 		this.numbers.push(i);
 	}
-	for (var i = 1; i <= this.highestPowerBall; i++) {
-		this.powerBalls.push(i);
+	for (var i = 1; i <= this.highestExtraNumber; i++) {
+		this.extraNumbers.push(i);
 	}
 	this.update = function () {
 		this.canAddTicket = this.tickets.length < this.maxTickets;
 
 	}
 	this.addTicket = function (quickPick) {
-		this.tickets.push(generateTicket(quickPick));
+		this.tickets.push(this.generateTicket(quickPick));
 		this.update();
 		if (!quickPick) {
 			this.editTicket(this.tickets.length - 1)
@@ -244,17 +313,27 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		ticketEdit = copyTicket(this.tickets[ticketId]);
 		this.editTicketId = ticketId;
 		$location.path('/edit-ticket');
-		//console.log("<editTicket; ticketEdit=" + ticketToString(ticketEdit));
+		// //console.log("<editTicket; ticketEdit=" + JSON.stringify(ticketEdit));
 	}
 	this.getSelectedTicket = function () {
-		//console.log(">getSelectedTicket; ticketEdit=" + ticketEdit);
-		//console.log("<getSelectedTicket; ticketEdit=" + ticketEdit);
 		return ticketEdit;
 	}
 	this.canSelect = function (ticket) {
 		//console.log(">this.canSelect:ticket=" + this.canSelect);
 		if (ticket) {
 			return (this.getNumSelected(ticket) < this.maxSelected);
+		} else {
+			return false;
+		}
+	}
+	this.canSelectExtraNumber = function (ticket) {
+		//console.log(">this.canSelectExtraNumber:ticket=" + ticket);
+		if (ticket) {
+			var ret = this.getNumSelectedExtraNumbers(ticket) < this.maxExtraNumbers;
+			//console.log("num selected=" + this.getNumSelectedExtraNumbers(ticket));
+			//console.log("this.maxExtraNumbers=" + this.maxExtraNumbers);
+			//console.log("<this.canSelectExtraNumber:ret=" + ret);
+			return (ret);
 		} else {
 			return false;
 		}
@@ -296,6 +375,21 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			}
 		}
 		//console.log("<getNumSelected: ret=" + ret);
+		return ret;
+	}
+	this.getNumSelectedExtraNumbers = function (ticket) {
+		//console.log(">getNumSelectedExtraNumbers: ticket=" + JSON.stringify(ticket.extraNumbers));
+		var ret = 0;
+		if (ticket) {
+			var t = ticket;
+			for (var i = 0; i < t.extraNumbers.length; i++) {
+				if (t.extraNumbers[i].selected) {
+					
+					ret++;
+				}
+			}
+		}
+		//console.log("<getNumSelectedExtraNumbers: ret=" + ret);
 		return ret;
 	}
 	this.getSystem = function (ticket) {
@@ -356,7 +450,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	}
 
 	this.selectCell = function (cell) {
+		//console.log(">selectCell: cell=" + JSON.stringify(cell.selected));
 		cell.selected = !cell.selected;
+		//console.log("<selectCell: cell.selected=" + cell.selected);
 	}
 
 	this.selectDraw = function (num) {
