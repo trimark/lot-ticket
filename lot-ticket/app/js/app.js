@@ -24,7 +24,7 @@ var config =
 	maxTickets : 6,
 	highestNumber: 69,
 	highestExtraNumber: 26,
-	minExtraNumbers: 1,
+	minExtraNumbers: 2,
 	maxExtraNumbers: 2,
 	defExtraNumbers: 2,
 	
@@ -125,6 +125,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.defExtraNumbers = config.defExtraNumbers;
 	this.defNumSelected =  config.defNumSelected;
 	this.maxExtraNumbers = config.maxExtraNumbers;
+	this.minExtraNumbers = config.minExtraNumbers;
 	this.minSelected = config.minSelected; // lowest allowed number of selected numbers
 	this.maxSelected = config.maxSelected; // highest allowed number of selected numbers
 	this.maxTickets = config.maxTickets;
@@ -415,6 +416,17 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log ("len=" + len);
 		var ret = new Array(len);
 		//console.log("<getEmptySlotsArray:ret=" + ret)
+		return ret;
+	}
+	this.getEmptyEBSlotsArray = function (ticket) {
+		console.log(">getEmptyEBSlotsArray: ticket=" + ticket);
+		var numSelected = this.getNumSelectedExtraNumbers(ticket);
+		console.log ("numSelected=" + numSelected);
+		console.log ("this.minExtraNumbers=" + this.minExtraNumbers);
+		var len = Math.max(0, this.minExtraNumbers - numSelected);
+		//console.log ("len=" + len);
+		var ret = new Array(len);
+		console.log("<getEmptyEBSlotsArray:ret=" + ret)
 		return ret;
 	}
 	this.getFirstDrawDate = function () {
