@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="ticketApp">
 
-<head>
+<head ng-app="linkApp" ng-controller="TicketController as ctrl">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="">
@@ -9,7 +9,7 @@
 	<title>Trimark</title>
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="css/app.css" />
+	<link rel="stylesheet" ng-href="{{ctrl.dynPath}}/app.css" />
 	<link rel="stylesheet" href="lib/css/angular-material/angular-material.css" />
 </head>
 
