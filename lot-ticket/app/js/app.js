@@ -109,11 +109,10 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	self.routeChangeSuccess = $rootScope.$on("$routeChangeSuccess",
 			function (event, next, current) {
 			//read params here
-			this.skin = $route.current.params.skin;
+			self.skin = $route.current.params.skin;
 			console.log("$route.params=" + $route.current.params.skin);
 			self.routeChangeSuccess(); //this will destroy the function
 		});
-
 	this.minSelected = 5; // lowest allowed number of selected numbers
 	this.maxSelected = 20; // highest allowed number of selected numbers
 	this.maxTickets = 6;
@@ -127,7 +126,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.powerPlayLinePrice = 1;
 	var ticketEdit = null;
 	this.numbers = [];
-	this.highestPowerBall = 26;
+	this.highestPowerBall = powerBallHighestNumber;
 	this.powerBalls = [];
 	this.editTicketId = null;
 	this.newTicket = false;
@@ -389,7 +388,6 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.duration = "1";
 	this.durations = ["1", "2", "4", "8"];
 	this.defaultCurrencySymbol = "£";
-	this.dynPath = "css";
 
 });
 

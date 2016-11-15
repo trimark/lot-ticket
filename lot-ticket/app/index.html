@@ -9,7 +9,8 @@
 	<title>Trimark</title>
 	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" ng-href="{{ctrl.dynPath}}/app.css" />
+	<link rel="stylesheet" href="css/app.css" />
+	<link rel="stylesheet" ng-if="ctrl.skin!=null" ng-href="skins/{{ctrl.skin}}/app.css" />
 	<link rel="stylesheet" href="lib/css/angular-material/angular-material.css" />
 </head>
 
@@ -64,7 +65,7 @@
 		});
 	</script>
 	
-	<div ng-view=""></div>
+	<div ng-hide="tkt.skin==null" ng-view=""></div>
 
 
 
