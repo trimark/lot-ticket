@@ -109,7 +109,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	self.routeChangeSuccess = $rootScope.$on("$routeChangeSuccess",
 			function (event, next, current) {
 			//read params here
-			//this.skin = $route.params.skin
+			this.skin = $route.params;
+			console.log("$route.params=" + $route.params);
 			self.routeChangeSuccess(); //this will destroy the function
 		});
 
