@@ -33,8 +33,8 @@
 
 	<div class="number-slots">
 		<p>
-			<label class="label-md">Pick 1 Powerball</label><br>
-			<span class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">Pick more than 5 to play a combo bet and boost your odds</span>
+			<span class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">Pick more than 5 to play a combo bet and boost your odds</span><br>
+			<label class="label-md">Pick 1 Powerball</label>
 		</p>
 		
 	    <span class="ball powerballs" ng-repeat="num in tkt.powerBalls" tap-click ng-click="tkt.selectPowerBall(num)" ng-class="{'selected' : tkt.getSelectedTicket().powerBall == num}">
