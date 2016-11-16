@@ -218,6 +218,10 @@ html, body {
     outline: 0px solid transparent;
 }
 
+.layout-row.powerplay {
+	margin-top: 20px;
+}
+
 .layout-row.selected-bets.first-row {
 	 border-top: 1px solid  #e3e3e3;
 }
@@ -230,6 +234,10 @@ html, body {
 	box-shadow: 0 0 0;
 	background: transparent;
 	border-radius: 5px;
+}
+
+.layout-margin.quickpick-box {
+	margin-bottom: 0;
 }
 
 .top-header {
@@ -297,11 +305,12 @@ md-list.tickets-group {
 }
 
 .layout-row.stake-group {
-	margin-bottom: 30px;
+    margin-bottom: 20px;
+    margin-top: 0;
 }
 
 .layout-row.md-row {
-	margin-bottom: 0;
+	margin-bottom: 5px;
 }
 
 
