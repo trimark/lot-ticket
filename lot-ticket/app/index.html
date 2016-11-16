@@ -12,6 +12,23 @@
 	<link rel="stylesheet" href="css/app.css" />
 	<link rel="stylesheet" ng-if="ctrl.skin!=null" ng-href="skins/{{ctrl.skin}}/app.css" />
 	<link rel="stylesheet" href="lib/css/angular-material/angular-material.css" />
+
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+
+	<!--[if IE 8]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+            .ng-hide {
+                display: none !important;
+            }
+        </style>
+    <![endif]-->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
 </head>
 
 <body ng-cloak ng-controller="TicketController as tkt">
