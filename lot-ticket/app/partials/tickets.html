@@ -1,4 +1,38 @@
-<md-card layout-margin layout-align="center" class="panel-padded offset-bottom">
+<div class="main-nav" menu-nav>
+	<header class="header">
+		<md-button class="md-icon-button toggle-menu" title="Toggle Menu" aria-label="Toggle Menu" ng-click="toggle()">
+			<md-icon md-svg-icon="img/icons/ic_menu_24px.svg"></md-icon>
+		</md-button>
+	</header>
+	<ul class="ac-gn-list">
+		<li class="ac-gn-item ac-gn-item-menu">
+			<a  href="javascript:">
+				<span class="ac-gn-link-text">
+					<img src="img/temp1.png" class="game-icon">
+					<span class="title">EuroMillions</span>
+				</span>
+			</a>
+		</li>
+		<li class="ac-gn-item ac-gn-item-menu">
+			<a  href="javascript:">
+				<span class="ac-gn-link-text">
+					<img src="img/temp2.png" class="game-icon">
+					<span class="title">Powerball</span>
+				</span>
+			</a>
+		</li>
+		<li class="ac-gn-item ac-gn-item-menu">
+			<a  href="javascript:">
+				<span class="ac-gn-link-text">
+					<img src="img/temp3.png" class="game-icon">
+					<span class="title">More Lotteries</span>
+				</span>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<md-card layout-margin layout-align="center" class="panel-padded offset-bottom main-panel">
 	<div layout="row" class="top-header">
 	  <div flex layout="row" layout-align="start center" class="powerball-header">Powerball</div>
 	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}345 million</div>

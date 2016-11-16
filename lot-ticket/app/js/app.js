@@ -511,3 +511,15 @@ ticketApp.directive('tapClick', function () {
 		}
 	};
 });
+
+
+ticketApp.directive('menuNav', function () {
+	return {
+		restrict : 'EA',
+		link : function (scope, element) {
+			scope.toggle = function() {
+				$('.ac-gn-list').toggleClass('active');
+			}
+		}
+	};
+});
