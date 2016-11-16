@@ -10,7 +10,7 @@
 			
 				<span class="ball" ng-repeat="cell in tkt.getSelectedTicket().numbers|filter: {selected: true}">{{cell.number}}</span>
 				<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index"></span>
-				<span class="ball power-ball">{{tkt.getSelectedTicket().powerBall}}</span>
+				<span class="ball power-ball" ng-repeat="cell in tkt.getSelectedTicket().extraNumbers|filter: {selected: true}">{{cell.number}}</span>
 
 				<div ng-if="tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected" class="selected-text">
 					{{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)
@@ -21,10 +21,10 @@
 
 
 	<div class="number-slots top-group">
-	    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers" tap-click ng-click="tkt.selectCell(cell)">
+	    <span class="ball" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}" id="cbBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().numbers" tap-click >
 		  <input
 			type="checkbox"
-			ng-model="cell.selected"
+			ng-click="tkt.selectCell(cell)"
 			ng-disabled = "!cell.selected && !tkt.canSelect(tkt.getSelectedTicket())" id="cbBet{{$index}}"
 		  > 	
 			<label for="cbBet{{$index}}">{{cell.number}}</label>
@@ -36,10 +36,13 @@
 			<span class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected">Pick more than 5 to play a combo bet and boost your odds</span><br>
 			<label class="label-md">Pick 1 Powerball</label>
 		</p>
-		
-	    <span class="ball powerballs" ng-repeat="num in tkt.powerBalls" tap-click ng-click="tkt.selectPowerBall(num)" ng-class="{'selected' : tkt.getSelectedTicket().powerBall == num}">
-		     <input type="checkbox" ng-model="tkt.getSelectedTicket().powerBall"> 	
-			<label for="cbBet{{$index}}">{{num}}</label>
+		<span class="ball powerballs" ng-class="{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelectExtraNumber(tkt.getSelectedTicket())}" id="ebBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().extraNumbers" tap-click>
+		     <input
+				type="checkbox"
+				ng-disabled = "!cell.selected && !tkt.canSelectExtraNumber(tkt.getSelectedTicket())" id="ebBet{{$index}}"
+				ng-click="tkt.selectCell(cell)"
+			  > 	
+			<label for="ebBet{{$index}}">{{cell.number}}</label>
 		</span>
 	</div>
 

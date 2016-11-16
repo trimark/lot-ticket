@@ -9,7 +9,7 @@
 				<div class="col-11" >
 					<span class="ball" ng-repeat="cell in ticket.numbers|filter: {selected: true}">{{cell.number}}</span>
 					<span class="ball" ng-repeat="i in tkt.getEmptySlotsArray(ticket) track by $index"></span>
-					<span class="ball power-ball">{{ticket.powerBall}}</span>
+					<span class="ball power-ball" ng-repeat="cell in ticket.extraNumbers|filter: {selected: true}">{{cell.number}}</span>
 					<span class="action right" ng-click = "tkt.deleteTicket($index)">
 						<md-button class="md-icon-button bet-action" title="Delete Ticket" aria-label="Delete ticket">
 							<md-icon md-svg-icon="img/icons/ios_delete.svg"></md-icon>
