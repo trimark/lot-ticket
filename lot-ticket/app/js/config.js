@@ -103,7 +103,7 @@ config["euromillions"] =
 		options: [
 			{
 				type: "boolean", 
-				label: "Magic Million", 
+				label: "EuroScratch", 
 				prices: {values: [0.5], defaultIndex: 0}, 
 				priceMultiplier: "numberOfLines", 
 				application: "global",
