@@ -518,7 +518,7 @@ ticketApp.directive('menuNav', function () {
 		restrict : 'EA',
 		link : function (scope, element) {
 			scope.toggle = function() {
-				$('.ac-gn-list').toggleClass('active');
+				$(element).toggleClass('active');
 			}
 		}
 	};
