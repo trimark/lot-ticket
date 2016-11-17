@@ -92,13 +92,13 @@ config["euromillions"] =
 		price: 2,
 		numbers: 
 		{
-			size: 69,
-			selectable: {min: 5, max: 20, default: 5}
+			size: 50,
+			selectable: {min: 5, max: 5, default: 5}
 		},
 		extraNumbers: 
 		{
-			size: 26,
-			selectable: {min: 0, max: 2, default: 2}
+			size: 12,
+			selectable: {min: 2, max: 2, default: 2}
 		},
 		options: [
 			{

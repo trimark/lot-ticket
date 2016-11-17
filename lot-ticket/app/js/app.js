@@ -145,7 +145,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		});
 		
 		
-	//this.gameConfig = config["powerball"];
+	this.gameConfig = config["powerball"];
 	this.gameConfig = config["euromillions"];
 	this.options = [];
 	for (var i = 0; i<this.gameConfig.options.length;i++){
@@ -570,7 +570,20 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		cell.selected = !cell.selected;
 		//console.log("<selectCell: cell.selected=" + cell.selected);
 	}
+	this.selectExtraBall = function (cell, ticket){
+		cell.selected = !cell.selected;
+		if (cell.selected && this.gameConfig.line.extraNumbers.selectable.max == 1 ){
+			//When you can select exactly 1 extraball, we want this to behave like a radio button,
+			//e.i unselect all other extraball:
+			for (var i = 0; i<ticket.extraNumbers.length; i++){
+				var currentCell = ticket.extraNumbers[i];
+				if (currentCell != cell){
+					currentCell.selected = false;
+				}
+			}
 
+		}
+	}
 	this.selectDraw = function (ix) {
 		this.selectedDrawIx = ix
 		this.selectedDraw = this.draws[this.selectedDrawIx];
