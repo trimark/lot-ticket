@@ -1,17 +1,3 @@
-// var config = 
-// {
-	// title: "Powerball";
-	// linePrice : 2.5,
-	// powerPlayLinePrice : 1,
-	// minSelected : 5,
-	// maxSelected : 20,
-	// maxTickets : 6,
-	// highestNumber: 69,
-	// highestExtraNumber: 26,
-	// minExtraNumbers: 1,
-	// maxExtraNumbers: 1,
-	// defNumSelected: 5
-// }
 var config = {};
 //
 config["powerball"] =
@@ -22,7 +8,7 @@ config["powerball"] =
 	{
 			min: 1, 
 			max: 6, 
-			defaultValue: 0
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -37,7 +23,9 @@ config["powerball"] =
 		{
 			size: 26,
 			selectable: {min: 1, max: 1, default: 1}
-		}
+		},
+		options: [
+		]
 	},
 	quickPicks: 
 	{
@@ -56,6 +44,66 @@ config["powerball"] =
 			type: "boolean", 
 			label: "PowerPlay", 
 			prices: {values: [1], defaultIndex: 0}, 
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: true
+		}
+	]
+}
+//
+config["euromillions"] =
+{
+	title: "EuroMillions",
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 0
+	},
+	// line configuration:
+	line: 
+	{
+		price: 2,
+		numbers: 
+		{
+			size: 69,
+			selectable: {min: 5, max: 20, default: 5}
+		},
+		extraNumbers: 
+		{
+			size: 26,
+			selectable: {min: 0, max: 2, default: 2}
+		},
+		options: [
+			{
+				type: "boolean", 
+				label: "Magic Million", 
+				prices: {values: [0.5], defaultIndex: 0}, 
+				priceMultiplier: "numberOfLines", 
+				application: "global",
+				optional: true,
+				selected: false
+			}
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+	{
+			type: "boolean", 
+			label: "Double the jackpot", 
+			prices: {values: [2], defaultIndex: 0}, 
 			priceMultiplier: "numberOfLines", 
 			application: "global",
 			optional: true,
