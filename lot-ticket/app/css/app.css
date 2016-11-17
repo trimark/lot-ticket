@@ -343,7 +343,8 @@ md-list.tickets-group {
 	}
 
 	.layout-margin.main-panel {
-		padding-top: 50px;
+		position: relative;
+		top: 70px;
 	}
 }
 
