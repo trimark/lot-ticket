@@ -39,6 +39,9 @@ ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
 			$routeProvider.when('/edit-ticket/', {
 				templateUrl : 'partials/edit-ticket.html'
 			});
+			$routeProvider.when('/lotteries/', {
+				templateUrl : 'partials/lotteries.html'
+			});
 			$routeProvider.otherwise({
 				redirectTo : '/'
 			});
@@ -496,7 +499,11 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.duration = "1";
 	this.durations = ["1", "2", "4", "8"];
 	this.defaultCurrencySymbol = "£";
+});
 
+
+ticketApp.controller('LotteryController', function LotteryController($scope) {
+	this.lotteries = ["Austrian Lotto", "Cash4Life", "EuroJackpot", "EuroMillions", "French Lotto", "Irish Lotto", "Mega-Sena", "MegaMillions", "MINI Lotto", "Oz Mon & Wed Lotto", "OZ Lotto", "OZ Powerball", "OZ Sat Lotto", "Polish Lotto", "Powerball", "SuperEnalotto", "Swedish Lotto"];
 });
 
 ticketApp.directive('ticketAnimate', function ($timeout) {
@@ -525,12 +532,18 @@ ticketApp.directive('tapClick', function () {
 });
 
 
-ticketApp.directive('menuNav', function () {
+ticketApp.directive('menuNav', function ($location) {
 	return {
 		restrict : 'EA',
 		link : function (scope, element) {
 			scope.toggle = function() {
 				$(element).toggleClass('active');
+			}
+
+			scope.linkTo = function(link) {
+				$location.path(link);
+
+				$(element).removeClass('active');
 			}
 		}
 	};

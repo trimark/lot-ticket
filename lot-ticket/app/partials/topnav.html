@@ -1,9 +1,5 @@
 <div class="main-nav" menu-nav>
 	<header class="header">
-		<!-- <md-button class="md-icon-button toggle-menu" title="Toggle Menu" aria-label="Toggle Menu" ng-click="toggle()">
-			<md-icon md-svg-icon="img/icons/ic_menu_24px.svg"></md-icon>
-		</md-button> -->
-
 		<label class="ac-gn-menuicon-label"  ng-click="toggle()">
 			<span class="ac-gn-menuicon-bread ac-gn-menuicon-bread-top">
 				<span class="ac-gn-menuicon-bread-crust ac-gn-menuicon-bread-crust-top"></span>
@@ -12,6 +8,10 @@
 				<span class="ac-gn-menuicon-bread-crust ac-gn-menuicon-bread-crust-bottom"></span>
 			</span>
 		</label>
+
+		<ng-md-icon icon="home" size="48" class="home" ng-click="linkTo('/')">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" class="homesvg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+		</ng-md-icon>
 	</header>
 	<ul class="ac-gn-list">
 		<li class="ac-gn-item ac-gn-item-menu">
@@ -31,7 +31,7 @@
 			</a>
 		</li>
 		<li class="ac-gn-item ac-gn-item-menu">
-			<a  href="javascript:">
+			<a  href="javascript:"   ng-click="linkTo('lotteries')">
 				<span class="ac-gn-link-text">
 					<img src="img/temp5.png" class="game-icon">
 					<span class="title">More Lotteries</span>
