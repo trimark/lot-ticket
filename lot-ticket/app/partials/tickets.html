@@ -1,6 +1,6 @@
 <md-card layout-margin layout-align="center" class="panel-padded offset-bottom main-panel">
 	<div layout="row" class="top-header">
-	  <div flex layout="row" layout-align="start center" class="powerball-header">Powerball</div>
+	  <div flex layout="row" layout-align="start center" class="powerball-header">{{tkt.gameConfig.title}}</div>
 	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}345 million</div>
 	</div>  
 	<md-list class="tickets-group">
@@ -16,7 +16,7 @@
 						</md-button>
 					</span>
 				</div>
-				<div ng-if="tkt.getNumSelected(ticket)>tkt.defNumSelected" class="selected-text">{{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
+				<div ng-if="tkt.getNumSelected(ticket)>tkt.gameConfig.line.numbers.selectable.default" class="selected-text">{{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
 			</div>
 		</md-list-item>
 	</md-list>
