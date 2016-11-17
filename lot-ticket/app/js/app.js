@@ -145,8 +145,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		});
 		
 		
-	this.gameConfig = config["powerball"];
-	this.gameConfig = config["euromillions"];
+	//this.gameConfig = config["powerball"];
+	//this.gameConfig = config["euromillions"];
+	this.gameConfig = config["cash4life"];
 	this.options = [];
 	for (var i = 0; i<this.gameConfig.options.length;i++){
 		var option;
@@ -564,7 +565,6 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log("<dayToNumber ret=" + ret);
 		return ret;
 	}
-
 	this.selectCell = function (cell) {
 		//console.log(">selectCell: cell=" + JSON.stringify(cell.selected));
 		cell.selected = !cell.selected;

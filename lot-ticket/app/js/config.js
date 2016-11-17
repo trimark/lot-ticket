@@ -3,6 +3,10 @@ var config = {};
 config["powerball"] =
 {
 	title: "PowerBall",
+	texts:{
+		editExtraBallHeader: "Pick 1 PowerBall",
+		prizeHeader: " million"
+	},
 	jackpot: 322,
 	drawDays: 
 	{ 
@@ -67,6 +71,10 @@ config["powerball"] =
 config["euromillions"] =
 {
 	title: "EuroMillions",
+	texts:{
+		editExtraBallHeader: "Pick 2 Lucky Star Numbers",
+		prizeHeader: " million"
+	},
 	jackpot: 50,
 	drawDays: 
 	{ 
@@ -103,7 +111,7 @@ config["euromillions"] =
 		options: [
 			{
 				type: "boolean", 
-				label: "EuroScratch", 
+				label: "Maximillions", 
 				prices: {values: [0.5], defaultIndex: 0}, 
 				priceMultiplier: "numberOfLines", 
 				application: "global",
@@ -137,5 +145,64 @@ config["euromillions"] =
 			multipliers: {values:[2], defaultIndex: 0},
 			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
 		}	
+	]
+}
+//
+config["cash4life"] =
+{
+	title: "Cash4Life",
+	texts:{
+		editExtraBallHeader: "CashBall",
+		prizeHeader: " a day for Life"
+	},
+	jackpot: 1000,
+	drawDays: 
+	{ 
+		values: ["tuesday", "friday", ["tuesday", "friday"]],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 6],
+		defaultIndex: 1
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 3
+	},
+	// line configuration:
+	line: 
+	{
+		price: 2,
+		numbers: 
+		{
+			size: 60,
+			selectable: {min: 5, max: 5, default: 5}
+		},
+		extraNumbers: 
+		{
+			size: 4,
+			selectable: {min: 1, max: 1, default: 1}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
 	]
 }

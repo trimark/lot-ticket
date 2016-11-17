@@ -1,7 +1,7 @@
 <md-card layout-margin layout-align="center" class="panel-padded offset-bottom main-panel">
 	<div layout="row" class="top-header">
 	  <div flex layout="row" layout-align="start center" class="powerball-header">{{tkt.gameConfig.title}}</div>
-	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}{{tkt.jackpot}} million</div>
+	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}{{tkt.jackpot}}{{tkt.gameConfig.texts.prizeHeader}}</div>
 	</div>  
 	<md-list class="tickets-group">
 		<md-list-item ng-repeat="ticket in tkt.tickets" ng-style="{padding: 0}">

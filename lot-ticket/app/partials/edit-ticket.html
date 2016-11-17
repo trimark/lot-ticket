@@ -33,9 +33,9 @@
 
 	<div class="number-slots">
 		<p>
-			<span class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.gameConfig.line.numbers.selectable.default">Pick more than 5 to play a combo bet and boost your odds</span><br>
+			<span class="md-caption" ng-if="tkt.getNumSelected(tkt.getSelectedTicket())==tkt.gameConfig.line.numbers.selectable.min && tkt.gameConfig.line.numbers.selectable.min < tkt.gameConfig.line.numbers.selectable.max">Pick more than {{tkt.gameConfig.line.numbers.selectable.min}} to play a combo bet and boost your odds</span><br>
 		</p>
-		<p><label class="label-md">Pick 1 Powerball</label></p>
+		<p><label class="label-md">{{tkt.gameConfig.texts.editExtraBallHeader}}</label></p>
 		<span class="ball powerballs" ng-class="{'selected' : cell.selected, 'disabled': tkt.gameConfig.line.extraNumbers.selectable.max > 1 && !cell.selected && !tkt.canSelectExtraNumber(tkt.getSelectedTicket())}" id="ebBet{{$index}}}" ng-repeat="cell in tkt.getSelectedTicket().extraNumbers" tap-click>
 		     <input 
 				type="checkbox"
