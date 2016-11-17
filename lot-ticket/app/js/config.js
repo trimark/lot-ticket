@@ -3,6 +3,7 @@ var config = {};
 config["powerball"] =
 {
 	title: "PowerBall",
+	jackpot: 322,
 	powerPlayLinePrice : 1,
 	numberOfLines: 
 	{
@@ -55,6 +56,7 @@ config["powerball"] =
 config["euromillions"] =
 {
 	title: "EuroMillions",
+	jackpot: 50,
 	numberOfLines: 
 	{
 			min: 1, 
@@ -100,14 +102,17 @@ config["euromillions"] =
 		defaultIndex: 0
 	},
 	options: [
-	{
-			type: "boolean", 
-			label: "Double the jackpot", 
-			prices: {values: [2], defaultIndex: 0}, 
+		{
+		
+			type: "multiplier", 
+			label: "Double the Jackpot",
+			prices: {values: [2], defaultIndex: 0},
 			priceMultiplier: "numberOfLines", 
 			application: "global",
 			optional: true,
-			selected: true
-		}
+			selected: true,
+			multipliers: {values:[2], defaultIndex: 0},
+			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
+		}	
 	]
 }
