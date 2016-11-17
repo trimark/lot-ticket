@@ -361,8 +361,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		p += lineOP;
 
 		var daysPerWeek = 1;
-		if (this.selectedDraw == "Tue & Thu") {
-			daysPerWeek = 2;
+		var selDraw= this.gameConfig.drawDays.values[this.selectedDrawIx];
+		if (typeof(selDraw) == "object") {
+			daysPerWeek = selDraw.length;
 		}
 		p = p * Number(this.duration) * daysPerWeek;
 		//console.log ("<getStake: ret=" + p)
@@ -512,16 +513,12 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		var dow = -1;
 		var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-		switch (this.selectedDraw) {
-		case "Tuesday & Thursday":
-			dow = 2;
-			break;
-		case "Tuesday":
-			dow = 2;
-			break;
-		case "Thursday":
-			dow = 4;
-			break;
+		var draw= this.gameConfig.drawDays.values[this.selectedDrawIx];
+		if (typeof(draw) == "string"){
+			dow = this.dayToNumber(draw)
+		} else {
+			//The following assumes that the days are specified in correct order in the co 
+			dow = this.dayToNumber(draw[0])
 		}
 
 		var d = new Date(this.getNextWeekDay(now, dow).toLocaleDateString());
@@ -538,6 +535,35 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log("<getNextWeekDay d=" + d);
 		return d;
 	}
+	this.dayToNumber = function(day){
+		//console.log(">dayToNumber day=" + day);
+		var ret = -1;
+		switch (day){
+			case "monday":
+			ret = 1;
+			break;
+			case "tuesday":
+			ret = 2;
+			break;
+			case "wednesday":
+			ret = 3;
+			break;
+			case "thursday":
+			ret = 4;
+			break;
+			case "friday":
+			ret = 5;
+			break;
+			case "saturday":
+			ret = 6;
+			break;
+			case "sunday":
+			ret = 7;
+			break;
+		}
+		//console.log("<dayToNumber ret=" + ret);
+		return ret;
+	}
 
 	this.selectCell = function (cell) {
 		//console.log(">selectCell: cell=" + JSON.stringify(cell.selected));
@@ -545,10 +571,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log("<selectCell: cell.selected=" + cell.selected);
 	}
 
-	this.selectDraw = function (num) {
-		//console.log("kamagong numero >>> ", num);
-
-		this.selectedDraw = num;
+	this.selectDraw = function (ix) {
+		this.selectedDrawIx = ix
+		this.selectedDraw = this.draws[this.selectedDrawIx];
 	}
 
 	this.selectPowerBall = function (num) {
@@ -557,8 +582,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		this.getSelectedTicket().powerBall = num;
 	}
 
-	this.selectDuration = function (duration) {
-		//console.log("hari ng stunt >>> ", duration);
+	this.selectDuration = function (duration, ix) {
+		console.log(">selectDuration: duration=", duration + ", ix=" +ix);
 
 		this.duration = duration;
 		if (this.duration == 1) {
@@ -567,6 +592,33 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			this.durationString = this.duration.toString() + " weeks"
 		}
 	}
+	this.getShortDayString = function(day){
+		var ret = null;
+		switch (day){
+			case "monday":
+			ret = "Mon";
+			break;
+			case "tuesday":
+			ret = "Tue";
+			break;
+			case "wednesday":
+			ret = "Wed";
+			break;
+			case "thursday":
+			ret = "Thu";
+			break;
+			case "friday":
+			ret = "Fri";
+			break;
+			case "saturday":
+			ret = "Sat";
+			break;
+			case "sunday":
+			ret = "Sun";
+			break;
+		}
+		return ret;
+	}
 
 	this.durationString = "1 week";
 	this.draws = ["Tue", "Thu", "Tue & Thu"];
@@ -574,7 +626,29 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.duration = "1";
 	this.durations = ["1", "2", "4", "8"];
 	this.defaultCurrencySymbol = "£";
-	//console.log("this.gameConfig.numberOfLines.default=" + this.gameConfig.numberOfLines.default)
+	//
+	this.draws=[];
+	this.selectedDrawIx = 0;
+	console.log("c=" + this.gameConfig.drawDays.values)
+	for (var i = 0; i<this.gameConfig.drawDays.values.length; i++){
+		//console.log("typeof (" + this.gameConfig.drawDays.values[i] + ")=" + typeof(this.gameConfig.drawDays.values[i]))
+		var d = this.gameConfig.drawDays.values[i];
+		if (typeof(d) == "string"){
+			this.draws.push(this.getShortDayString(d));
+		} else {
+			//Array of days expected.
+			var days = ""
+			for (var j = 0; j<d.length; j++){
+				days+=this.getShortDayString(d[j])
+				if(j< d.length-1){
+					days+=" & "
+				} 
+			}
+			this.draws.push(days)
+		}
+	}
+	this.selectDraw(this.gameConfig.drawDays.defaultIndex)
+	//console.log("this.draws=" + this.draws);
 	for (var i = 0; i<this.gameConfig.numberOfLines.default; i++){
 		this.addTicket(true);
 	}

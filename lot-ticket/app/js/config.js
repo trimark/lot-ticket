@@ -4,7 +4,18 @@ config["powerball"] =
 {
 	title: "PowerBall",
 	jackpot: 322,
-	powerPlayLinePrice : 1,
+	drawDays: 
+	{ 
+		values: ["tuesday", "sunday", ["tuesday", "sunday"]],
+		defaultIndex: 1
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 8],
+		defaultIndex: 0
+	},
 	numberOfLines: 
 	{
 			min: 1, 
@@ -57,6 +68,18 @@ config["euromillions"] =
 {
 	title: "EuroMillions",
 	jackpot: 50,
+	drawDays: 
+	{ 
+		values: ["tuesday", "friday", ["tuesday", "friday"]],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 8],
+		defaultIndex: 1
+	},
 	numberOfLines: 
 	{
 			min: 1, 
