@@ -152,7 +152,7 @@ config["cash4life"] =
 {
 	title: "Cash4Life",
 	texts:{
-		editExtraBallHeader: "CashBall",
+		editExtraBallHeader: "Pick 1 CashBall",
 		prizeHeader: " a day for Life"
 	},
 	jackpot: 1000,
