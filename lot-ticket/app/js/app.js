@@ -698,10 +698,11 @@ ticketApp.controller('LotteryController', function LotteryController($scope, $lo
 		// console.log("p: " + p)
 		// var url = p + '/?skin=' + skin
 		// 
-		var url = "/#/?skin=" + skin;
+		//var url = "/#/?skin=" + skin;
+		var url = "http://demo.trimarkgaming.com/games/lottostore/#/?skin=" + skin;
 		console.log("loadSkin: " + url);
 		$window.location.href = url;
-		$window.location.reload();
+		//$window.location.reload();
 
 	}
 });
@@ -747,12 +748,13 @@ ticketApp.directive('menuNav', function ($location, $window) {
 			}
 			scope.loadSkin = function(skin){
 				//http://localhost:8002/#/?skin=powerball&langcode=en
-				var p =$window.location.href;
-				p = p.substring(0, p.lastIndexOf("/"));
-				console.log("p: " + p)
-				//var url = $window.location.href;// + '/?skin=' + skin
-				var url = p + '/?skin=' + skin
-				var url = "/#/?skin=" + skin;
+				// var p =$window.location.href;
+				// p = p.substring(0, p.lastIndexOf("/"));
+				// console.log("p: " + p)
+				// var url = p + '/?skin=' + skin
+				// var url = "/#/?skin=" + skin;
+
+				var url = "http://demo.trimarkgaming.com/games/lottostore/#/?skin=" + skin;
 				console.log("loadSkin: " + url)
 				// console.log("--------------");
 				// for (var prop in $window.location){
