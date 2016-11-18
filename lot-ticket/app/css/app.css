@@ -377,7 +377,10 @@ md-list.tickets-group {
     top: 15px;
 }
 
-
+.no-drag {
+	position: fixed;
+	overflow: hidden;
+}
 
 @media only screen and (max-width: 414px) {
 	.main-nav {
@@ -404,7 +407,7 @@ md-list.tickets-group {
 .ac-gn-list {
 	background: hsla(205, 100%, 35%, 0.97);
 	list-style: none;
-	position: absolute;
+	position: fixed;
 	z-index: 2;
 	top: 40px;
 	right: 0;

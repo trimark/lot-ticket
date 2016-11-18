@@ -704,12 +704,19 @@ ticketApp.directive('menuNav', function ($location) {
 		link : function (scope, element) {
 			scope.toggle = function() {
 				$(element).toggleClass('active');
+
+				if ($('body').hasClass('no-drag'))
+					$('body').removeClass('no-drag');
+				else
+					$('body').addClass('no-drag');
+
 			}
 
 			scope.linkTo = function(link) {
 				$location.path(link);
 
 				$(element).removeClass('active');
+				$('body').removeClass('no-drag');
 			}
 		}
 	};
