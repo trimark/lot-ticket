@@ -1,9 +1,10 @@
 <md-content layout-margin layout-align="center" class="panel-padded offset-bottom main-panel"  ng-controller="LotteryController as lottery" >
+	<h3 class="headline text-center">Lotteries</h3>
 	<md-list class="md-dense flex" flex="" role="list">
-		<md-list-item class="md-2-line md-no-proxy _md" ng-repeat="lot in lottery.lotteries">
-			<img ng-src="img/{{lot}}.png" class="view-list md-avatar">
+		<md-list-item class="md-2-line md-no-proxy _md no-btn-hover" ng-repeat="lot in lottery.lotteries" ng-href="{{lot.link.length > 0 ? lot.link : 'javascript:;'}}">
+			<img ng-src="img/{{lot.title}}.png" class="view-list md-avatar">
 			<div class="md-list-item-text">
-				<h3 class="view-list-text">{{lot}}</h3>
+				<h3 class="view-list-text">{{lot.title}}</h3>
 			</div>
 			<md-divider></md-divider>
 		</md-list-item>

@@ -9,6 +9,13 @@
 }
 
 @font-face {
+    font-family: myriadsetproultralight;
+    src: url(../fonts/myriad-set-pro_ultralight.ttf);
+}
+
+
+
+@font-face {
     font-family: myriadsetprosemibold;
     src: url(../fonts/myriad-set-pro_medium.ttf);
 }
@@ -25,6 +32,9 @@ button, select, html, textarea, input {
 
 html, body {
 	background-color: #f2f2f2;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+	color: #333;
 }
 
 @keyframes slide-left {
@@ -83,6 +93,12 @@ html, body {
 	
 	transition-timing-function:  animation-timing-function: cubic-bezier(0.42,0,0.58,1);
 	-webkit-transition-timing-function:  animation-timing-function: cubic-bezier(0.42,0,0.58,1);*/
+}
+
+.text-center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .bet.slide {
@@ -343,7 +359,6 @@ md-list.tickets-group {
 .main-nav .homesvg {
 	fill: white;
 	width: 25px;
-	opacity: 0.6;
 	outline: none;
 	border: 0;
 	outline: 0;
@@ -358,10 +373,14 @@ md-list.tickets-group {
 
 .main-nav .home {
     position: absolute;
-    right: 10px;	
+    right: 10px;
+    top: 15px;
 }
 
-
+.no-drag {
+	position: fixed;
+	overflow: hidden;
+}
 
 @media only screen and (max-width: 414px) {
 	.main-nav {
@@ -388,7 +407,7 @@ md-list.tickets-group {
 .ac-gn-list {
 	background: hsla(205, 100%, 35%, 0.97);
 	list-style: none;
-	position: absolute;
+	position: fixed;
 	z-index: 2;
 	top: 40px;
 	right: 0;
@@ -715,6 +734,15 @@ md-checkbox .md-container {
 }
 
 
+.headline {
+	font-family: myriadsetproultralight,Helvetica Neue,Helvetica,Arial,sans-serif !important;
+	font-size: 52px;
+	line-height: 1.07724;
+	letter-spacing: -.016em;
+}
+
+
+
 .md-button.groupX {
     margin: 0;
     color: rgb(49, 46, 46);
@@ -753,4 +781,11 @@ md-checkbox .md-container {
     color: white;
     transition: 0.3s;
 }
+
+.no-btn-hover .md-no-style,
+.no-btn-hover  .md-button:not([disabled]):hover {
+	background: transparent;
+	background-color: transparent;
+}
+
 /* end material overrides */

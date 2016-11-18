@@ -669,7 +669,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 
 
 ticketApp.controller('LotteryController', function LotteryController($scope) {
-	this.lotteries = ["Austrian Lotto", "Cash4Life", "EuroJackpot", "EuroMillions", "French Lotto", "Irish Lotto", "Mega-Sena", "MegaMillions", "MINI Lotto", "Oz Mon & Wed Lotto", "OZ Lotto", "OZ Powerball", "OZ Sat Lotto", "Polish Lotto", "Powerball", "SuperEnalotto", "Swedish Lotto"];
+	this.lotteries = [{title:"Austrian Lotto", link:""}, {title:"Cash4Life", link:"http://demo.trimarkgaming.com/games/lottostore/cash4life/#/"}, {title:"EuroJackpot", link:""}, {title:"EuroMillions", link:"http://demo.trimarkgaming.com/games/lottostore/euromillions/#/"}, {title:"French Lotto", link:""}, {title:"Irish Lotto", link:""}, {title:"Mega-Sena", link:""}, {title:"MegaMillions", link:""}, {title:"MINI Lotto", link:""}, {title:"Oz Mon & Wed Lotto", link:""}, {title:"OZ Lotto", link:""}, {title:"OZ Powerball", link:""}, {title:"OZ Sat Lotto", link:""}, {title:"Polish Lotto", link:""}, {title:"Powerball", link:""}, {title:"SuperEnalotto", link:""}, {title:"Swedish Lotto", link:""}];
 });
 
 ticketApp.directive('ticketAnimate', function ($timeout) {
@@ -704,12 +704,19 @@ ticketApp.directive('menuNav', function ($location) {
 		link : function (scope, element) {
 			scope.toggle = function() {
 				$(element).toggleClass('active');
+
+				if ($('body').hasClass('no-drag'))
+					$('body').removeClass('no-drag');
+				else
+					$('body').addClass('no-drag');
+
 			}
 
 			scope.linkTo = function(link) {
 				$location.path(link);
 
 				$(element).removeClass('active');
+				$('body').removeClass('no-drag');
 			}
 		}
 	};
