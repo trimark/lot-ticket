@@ -503,7 +503,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 
 
 ticketApp.controller('LotteryController', function LotteryController($scope) {
-	this.lotteries = ["Austrian Lotto", "Cash4Life", "EuroJackpot", "EuroMillions", "French Lotto", "Irish Lotto", "Mega-Sena", "MegaMillions", "MINI Lotto", "Oz Mon & Wed Lotto", "OZ Lotto", "OZ Powerball", "OZ Sat Lotto", "Polish Lotto", "Powerball", "SuperEnalotto", "Swedish Lotto"];
+	this.lotteries = [{title:"Austrian Lotto", link:""}, {title:"Cash4Life", link:"http://demo.trimarkgaming.com/games/lottostore/cash4life/#/"}, {title:"EuroJackpot", link:""}, {title:"EuroMillions", link:"http://demo.trimarkgaming.com/games/lottostore/euromillions/#/"}, {title:"French Lotto", link:""}, {title:"Irish Lotto", link:""}, {title:"Mega-Sena", link:""}, {title:"MegaMillions", link:""}, {title:"MINI Lotto", link:""}, {title:"Oz Mon & Wed Lotto", link:""}, {title:"OZ Lotto", link:""}, {title:"OZ Powerball", link:""}, {title:"OZ Sat Lotto", link:""}, {title:"Polish Lotto", link:""}, {title:"Powerball", link:""}, {title:"SuperEnalotto", link:""}, {title:"Swedish Lotto", link:""}];
 });
 
 ticketApp.directive('ticketAnimate', function ($timeout) {
