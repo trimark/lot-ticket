@@ -1,34 +1,5 @@
 var ticketApp = angular.module('ticketApp', ['ngRoute', 'ngMaterial']);
-// var config = 
-// {
-	// title: "Powerball";
-	// linePrice : 2.5,
-	// powerPlayLinePrice : 1,
-	// minSelected : 5,
-	// maxSelected : 20,
-	// maxTickets : 6,
-	// highestNumber: 69,
-	// highestExtraNumber: 26,
-	// minExtraNumbers: 1,
-	// maxExtraNumbers: 1,
-	// defNumSelected: 5
-// }
-var config = 
-{
-	title: "EuroMillions",
-	linePrice : 2.5,
-	powerPlayLinePrice : 1,
-	minSelected : 5,
-	maxSelected : 20,
-	defNumSelected: 5,
-	maxTickets : 6,
-	highestNumber: 69,
-	highestExtraNumber: 26,
-	minExtraNumbers: 2,
-	maxExtraNumbers: 2,
-	defExtraNumbers: 2,
-	
-}
+
 
 ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
 		function ($routeProvider, $mdIconProvider, $mdThemingProvider) {
@@ -47,6 +18,34 @@ ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
 			});
 		}
 	]);
+
+function calculateSystems(minLines, maxLines){
+	//Calculates number of lines for systems, kinda works.
+	//console.log (">calculateSystems: minLines=" + minLines + ", maxLines=" + maxLines);
+	var ret = [];
+	for (var rowIx = 0; rowIx<=minLines; rowIx++){
+		for (var colIx= 0; colIx<=maxLines-minLines; colIx++){
+			
+			if (rowIx == 0){
+				ret.push(1);
+			} else {
+				var term1 = ret[colIx];
+				var term2 = 0;
+				if (colIx > 0){
+					term2 = ret[colIx-1]
+				}
+				var sum = term1 + term2;
+				ret[colIx] = sum;
+				//console.log ("r:" + rowIx + ", c:" + colIx + ": " + term1 + " + " + term2 + " = " + ret[colIx]);
+			}
+		}
+		//console.log ("iteration " + rowIx + ": ret=" + ret);
+		
+	}
+	
+	//console.log ("<calculateSystems: ret=" + ret);
+}
+//calculateSystems(5, 20);
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -75,7 +74,8 @@ function copyTicket(ticket) {
 	var ret = {
 		numbers : nums,
 		extraNumbers: extraNums,
-		powerBall : ticket.powerBall
+		powerBall : ticket.powerBall,
+		options: ticket.options
 	}
 	//console.log ("<copyTicket: ret=" + ticketToString(ret));
 	return ret;
@@ -108,6 +108,28 @@ function formatCurrency(amount, c, d, t) {
 	//console.log("<formatCurrency: ret=" + ret);
 	return ret;
 };
+function createBooleanOption(cfg){
+		// //console.log(">createBooleanOption: cfg=" + cfg);
+		var ret = {};
+		for (var id in cfg){
+			ret[id] = cfg[id];
+		}
+		ret.price = ret.prices.values[ret.prices.defaultIndex];
+		// //console.log("<createBooleanOption: ret=" + JSON.stringify(ret));
+		return ret;
+	}
+function createMultiplierOption(cfg){
+		//console.log(">createMultiplierOption: cfg=" + cfg);
+		var ret = {};
+		for (var id in cfg){
+			ret[id] = cfg[id];
+		}
+		ret.price = ret.prices.values[ret.prices.defaultIndex];
+		ret.multiplier = ret.multipliers.values[ret.multipliers.defaultIndex];
+
+		//console.log("<createMultiplierOption: ret=" + JSON.stringify(ret));
+		return ret;
+	}
 
 ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $rootScope, $route, $location) {
 
@@ -123,27 +145,32 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		});
 		
 		
-	this.highestNumber = config.highestNumber;
-	this.highestExtraNumber = config.highestExtraNumber;
-	this.defExtraNumbers = config.defExtraNumbers;
-	this.defNumSelected =  config.defNumSelected;
-	this.maxExtraNumbers = config.maxExtraNumbers;
-	this.minExtraNumbers = config.minExtraNumbers;
-	this.minSelected = config.minSelected; // lowest allowed number of selected numbers
-	this.maxSelected = config.maxSelected; // highest allowed number of selected numbers
-	this.maxTickets = config.maxTickets;
-	this.linePrice = config.linePrice;
-	this.powerPlayLinePrice = config.powerPlayLinePrice;
+	//this.gameConfig = config["powerball"];
+	//this.gameConfig = config["euromillions"];
+	this.gameConfig = config["cash4life"];
+	this.options = [];
+	for (var i = 0; i<this.gameConfig.options.length;i++){
+		var option;
+		var optionConfig = this.gameConfig.options[i];
+		switch(optionConfig.type){
+			case "boolean":
+			option = createBooleanOption(optionConfig);
+			break;
+			case "multiplier":
+			option = createMultiplierOption(optionConfig);
+			break;
+			default: throw("Unhandled option type: " + optionConfig.type)
+		}
+		this.options.push(option);
+	}
 	this.tickets = [];
+	this.jackpot = 0;
 	this.unselectedNumbers = [];
 	this.canAddTicket = true;
-	this.powerPlay = false;
 	this.subscribe = false;
 	
-	this.powerPlayLinePrice = 1;
 	var ticketEdit = null;
 	this.numbers = [];
-	this.highestExtraNumber = this.highestExtraNumber;
 	this.extraNumbers = [];
 	this.editTicketId = null;
 	this.newTicket = false;
@@ -210,6 +237,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			numLines : 15504
 		}
 	};
+	
 	this.generateTicket = function(quickPick) {
 	//console.log(">generateTicket");
 	var nums = [];
@@ -217,14 +245,14 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	if (quickPick == null) {
 		quickPick = true;
 	}
-	for (var i = 1; i <= this.highestNumber; i++) {
+	for (var i = 1; i <= this.gameConfig.line.numbers.size; i++) {
 		//numbers.push(i);
 		nums.push({
 			number : i,
 			selected : false
 		});
 	}
-	for (var i = 1; i <= this.highestExtraNumber; i++) {
+	for (var i = 1; i <= this.gameConfig.line.extraNumbers.size; i++) {
 		//numbers.push(i);
 		extraNums.push({
 			number : i,
@@ -234,7 +262,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	var numSelected = 0;
 	var pb = '';
 	if (quickPick) {
-		while (numSelected < this.defNumSelected) {
+		while (numSelected < this.gameConfig.line.numbers.selectable.default) {
 			var ix = getRandomInt(0, nums.length - 1)
 				if (!nums[ix].selected) {
 					nums[ix].selected = true;
@@ -243,8 +271,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 		numSelected = 0;
 		//console.log("numSelected=" + numSelected);
-		//console.log("this.defExtraNumbers=" + this.defExtraNumbers);
-		while (numSelected < this.defExtraNumbers) {
+		//console.log("this.gameConfig.line.extraNumbers.selectable.default=" + this.gameConfig.line.extraNumbers.selectable.default);
+		while (numSelected < this.gameConfig.line.extraNumbers.selectable.default) {
 			var ix = getRandomInt(0, extraNums.length - 1)
 			if (!extraNums[ix].selected) {
 				
@@ -253,27 +281,41 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 				numSelected++;
 			}
 		}
-		pb = getRandomInt(1, this.highestExtraNumber)
+		pb = getRandomInt(1, this.gameConfig.line.extraNumbers.size)
 	}
-
+	var options = [];
+	for (var i = 0; i<this.gameConfig.line.options.length;i++){
+		var option;
+		var optionConfig = this.gameConfig.line.options[i];
+		switch(optionConfig.type){
+			case "boolean":
+			option = createBooleanOption(optionConfig);
+			break;
+			default: throw("Unhandled option type: " + optionConfig.type)
+		}
+		options.push(option);
+	}
 	var ret = {
 		numbers : nums,
 		extraNumbers : extraNums,
-		powerBall : pb
+		powerBall : pb,
+		options: options
 	}
 	//console.log("<generateTicket: ret=" + JSON.stringify(ret))
 	return ret;
 }
 	
 	
-	for (var i = 1; i <= this.highestNumber; i++) {
+	for (var i = 1; i <= this.gameConfig.line.numbers.size; i++) {
 		this.numbers.push(i);
 	}
-	for (var i = 1; i <= this.highestExtraNumber; i++) {
+	for (var i = 1; i <= this.gameConfig.line.extraNumbers.size; i++) {
 		this.extraNumbers.push(i);
 	}
 	this.update = function () {
-		this.canAddTicket = this.tickets.length < this.maxTickets;
+		//console.log(this.gameConfig);
+		//console.log(this.gameConfig.numberOfLines)
+		this.canAddTicket = this.tickets.length < this.gameConfig.numberOfLines.max;
 
 	}
 	this.addTicket = function (quickPick) {
@@ -285,27 +327,59 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 	}
 	this.getStake = function () {
+		//console.log (">getStake")
 		var p = 0;
-		var pp = 0;
-		if (this.powerPlay) {
-			pp = this.powerPlayLinePrice;
-		}
-		for (var i = 0; i < this.tickets.length; i++) {
-			var sys = this.getSystem(this.tickets[i]);
-			if (sys != null) {
-				var tp = this.getSystem(this.tickets[i]).numLines * (this.linePrice + pp);
-				//console.log("tp=" + tp);
-				p += tp;
-			} else {
-				p += this.linePrice + pp;
+		var optionPriceMultipliers = 0;
+		for (var i = 0; i<this.options.length; i++){
+			if (this.options[i].selected){
+				//console.log("adding " + this.options[i].price)
+				optionPriceMultipliers += this.options[i].price;
 			}
 		}
+		//console.log("optionPriceMultipliers=" + optionPriceMultipliers)
+		var lineOP = 0;
+		for (var i = 0; i < this.tickets.length; i++) {
+			var ticket = this.tickets[i];
+			
+			
+			for (var j = 0; j<ticket.options.length; j++){
+				//console.log("ticket.options[j]=" + JSON.stringify(ticket.options[j]))
+				if (ticket.options[j].selected){
+					//console.log("adding " + ticket.options[j].price)
+					lineOP += ticket.options[j].price;
+				}
+			}
+
+			var sys = this.getSystem(ticket);
+			if (sys != null) {
+				var tp = this.getSystem(ticket).numLines * (this.gameConfig.line.price + optionPriceMultipliers);
+				p += tp;
+			} else {
+				p += this.gameConfig.line.price + optionPriceMultipliers;
+			}
+			//console.log("p=" + p);
+		}
+		p += lineOP;
+
 		var daysPerWeek = 1;
-		if (this.selectedDraw == "Tue & Thu") {
-			daysPerWeek = 2;
+		var selDraw= this.gameConfig.drawDays.values[this.selectedDrawIx];
+		if (typeof(selDraw) == "object") {
+			daysPerWeek = selDraw.length;
 		}
 		p = p * Number(this.duration) * daysPerWeek;
+		//console.log ("<getStake: ret=" + p)
+		this.getJackpot();
 		return formatCurrency(p, 2);
+	}
+	this.getJackpot = function(){
+		this.jackpot = this.gameConfig.jackpot;
+		for (var i = 0; i<this.options.length; i++){
+			var o = this.options[i]
+			if (o.type == "multiplier" && o.selected){
+				this.jackpot *= o.multiplier;
+			}
+		}
+
 	}
 	this.deleteTicket = function (index) {
 
@@ -325,7 +399,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.canSelect = function (ticket) {
 		//console.log(">this.canSelect:ticket=" + this.canSelect);
 		if (ticket) {
-			return (this.getNumSelected(ticket) < this.maxSelected);
+			return (this.getNumSelected(ticket) < this.gameConfig.line.numbers.selectable.max);
 		} else {
 			return false;
 		}
@@ -333,9 +407,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.canSelectExtraNumber = function (ticket) {
 		//console.log(">this.canSelectExtraNumber:ticket=" + ticket);
 		if (ticket) {
-			var ret = this.getNumSelectedExtraNumbers(ticket) < this.maxExtraNumbers;
+			var ret = this.getNumSelectedExtraNumbers(ticket) < this.gameConfig.line.extraNumbers.selectable.max;
 			//console.log("num selected=" + this.getNumSelectedExtraNumbers(ticket));
-			//console.log("this.maxExtraNumbers=" + this.maxExtraNumbers);
+			//console.log("this.gameConfig.line.extraNumbers.selectable.max=" + this.gameConfig.line.extraNumbers.selectable.max);
 			//console.log("<this.canSelectExtraNumber:ret=" + ret);
 			return (ret);
 		} else {
@@ -397,16 +471,19 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		return ret;
 	}
 	this.getSystem = function (ticket) {
-		//console.log(">this.getSystem: ticket=" + ticket);
+		// //console.log(">this.getSystem: ticket=" + ticket);
 		var ret = null;
 		if (ticket) {
 			var numSelected = this.getNumSelected(ticket);
 			//var name = "0" + numSelected.toString();
-			//var numLines = 1 + Math.pow(this.defNumSelected, numSelected-this.defNumSelected);
-			ret = this.systems["s" + numSelected.toString()];
+			//var numLines = 1 + Math.pow(this.gameConfig.line.numbers.selectable.default, numSelected-this.gameConfig.line.numbers.selectable.default);
+			var sId = "s" + numSelected.toString();
+			// //console.log("sId=" + sId)
+			ret = this.systems[sId];
+
 
 		}
-		//console.log("<this.getSystem: ret=" + ret);
+		// //console.log("<this.getSystem: ret=" + ret);
 		return ret;
 		//return {name: name, numLines: numLines};
 	}
@@ -414,22 +491,22 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log(">getEmptySlotsArray: ticket=" + ticket);
 		var numSelected = this.getNumSelected(ticket);
 		//console.log ("numSelected=" + numSelected);
-		//console.log ("this.minSelected=" + this.minSelected);
-		var len = Math.max(0, this.minSelected - numSelected);
+		//console.log ("this.gameConfig.line.numbers.selectable.min=" + this.gameConfig.line.numbers.selectable.min);
+		var len = Math.max(0, this.gameConfig.line.numbers.selectable.min - numSelected);
 		//console.log ("len=" + len);
 		var ret = new Array(len);
 		//console.log("<getEmptySlotsArray:ret=" + ret)
 		return ret;
 	}
 	this.getEmptyEBSlotsArray = function (ticket) {
-		console.log(">getEmptyEBSlotsArray: ticket=" + ticket);
+		// //console.log(">getEmptyEBSlotsArray: ticket=" + ticket);
 		var numSelected = this.getNumSelectedExtraNumbers(ticket);
-		console.log ("numSelected=" + numSelected);
-		console.log ("this.minExtraNumbers=" + this.minExtraNumbers);
-		var len = Math.max(0, this.minExtraNumbers - numSelected);
+		// //console.log ("numSelected=" + numSelected);
+		// //console.log ("this.gameConfig.line.extraNumbers.selectable.min=" + this.gameConfig.line.extraNumbers.selectable.min);
+		var len = Math.max(0, this.gameConfig.line.extraNumbers.selectable.min - numSelected);
 		//console.log ("len=" + len);
 		var ret = new Array(len);
-		console.log("<getEmptyEBSlotsArray:ret=" + ret)
+		// //console.log("<getEmptyEBSlotsArray:ret=" + ret)
 		return ret;
 	}
 	this.getFirstDrawDate = function () {
@@ -437,16 +514,12 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		var dow = -1;
 		var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-		switch (this.selectedDraw) {
-		case "Tuesday & Thursday":
-			dow = 2;
-			break;
-		case "Tuesday":
-			dow = 2;
-			break;
-		case "Thursday":
-			dow = 4;
-			break;
+		var draw= this.gameConfig.drawDays.values[this.selectedDrawIx];
+		if (typeof(draw) == "string"){
+			dow = this.dayToNumber(draw)
+		} else {
+			//The following assumes that the days are specified in correct order in the co 
+			dow = this.dayToNumber(draw[0])
 		}
 
 		var d = new Date(this.getNextWeekDay(now, dow).toLocaleDateString());
@@ -463,17 +536,57 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log("<getNextWeekDay d=" + d);
 		return d;
 	}
-
+	this.dayToNumber = function(day){
+		//console.log(">dayToNumber day=" + day);
+		var ret = -1;
+		switch (day){
+			case "monday":
+			ret = 1;
+			break;
+			case "tuesday":
+			ret = 2;
+			break;
+			case "wednesday":
+			ret = 3;
+			break;
+			case "thursday":
+			ret = 4;
+			break;
+			case "friday":
+			ret = 5;
+			break;
+			case "saturday":
+			ret = 6;
+			break;
+			case "sunday":
+			ret = 7;
+			break;
+		}
+		//console.log("<dayToNumber ret=" + ret);
+		return ret;
+	}
 	this.selectCell = function (cell) {
 		//console.log(">selectCell: cell=" + JSON.stringify(cell.selected));
 		cell.selected = !cell.selected;
 		//console.log("<selectCell: cell.selected=" + cell.selected);
 	}
+	this.selectExtraBall = function (cell, ticket){
+		cell.selected = !cell.selected;
+		if (cell.selected && this.gameConfig.line.extraNumbers.selectable.max == 1 ){
+			//When you can select exactly 1 extraball, we want this to behave like a radio button,
+			//e.i unselect all other extraball:
+			for (var i = 0; i<ticket.extraNumbers.length; i++){
+				var currentCell = ticket.extraNumbers[i];
+				if (currentCell != cell){
+					currentCell.selected = false;
+				}
+			}
 
-	this.selectDraw = function (num) {
-		//console.log("kamagong numero >>> ", num);
-
-		this.selectedDraw = num;
+		}
+	}
+	this.selectDraw = function (ix) {
+		this.selectedDrawIx = ix
+		this.selectedDraw = this.draws[this.selectedDrawIx];
 	}
 
 	this.selectPowerBall = function (num) {
@@ -482,8 +595,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		this.getSelectedTicket().powerBall = num;
 	}
 
-	this.selectDuration = function (duration) {
-		//console.log("hari ng stunt >>> ", duration);
+	this.selectDuration = function (duration, ix) {
+		console.log(">selectDuration: duration=", duration + ", ix=" +ix);
 
 		this.duration = duration;
 		if (this.duration == 1) {
@@ -492,6 +605,33 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			this.durationString = this.duration.toString() + " weeks"
 		}
 	}
+	this.getShortDayString = function(day){
+		var ret = null;
+		switch (day){
+			case "monday":
+			ret = "Mon";
+			break;
+			case "tuesday":
+			ret = "Tue";
+			break;
+			case "wednesday":
+			ret = "Wed";
+			break;
+			case "thursday":
+			ret = "Thu";
+			break;
+			case "friday":
+			ret = "Fri";
+			break;
+			case "saturday":
+			ret = "Sat";
+			break;
+			case "sunday":
+			ret = "Sun";
+			break;
+		}
+		return ret;
+	}
 
 	this.durationString = "1 week";
 	this.draws = ["Tue", "Thu", "Tue & Thu"];
@@ -499,6 +639,32 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.duration = "1";
 	this.durations = ["1", "2", "4", "8"];
 	this.defaultCurrencySymbol = "£";
+	//
+	this.draws=[];
+	this.selectedDrawIx = 0;
+	console.log("c=" + this.gameConfig.drawDays.values)
+	for (var i = 0; i<this.gameConfig.drawDays.values.length; i++){
+		//console.log("typeof (" + this.gameConfig.drawDays.values[i] + ")=" + typeof(this.gameConfig.drawDays.values[i]))
+		var d = this.gameConfig.drawDays.values[i];
+		if (typeof(d) == "string"){
+			this.draws.push(this.getShortDayString(d));
+		} else {
+			//Array of days expected.
+			var days = ""
+			for (var j = 0; j<d.length; j++){
+				days+=this.getShortDayString(d[j])
+				if(j< d.length-1){
+					days+=" & "
+				} 
+			}
+			this.draws.push(days)
+		}
+	}
+	this.selectDraw(this.gameConfig.drawDays.defaultIndex)
+	//console.log("this.draws=" + this.draws);
+	for (var i = 0; i<this.gameConfig.numberOfLines.default; i++){
+		this.addTicket(true);
+	}
 });
 
 

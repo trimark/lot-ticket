@@ -208,6 +208,10 @@ html, body {
     display: block;
     clear: both;
 }
+.line-option {
+    display: block;
+    clear: both;
+}
 
 .action {
 	position: absolute;
