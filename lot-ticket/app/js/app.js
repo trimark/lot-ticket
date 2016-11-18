@@ -134,35 +134,78 @@ function createMultiplierOption(cfg){
 ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $rootScope, $route, $location) {
 
 	//console.log ("$routeParams=" + JSON.stringify($routeParams));
-	//console.log("$route=" + JSON.stringify($routeParams));
+	console.log("$route.params=" + $route.current);
 	var self = this;
+	this.init = function(skinName){
+		console.log (">init: skinName=" + skinName);
+		this.skin = skinName
+		this.gameConfig = config[this.skin];
+		//this.gameConfig = config["cash4life"];
+		this.options = [];
+		for (var i = 0; i<this.gameConfig.options.length;i++){
+			var option;
+			var optionConfig = this.gameConfig.options[i];
+			switch(optionConfig.type){
+				case "boolean":
+				option = createBooleanOption(optionConfig);
+				break;
+				case "multiplier":
+				option = createMultiplierOption(optionConfig);
+				break;
+				default: throw("Unhandled option type: " + optionConfig.type)
+			}
+			this.options.push(option);
+		}
+		//
+		for (var i = 1; i <= this.gameConfig.line.numbers.size; i++) {
+			this.numbers.push(i);
+		}
+		for (var i = 1; i <= this.gameConfig.line.extraNumbers.size; i++) {
+			this.extraNumbers.push(i);
+		}
+		//
+		this.draws=[];
+		this.selectedDrawIx = 0;
+		console.log("c=" + this.gameConfig.drawDays.values)
+		for (var i = 0; i<this.gameConfig.drawDays.values.length; i++){
+			//console.log("typeof (" + this.gameConfig.drawDays.values[i] + ")=" + typeof(this.gameConfig.drawDays.values[i]))
+			var d = this.gameConfig.drawDays.values[i];
+			if (typeof(d) == "string"){
+				this.draws.push(this.getShortDayString(d));
+			} else {
+				//Array of days expected.
+				var days = ""
+				for (var j = 0; j<d.length; j++){
+					days+=this.getShortDayString(d[j])
+					if(j< d.length-1){
+						days+=" & "
+					} 
+				}
+				this.draws.push(days)
+			}
+		}
+		this.selectDraw(this.gameConfig.drawDays.defaultIndex)
+		//console.log("this.	draws=" + this.draws);
+		for (var i = 0; i<this.gameConfig.numberOfLines.default; i++){
+			this.addTicket(true);
+		}
+		console.log ("<init");
+	}
 	self.routeChangeSuccess = $rootScope.$on("$routeChangeSuccess",
 			function (event, next, current) {
+			console.log (">$routeChangeSuccess");
 			//read params here
-			self.skin = $route.current.params.skin ? $route.current.params.skin : "powerball";
-			//console.log("$route.params=" + $route.current.params.skin);
+			var skin = $route.current.params.skin ? $route.current.params.skin : "powerball";
+			console.log("$route.current.params.skin=" + $route.current.params.skin);
+			//
+			self.init(skin)
 			self.routeChangeSuccess(); //this will destroy the function
+			console.log ("<$routeChangeSuccess");
 		});
 		
 		
 	//this.gameConfig = config["powerball"];
-	//this.gameConfig = config["euromillions"];
-	this.gameConfig = config["cash4life"];
-	this.options = [];
-	for (var i = 0; i<this.gameConfig.options.length;i++){
-		var option;
-		var optionConfig = this.gameConfig.options[i];
-		switch(optionConfig.type){
-			case "boolean":
-			option = createBooleanOption(optionConfig);
-			break;
-			case "multiplier":
-			option = createMultiplierOption(optionConfig);
-			break;
-			default: throw("Unhandled option type: " + optionConfig.type)
-		}
-		this.options.push(option);
-	}
+	
 	this.tickets = [];
 	this.jackpot = 0;
 	this.unselectedNumbers = [];
@@ -239,79 +282,73 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	};
 	
 	this.generateTicket = function(quickPick) {
-	//console.log(">generateTicket");
-	var nums = [];
-	var extraNums = [];
-	if (quickPick == null) {
-		quickPick = true;
-	}
-	for (var i = 1; i <= this.gameConfig.line.numbers.size; i++) {
-		//numbers.push(i);
-		nums.push({
-			number : i,
-			selected : false
-		});
-	}
-	for (var i = 1; i <= this.gameConfig.line.extraNumbers.size; i++) {
-		//numbers.push(i);
-		extraNums.push({
-			number : i,
-			selected : false
-		});
-	}
-	var numSelected = 0;
-	var pb = '';
-	if (quickPick) {
-		while (numSelected < this.gameConfig.line.numbers.selectable.default) {
-			var ix = getRandomInt(0, nums.length - 1)
-				if (!nums[ix].selected) {
-					nums[ix].selected = true;
+		//console.log(">generateTicket");
+		var nums = [];
+		var extraNums = [];
+		if (quickPick == null) {
+			quickPick = true;
+		}
+		for (var i = 1; i <= this.gameConfig.line.numbers.size; i++) {
+			//numbers.push(i);
+			nums.push({
+				number : i,
+				selected : false
+			});
+		}
+		for (var i = 1; i <= this.gameConfig.line.extraNumbers.size; i++) {
+			//numbers.push(i);
+			extraNums.push({
+				number : i,
+				selected : false
+			});
+		}
+		var numSelected = 0;
+		var pb = '';
+		if (quickPick) {
+			while (numSelected < this.gameConfig.line.numbers.selectable.default) {
+				var ix = getRandomInt(0, nums.length - 1)
+					if (!nums[ix].selected) {
+						nums[ix].selected = true;
+						numSelected++;
+					}
+			}
+			numSelected = 0;
+			//console.log("numSelected=" + numSelected);
+			//console.log("this.gameConfig.line.extraNumbers.selectable.default=" + this.gameConfig.line.extraNumbers.selectable.default);
+			while (numSelected < this.gameConfig.line.extraNumbers.selectable.default) {
+				var ix = getRandomInt(0, extraNums.length - 1)
+				if (!extraNums[ix].selected) {
+					
+					extraNums[ix].selected = true;
+					//console.log("extraNums["+ix+"].selected=" + extraNums[ix].selected);
 					numSelected++;
 				}
-		}
-		numSelected = 0;
-		//console.log("numSelected=" + numSelected);
-		//console.log("this.gameConfig.line.extraNumbers.selectable.default=" + this.gameConfig.line.extraNumbers.selectable.default);
-		while (numSelected < this.gameConfig.line.extraNumbers.selectable.default) {
-			var ix = getRandomInt(0, extraNums.length - 1)
-			if (!extraNums[ix].selected) {
-				
-				extraNums[ix].selected = true;
-				//console.log("extraNums["+ix+"].selected=" + extraNums[ix].selected);
-				numSelected++;
 			}
+			pb = getRandomInt(1, this.gameConfig.line.extraNumbers.size)
 		}
-		pb = getRandomInt(1, this.gameConfig.line.extraNumbers.size)
-	}
-	var options = [];
-	for (var i = 0; i<this.gameConfig.line.options.length;i++){
-		var option;
-		var optionConfig = this.gameConfig.line.options[i];
-		switch(optionConfig.type){
-			case "boolean":
-			option = createBooleanOption(optionConfig);
-			break;
-			default: throw("Unhandled option type: " + optionConfig.type)
+		var options = [];
+		for (var i = 0; i<this.gameConfig.line.options.length;i++){
+			var option;
+			var optionConfig = this.gameConfig.line.options[i];
+			switch(optionConfig.type){
+				case "boolean":
+				option = createBooleanOption(optionConfig);
+				break;
+				default: throw("Unhandled option type: " + optionConfig.type)
+			}
+			options.push(option);
 		}
-		options.push(option);
+		var ret = {
+			numbers : nums,
+			extraNumbers : extraNums,
+			powerBall : pb,
+			options: options
+		}
+		//console.log("<generateTicket: ret=" + JSON.stringify(ret))
+		return ret;
 	}
-	var ret = {
-		numbers : nums,
-		extraNumbers : extraNums,
-		powerBall : pb,
-		options: options
-	}
-	//console.log("<generateTicket: ret=" + JSON.stringify(ret))
-	return ret;
-}
 	
 	
-	for (var i = 1; i <= this.gameConfig.line.numbers.size; i++) {
-		this.numbers.push(i);
-	}
-	for (var i = 1; i <= this.gameConfig.line.extraNumbers.size; i++) {
-		this.extraNumbers.push(i);
-	}
 	this.update = function () {
 		//console.log(this.gameConfig);
 		//console.log(this.gameConfig.numberOfLines)
@@ -510,11 +547,16 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		return ret;
 	}
 	this.getFirstDrawDate = function () {
+		console.log(">getFirstDrawDate");
+
 		var now = new Date();
 		var dow = -1;
 		var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 		var draw= this.gameConfig.drawDays.values[this.selectedDrawIx];
+		console.log("this.gameConfig.drawDays.values=" + this.gameConfig.drawDays.values)
+		console.log("draw=" + draw)
+		console.log("this.selectedDrawIx=" + this.selectedDrawIx)
 		if (typeof(draw) == "string"){
 			dow = this.dayToNumber(draw)
 		} else {
@@ -526,7 +568,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		var mm = d.getMonth();
 		var dd = d.getDate();
 		var yy = d.getFullYear();
-
+		console.log("<getFirstDrawDate");
 		return dd + '/' + monthNames[mm] + '/' + yy;
 	}
 	this.getNextWeekDay = function (d, dow) {
@@ -585,8 +627,10 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 	}
 	this.selectDraw = function (ix) {
+		console.log(">this.selectDraw: ix=" +ix);
 		this.selectedDrawIx = ix
 		this.selectedDraw = this.draws[this.selectedDrawIx];
+		console.log("<this.selectDraw");
 	}
 
 	this.selectPowerBall = function (num) {
@@ -640,36 +684,26 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	this.durations = ["1", "2", "4", "8"];
 	this.defaultCurrencySymbol = "£";
 	//
-	this.draws=[];
-	this.selectedDrawIx = 0;
-	console.log("c=" + this.gameConfig.drawDays.values)
-	for (var i = 0; i<this.gameConfig.drawDays.values.length; i++){
-		//console.log("typeof (" + this.gameConfig.drawDays.values[i] + ")=" + typeof(this.gameConfig.drawDays.values[i]))
-		var d = this.gameConfig.drawDays.values[i];
-		if (typeof(d) == "string"){
-			this.draws.push(this.getShortDayString(d));
-		} else {
-			//Array of days expected.
-			var days = ""
-			for (var j = 0; j<d.length; j++){
-				days+=this.getShortDayString(d[j])
-				if(j< d.length-1){
-					days+=" & "
-				} 
-			}
-			this.draws.push(days)
-		}
-	}
-	this.selectDraw(this.gameConfig.drawDays.defaultIndex)
-	//console.log("this.draws=" + this.draws);
-	for (var i = 0; i<this.gameConfig.numberOfLines.default; i++){
-		this.addTicket(true);
-	}
+	
+	
 });
 
 
-ticketApp.controller('LotteryController', function LotteryController($scope) {
-	this.lotteries = [{title:"Austrian Lotto", link:""}, {title:"Cash4Life", link:"http://demo.trimarkgaming.com/games/lottostore/cash4life/#/"}, {title:"EuroJackpot", link:""}, {title:"EuroMillions", link:"http://demo.trimarkgaming.com/games/lottostore/euromillions/#/"}, {title:"French Lotto", link:""}, {title:"Irish Lotto", link:""}, {title:"Mega-Sena", link:""}, {title:"MegaMillions", link:""}, {title:"MINI Lotto", link:""}, {title:"Oz Mon & Wed Lotto", link:""}, {title:"OZ Lotto", link:""}, {title:"OZ Powerball", link:""}, {title:"OZ Sat Lotto", link:""}, {title:"Polish Lotto", link:""}, {title:"Powerball", link:""}, {title:"SuperEnalotto", link:""}, {title:"Swedish Lotto", link:""}];
+ticketApp.controller('LotteryController', function LotteryController($scope, $location, $window) {
+	this.lotteries = [{title:"Austrian Lotto", link:""}, {title:"Cash4Life", skin: "cash4life", link:"/#/?skin=cash4life"}, {title:"EuroJackpot", link:""}, {title:"EuroMillions", link:"http://demo.trimarkgaming.com/games/lottostore/euromillions/#/"}, {title:"French Lotto", link:""}, {title:"Irish Lotto", link:""}, {title:"Mega-Sena", link:""}, {title:"MegaMillions", link:""}, {title:"MINI Lotto", link:""}, {title:"Oz Mon & Wed Lotto", link:""}, {title:"OZ Lotto", link:""}, {title:"OZ Powerball", link:""}, {title:"OZ Sat Lotto", link:""}, {title:"Polish Lotto", link:""}, {title:"Powerball", link:""}, {title:"SuperEnalotto", link:""}, {title:"Swedish Lotto", link:""}];
+	$scope.loadSkin = function(skin){
+		// //http://localhost:8002/#/?skin=powerball&langcode=en
+		// var p =$window.location.href;
+		// p = p.substring(0, p.lastIndexOf("/"));
+		// console.log("p: " + p)
+		// var url = p + '/?skin=' + skin
+		// 
+		var url = "/#/?skin=" + skin;
+		console.log("loadSkin: " + url);
+		$window.location.href = url;
+		$window.location.reload();
+
+	}
 });
 
 ticketApp.directive('ticketAnimate', function ($timeout) {
@@ -698,7 +732,7 @@ ticketApp.directive('tapClick', function () {
 });
 
 
-ticketApp.directive('menuNav', function ($location) {
+ticketApp.directive('menuNav', function ($location, $window) {
 	return {
 		restrict : 'EA',
 		link : function (scope, element) {
@@ -711,7 +745,25 @@ ticketApp.directive('menuNav', function ($location) {
 					$('body').addClass('no-drag');
 
 			}
+			scope.loadSkin = function(skin){
+				//http://localhost:8002/#/?skin=powerball&langcode=en
+				var p =$window.location.href;
+				p = p.substring(0, p.lastIndexOf("/"));
+				console.log("p: " + p)
+				//var url = $window.location.href;// + '/?skin=' + skin
+				var url = p + '/?skin=' + skin
+				var url = "/#/?skin=" + skin;
+				console.log("loadSkin: " + url)
+				// console.log("--------------");
+				// for (var prop in $window.location){
+				// 	console.log(prop +": " + $window.location[prop])
+				// }
+				$window.location.href = url;
+				// $(element).removeClass('active');
+				// $('body').removeClass('no-drag');
+				$window.location.reload();
 
+			}
 			scope.linkTo = function(link) {
 				$location.path(link);
 

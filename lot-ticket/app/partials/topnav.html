@@ -17,7 +17,8 @@
 	</header>
 	<ul class="ac-gn-list">
 		<li class="ac-gn-item ac-gn-item-menu">
-			<a  href="http://demo.trimarkgaming.com/games/lottostore/euromillions/#/">
+			<!-- <a href="javascript:" ng-click="$window.location.href = $location.path() + '/?skin=euromillions';"> -->
+			<a href="javascript:" ng-click="loadSkin('euromillions')">
 				<span class="ac-gn-link-text">
 					<img src="img/EuroMillions.png" class="game-icon">
 					<span class="title">EuroMillions</span>
@@ -25,7 +26,7 @@
 			</a>
 		</li>
 		<li class="ac-gn-item ac-gn-item-menu">
-			<a  href="javascript:">
+			<a href="javascript:" ng-click="loadSkin('powerball')">
 				<span class="ac-gn-link-text">
 					<img src="img/Powerball.png" class="game-icon">
 					<span class="title">Powerball</span>
@@ -33,7 +34,7 @@
 			</a>
 		</li>
 		<li class="ac-gn-item ac-gn-item-menu">
-			<a  href="javascript:"   ng-click="linkTo('lotteries')">
+			<a href="javascript:"   ng-click="linkTo('lotteries')">
 				<span class="ac-gn-link-text">
 					<img src="img/temp5.png" class="game-icon">
 					<span class="title">More Lotteries</span>
