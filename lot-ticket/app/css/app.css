@@ -9,6 +9,13 @@
 }
 
 @font-face {
+    font-family: myriadsetproultralight;
+    src: url(../fonts/myriad-set-pro_ultralight.ttf);
+}
+
+
+
+@font-face {
     font-family: myriadsetprosemibold;
     src: url(../fonts/myriad-set-pro_medium.ttf);
 }
@@ -25,6 +32,9 @@ button, select, html, textarea, input {
 
 html, body {
 	background-color: #f2f2f2;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+	color: #333;
 }
 
 @keyframes slide-left {
@@ -83,6 +93,12 @@ html, body {
 	
 	transition-timing-function:  animation-timing-function: cubic-bezier(0.42,0,0.58,1);
 	-webkit-transition-timing-function:  animation-timing-function: cubic-bezier(0.42,0,0.58,1);*/
+}
+
+.text-center {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .bet.slide {
@@ -710,6 +726,13 @@ md-checkbox .md-container {
 	margin-top: 5px;
 }
 
+
+.headline {
+	font-family: myriadsetproultralight,Helvetica Neue,Helvetica,Arial,sans-serif !important;
+	font-size: 52px;
+	line-height: 1.07724;
+	letter-spacing: -.016em;
+}
 
 
 
