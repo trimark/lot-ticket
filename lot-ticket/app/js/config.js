@@ -346,7 +346,7 @@ config["frenchlotto"] =
 {
 	title: "French Lotto",
 	texts:{
-		editExtraBallHeader: "Pick 2",
+		editExtraBallHeader: "Pick 1",
 		prizeHeader: " million"
 	},
 	jackpot: 8,
