@@ -198,12 +198,15 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			function (event, next, current) {
 			console.log (">$routeChangeSuccess");
 			//read params here
-			var skin = $route.current.params.skin ? $route.current.params.skin : "powerball";
-			console.log("$route.current.params.skin=" + $route.current.params.skin);
-			//
-			self.init(skin)
-			//self.routeChangeSuccess(); //this will destroy the function
-			//console.log ("<$routeChangeSuccess");
+			if (!self.skin || $route.current.params.skin)
+			{
+				var skin = $route.current.params.skin ? $route.current.params.skin : "powerball";
+				console.log("$route.current.params.skin=" + $route.current.params.skin);
+				//
+				self.init(skin)
+				//self.routeChangeSuccess(); //this will destroy the function
+				//console.log ("<$routeChangeSuccess");
+			}
 		});
 		
 		
