@@ -487,3 +487,82 @@ config["megasena"] =
 	options: [
 	]
 }
+config["megamillions"] =	
+{
+	title: "MegaMillions",
+	texts:{
+		editExtraBallHeader: "Pick 1 Megaball",
+		prizeHeader: " million"
+	},
+	jackpot: 14,
+	drawDays: 
+	{ 
+		values: ["wednesday", "saturday", ["wednesday", "saturday"]],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 8],
+		defaultIndex: 0
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 0
+	},
+	// line configuration:
+	line: 
+	{
+		price: 3,
+		numbers: 
+		{
+			size: 75,
+			selectable: {min: 5, max: 20, default: 5}
+		},
+		extraNumbers: 
+		{
+			size: 1,
+			selectable: {min: 1, max: 1, default: 1}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+		{
+		
+			type: "multiplier", 
+			label: "Double the Jackpot",
+			prices: {values: [3], defaultIndex: 0},
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: false,
+			multipliers: {values:[2], defaultIndex: 0},
+			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
+		},
+		{
+			type: "boolean", 
+			label: "Megaplier", 
+			prices: {values: [1], defaultIndex: 0}, 
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: false
+		}
+	]
+}
