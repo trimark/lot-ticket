@@ -3,7 +3,7 @@
 	  <div flex layout="row" layout-align="start center" class="powerball-header">{{tkt.gameConfig.title}}</div>
 	  <div flex layout="row" layout-align="end center" class="balance-header">{{tkt.defaultCurrencySymbol}}{{tkt.jackpot}}{{tkt.gameConfig.texts.prizeHeader}}</div>
 	</div>  
-	<md-list class="tickets-group">
+	<md-list class="tickets-group display-numbers">
 		<md-list-item ng-repeat="ticket in tkt.tickets" ng-style="{padding: 0}">
 			<div flex layout="row" class="bet selected-bets" ng-click="tkt.editTicket($index)" ng-class="{'first-row': $index == 0}" ticket-animate>
 				<div class="col-11" >
