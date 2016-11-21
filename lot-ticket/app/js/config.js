@@ -446,7 +446,7 @@ config["irishlotto"] =
 		numbers: 
 		{
 			size: 47,
-			selectable: {min: 5, max: 13, default: 5}
+			selectable: {min: 6, max: 6, default: 6}
 		},
 		extraNumbers: 
 		{
