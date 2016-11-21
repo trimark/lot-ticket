@@ -566,3 +566,74 @@ config["megamillions"] =
 		}
 	]
 }
+//
+config["minilotto"] =	
+{
+	title: "MINI Lotto",
+	texts:{
+		editExtraBallHeader: "",
+		prizeHeader: " million"
+	},
+	jackpot: 60,
+	drawDays: 
+	{ 
+		values: ["monday",  "sunday", ["monday", "sunday"]],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 8],
+		defaultIndex: 0
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 0
+	},
+	// line configuration:
+	line: 
+	{
+		price: 0.25,
+		numbers: 
+		{
+			size: 42,
+			selectable: {min: 5, max: 5, default: 5}
+		},
+		extraNumbers: 
+		{
+			size: 0,
+			selectable: {min: 0, max: 0, default: 0}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+		{
+		
+			type: "multiplier", 
+			label: "Double the Jackpot",
+			prices: {values: [0.25], defaultIndex: 0},
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: false,
+			multipliers: {values:[2], defaultIndex: 0},
+			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
+		}
+	]
+}
