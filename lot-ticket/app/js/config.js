@@ -1001,3 +1001,74 @@ config["superenalotto"] =
 		}
 	]
 }
+//
+config["quina"] =	
+{
+	title: "Quina",
+	texts:{
+		editExtraBallHeader: "",
+		prizeHeader: ""
+	},
+	jackpot: 290000,
+	drawDays: 
+	{ 
+		values: ["monday"],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 3, 6],
+		defaultIndex: 0
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 3
+	},
+	// line configuration:
+	line: 
+	{
+		price: 0.5,
+		numbers: 
+		{
+			size: 80,
+			selectable: {min: 5, max: 5, default: 5}
+		},
+		extraNumbers: 
+		{
+			size: 0,
+			selectable: {min: 0, max: 0, default: 0}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+		{
+		
+			type: "multiplier", 
+			label: "Double the Jackpot",
+			prices: {values: [0.5], defaultIndex: 0},
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: false,
+			multipliers: {values:[2], defaultIndex: 0},
+			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
+		}
+	]
+}
