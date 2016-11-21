@@ -67,6 +67,7 @@ config["powerball"] =
 		}
 	]
 }
+//
 config["eurojackpot"] =	
 {
 	title: "EuroJackpot",
@@ -275,5 +276,76 @@ config["cash4life"] =
 		defaultIndex: 0
 	},
 	options: [
+	]
+}
+//
+config["frenchlotto"] =	
+{
+	title: "French Lotto",
+	texts:{
+		editExtraBallHeader: "Pick 2 Lucky Star Numbers",
+		prizeHeader: " million"
+	},
+	jackpot: 8,
+	drawDays: 
+	{ 
+		values: ["monday", "wednesday", "saturday"],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 8],
+		defaultIndex: 0
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 0
+	},
+	// line configuration:
+	line: 
+	{
+		price: 2,
+		numbers: 
+		{
+			size: 49,
+			selectable: {min: 5, max: 5, default: 5}
+		},
+		extraNumbers: 
+		{
+			size: 10,
+			selectable: {min: 1, max: 1, default: 1}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+		{
+		
+			type: "multiplier", 
+			label: "Double the Jackpot",
+			prices: {values: [2], defaultIndex: 0},
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: false,
+			multipliers: {values:[2], defaultIndex: 0},
+			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
+		}	
 	]
 }
