@@ -716,7 +716,7 @@ config["minilotto"] =
 //
 config["ozmonwedlotto"] =	
 {
-	title: "Mon & Wed Lotto",
+	title: "OZ Mon & Wed Lotto",
 	texts:{
 		editExtraBallHeader: "",
 		prizeHeader: " million"
