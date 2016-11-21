@@ -697,7 +697,6 @@ transition-delay: 0
 
 .game-list {
 	margin: 0 auto;
-	text-align: center;
 }
 
 .game-list .col3 {
@@ -721,16 +720,31 @@ transition-delay: 0
  	color: #666;
  } 
 
- @media only screen and (max-width: 414px) { 
+@media only screen and (max-width: 578px) { 
+	.game-list {
+		text-align: center;
+	}
 	.game-list .col3 {
 		width: 30%;
+		text-align: center;
 	}
 }
 
 
 @media only screen and (max-width: 375px) { 
+	.game-list {
+		text-align: center;
+	}
 	.game-list .col3 {
 		width: 45%;
+		
+	}
+}
+
+
+@media only screen and (min-width: 1204px) { 
+	.game-list {
+		width: 50%;
 	}
 }
 
