@@ -738,12 +738,12 @@ config["ozmonwedlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 7
+			default: 1
 	},
 	// line configuration:
 	line: 
 	{
-		price: 1,
+		price: 2,
 		numbers: 
 		{
 			size: 45,
@@ -774,7 +774,7 @@ config["ozmonwedlotto"] =
 		
 			type: "multiplier", 
 			label: "Double the Jackpot",
-			prices: {values: [1], defaultIndex: 0},
+			prices: {values: [2], defaultIndex: 0},
 			priceMultiplier: "numberOfLines", 
 			application: "global",
 			optional: true,
