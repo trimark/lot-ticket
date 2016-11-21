@@ -721,6 +721,20 @@ transition-delay: 0
  	color: #666;
  } 
 
+ @media only screen and (max-width: 414px) { 
+	.game-list .col3 {
+		width: 30%;
+	}
+}
+
+
+@media only screen and (max-width: 375px) { 
+	.game-list .col3 {
+		width: 45%;
+	}
+}
+
+
 
 /* start material overrides */
 
