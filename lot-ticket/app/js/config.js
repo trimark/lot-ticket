@@ -570,7 +570,7 @@ config["megamillions"] =
 		editExtraBallHeader: "Pick 1 Megaball",
 		prizeHeader: " million"
 	},
-	jackpot: 14,
+	jackpot: 12,
 	drawDays: 
 	{ 
 		values: ["wednesday", "saturday", ["wednesday", "saturday"]],
@@ -587,12 +587,12 @@ config["megamillions"] =
 	{
 			min: 1, 
 			max: 6, 
-			default: 0
+			default: 2
 	},
 	// line configuration:
 	line: 
 	{
-		price: 3,
+		price: 2.5,
 		numbers: 
 		{
 			size: 75,
@@ -600,7 +600,7 @@ config["megamillions"] =
 		},
 		extraNumbers: 
 		{
-			size: 1,
+			size: 15,
 			selectable: {min: 1, max: 1, default: 1}
 		},
 		options: [
@@ -623,7 +623,7 @@ config["megamillions"] =
 		
 			type: "multiplier", 
 			label: "Double the Jackpot",
-			prices: {values: [3], defaultIndex: 0},
+			prices: {values: [2.5], defaultIndex: 0},
 			priceMultiplier: "numberOfLines", 
 			application: "global",
 			optional: true,
