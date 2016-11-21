@@ -137,10 +137,23 @@ function createMultiplierOption(cfg){
 ticketApp.controller('TicketController', function TicketController($scope, $routeParams, $rootScope, $route, $location) {
 
 	//console.log ("$routeParams=" + JSON.stringify($routeParams));
-	console.log("$route.params=" + $route.current);
+	//console.log("$route.params=" + $route.current);
 	var self = this;
 	this.init = function(skinName){
-		console.log (">init: skinName=" + skinName);
+		//console.log (">init: skinName=" + skinName);
+		//
+		this.tickets = [];
+		this.jackpot = 0;
+		this.unselectedNumbers = [];
+		this.canAddTicket = true;
+		this.subscribe = false;
+		
+		var ticketEdit = null;
+		this.numbers = [];
+		this.extraNumbers = [];
+		this.editTicketId = null;
+		this.newTicket = false;
+		//
 		this.skin = skinName
 		this.gameConfig = config[this.skin];
 		//this.gameConfig = config["cash4life"];
@@ -169,7 +182,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//
 		this.draws=[];
 		this.selectedDrawIx = 0;
-		console.log("c=" + this.gameConfig.drawDays.values)
+		//console.log("c=" + this.gameConfig.drawDays.values)
 		for (var i = 0; i<this.gameConfig.drawDays.values.length; i++){
 			//console.log("typeof (" + this.gameConfig.drawDays.values[i] + ")=" + typeof(this.gameConfig.drawDays.values[i]))
 			var d = this.gameConfig.drawDays.values[i];
@@ -192,16 +205,16 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		for (var i = 0; i<this.gameConfig.numberOfLines.default; i++){
 			this.addTicket(true);
 		}
-		console.log ("<init");
+		//console.log ("<init");
 	}
 	self.routeChangeSuccess = $rootScope.$on("$routeChangeSuccess",
 			function (event, next, current) {
-			console.log (">$routeChangeSuccess");
+			//console.log (">$routeChangeSuccess");
 			//read params here
 			if (!self.skin || $route.current.params.skin)
 			{
 				var skin = $route.current.params.skin ? $route.current.params.skin : "powerball";
-				console.log("$route.current.params.skin=" + $route.current.params.skin);
+				//console.log("$route.current.params.skin=" + $route.current.params.skin);
 				//
 				self.init(skin)
 				//self.routeChangeSuccess(); //this will destroy the function
@@ -553,16 +566,16 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		return ret;
 	}
 	this.getFirstDrawDate = function () {
-		console.log(">getFirstDrawDate");
+		//console.log(">getFirstDrawDate");
 
 		var now = new Date();
 		var dow = -1;
 		var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 		var draw= this.gameConfig.drawDays.values[this.selectedDrawIx];
-		console.log("this.gameConfig.drawDays.values=" + this.gameConfig.drawDays.values)
-		console.log("draw=" + draw)
-		console.log("this.selectedDrawIx=" + this.selectedDrawIx)
+		//console.log("this.gameConfig.drawDays.values=" + this.gameConfig.drawDays.values)
+		//console.log("draw=" + draw)
+		//console.log("this.selectedDrawIx=" + this.selectedDrawIx)
 		if (typeof(draw) == "string"){
 			dow = this.dayToNumber(draw)
 		} else {
@@ -574,7 +587,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		var mm = d.getMonth();
 		var dd = d.getDate();
 		var yy = d.getFullYear();
-		console.log("<getFirstDrawDate");
+		//console.log("<getFirstDrawDate");
 		return dd + '/' + monthNames[mm] + '/' + yy;
 	}
 	this.getNextWeekDay = function (d, dow) {
@@ -633,10 +646,10 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 	}
 	this.selectDraw = function (ix) {
-		console.log(">this.selectDraw: ix=" +ix);
+		//console.log(">this.selectDraw: ix=" +ix);
 		this.selectedDrawIx = ix
 		this.selectedDraw = this.draws[this.selectedDrawIx];
-		console.log("<this.selectDraw");
+		//console.log("<this.selectDraw");
 	}
 
 	this.selectPowerBall = function (num) {
@@ -646,7 +659,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 	}
 
 	this.selectDuration = function (duration, ix) {
-		console.log(">selectDuration: duration=", duration + ", ix=" +ix);
+		//console.log(">selectDuration: duration=", duration + ", ix=" +ix);
 
 		this.duration = duration;
 		if (this.duration == 1) {
@@ -701,7 +714,7 @@ ticketApp.controller('LotteryController', function LotteryController($scope, $lo
 		// //http://localhost:8002/#/?skin=powerball&langcode=en
 		// var p =$window.location.href;
 		// p = p.substring(0, p.lastIndexOf("/"));
-		// console.log("p: " + p)
+		// //console.log("p: " + p)
 		// var url = p + '/?skin=' + skin
 		// 
 		//var url = "/#/?skin=" + skin;
@@ -757,16 +770,16 @@ ticketApp.directive('menuNav', function ($location, $window) {
 				//http://localhost:8002/#/?skin=powerball&langcode=en
 				// var p =$window.location.href;
 				// p = p.substring(0, p.lastIndexOf("/"));
-				// console.log("p: " + p)
+				// //console.log("p: " + p)
 				// var url = p + '/?skin=' + skin
 				// var url = "/#/?skin=" + skin;
 
 				//var url = "http://demo.trimarkgaming.com/games/lottostore/#/?skin=" + skin;
 				//var url = "/?skin=" + skin;
 				//console.log("loadSkin: " + url)
-				// console.log("--------------");
+				// //console.log("--------------");
 				// for (var prop in $window.location){
-				// 	console.log(prop +": " + $window.location[prop])
+				// 	//console.log(prop +": " + $window.location[prop])
 				// }
 				//$window.location.href = url;
 				// $(element).removeClass('active');
