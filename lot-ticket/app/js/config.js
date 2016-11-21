@@ -880,7 +880,7 @@ config["ozsatlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 12
+			default: 1
 	},
 	// line configuration:
 	line: 
