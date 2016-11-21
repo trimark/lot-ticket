@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"sel",
+				"selectable"
+			],
+			[
+				"dra",
+				"drawDays"
+			],
+			[
+				"draw",
+				"draw"
+			],
+			[
+				"sele",
+				"selectedDrawIx"
+			],
+			[
+				"def",
+				"defaultIndex"
+			],
+			[
+				"s",
+				"sId"
+			],
+			[
 				"padd",
 				"padding-right"
 			],
@@ -67,37 +91,26 @@
 			"file": "app/js/app.js",
 			"settings":
 			{
-				"buffer_size": 6217,
+				"buffer_size": 19729,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "app/partials/tickets.html",
+			"file": "app/js/config.js",
 			"settings":
 			{
-				"buffer_size": 3080,
+				"buffer_size": 3067,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Windows",
+				"name": "var config = {};"
 			}
 		},
 		{
-			"contents": "<div class=\"header-rect\">\n<span class=\"header-left\">Line 1 of 6</span>\n</div>\n<md-card layout=\"row\" layout-align=\"center center\" class=\"bet selected-bets\">\n\t<span class=\"ball\" ng-repeat=\"cell in tkt.getSelectedTicket().numbers|filter: {selected: true}\">{{cell.number}}</span>\n\t<span class=\"ball\" ng-repeat=\"i in tkt.getEmptySlotsArray(tkt.getSelectedTicket()) track by $index\"></span>\n\t<span class=\"ball power-ball\">{{tkt.getSelectedTicket().powerBall}}</span>\n\n\t<div ng-if=\"tkt.getNumSelected(tkt.getSelectedTicket())>tkt.defNumSelected\" class=\"selected-text\">\n\t\tSystem {{tkt.getSystem(tkt.getSelectedTicket()).name}} ({{tkt.getSystem(tkt.getSelectedTicket()).numLines}} lines)\n\t</div>\n\n</md-card>\n\n\n<div class=\"number-slots\">\n    <span class=\"ball\" ng-class=\"{'selected' : cell.selected, 'disabled': !cell.selected && !tkt.canSelect(tkt.getSelectedTicket())}\" id=\"cbBet{{$index}}}\" ng-repeat=\"cell in tkt.getSelectedTicket().numbers\">\n\t  <input\n\t\ttype=\"checkbox\"\n\t\tng-model=\"cell.selected\"\n\t\tng-disabled = \"!cell.selected && !tkt.canSelect(tkt.getSelectedTicket())\" id=\"cbBet{{$index}}\"\n\t  > \t\n\t\t<label for=\"cbBet{{$index}}\">{{cell.number}}</label>\n\t</span>\n</div>\n\n<section layout=\"row\" layout-sm=\"column\" layout-align=\"center center\" layout-wrap>\n\t<div class=\"power-ball-selection\">\n\t\t<md-input-container class=\"md-block\" flex-gt-sm>\n\t\t\t<label>Powerball</label>\n\t\t\t<md-select ng-model=\"tkt.getSelectedTicket().powerBall\">\n\t\t\t\t<md-option ng-repeat=\"num in tkt.powerBalls\" value=\"{{num}}\">\n\t\t\t\t\t{{num}}\n\t\t\t\t</md-option>\n\t\t\t</md-select>\n\t\t</md-input-container>\n\t</div>\n\t<p class=\"md-caption\" ng-if=\"tkt.getNumSelected(tkt.getSelectedTicket())==tkt.defNumSelected\">\n\t\tSelect more numbers to play a combo bet and boost your odds\n\t</p>\n</section>\n\n<section layout=\"row\" layout-sm=\"column\" layout-align=\"center center\" layout-wrap>\n\t<md-button class=\"md-raised\" ng-click=\"tkt.commitTicket()\">OK</md-button>\n\t<md-button class=\"md-raised\" ng-click=\"tkt.cancelTicketChanges()\">Cancel</md-button>\n</section>\n",
-			"file": "app/partials/edit-ticket.html",
-			"file_size": 2093,
-			"file_write_time": 131224823517041210,
+			"file": "app/partials/topnav.html",
 			"settings":
 			{
-				"buffer_size": 2001,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 1045,
+				"buffer_size": 1615,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -106,7 +119,25 @@
 			"file": "app/css/app.css",
 			"settings":
 			{
-				"buffer_size": 2333,
+				"buffer_size": 15178,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/partials/tickets.html",
+			"settings":
+			{
+				"buffer_size": 4982,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/partials/edit-ticket.html",
+			"settings":
+			{
+				"buffer_size": 3948,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -144,13 +175,19 @@
 	},
 	"expanded_folders":
 	[
-		"/D/GitHub/lot-ticket/lot-ticket",
-		"/D/GitHub/lot-ticket/lot-ticket/app",
-		"/D/GitHub/lot-ticket/lot-ticket/app/css",
-		"/D/GitHub/lot-ticket/lot-ticket/app/partials"
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/powerball"
 	],
 	"file_history":
 	[
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/powerball/configSpec.json",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/css/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/index.html",
 		"/D/GitHub/backoffice-client/backoffice-client/app/partials/roles.html",
 		"/D/GitHub/backoffice-client/backoffice-client/app/js/app.js",
 		"/D/GitHub/backoffice-client/backoffice-client/app/index.html",
@@ -219,6 +256,60 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cash",
+			"Pick",
+			"eurom",
+			"\"eurom",
+			"durations",
+			"this.selectedDrawIx = ",
+			"selectedDrawIx",
+			"this.gameConfig.drawDays.values",
+			"selectDraw",
+			"duration",
+			"powerPlay",
+			"powerPlayLinePrice",
+			"getStake",
+			"////console.log",
+			"console.log",
+			"createMultiplierOption",
+			"euroM",
+			"createBooleanOption",
+			"createBo",
+			"getStak",
+			"getSyst",
+			"getSta",
+			"copyTicket",
+			"euromill",
+			"getSta",
+			"powerPlayLinePrice",
+			"powerb",
+			"powerp",
+			"gener",
+			"action",
+			"selected-te",
+			"swit",
+			"powerPlayLinePrice",
+			"this.linePrice",
+			"defNumSe",
+			"getSystem",
+			"this.maxSelected",
+			"this.minSelected",
+			"minSelected",
+			"this.defNumSelected",
+			"defNumSelected",
+			"this.highestNumber",
+			"highestNumber",
+			"this.highestExtraNumber",
+			"highestExtraNumber",
+			"this.this",
+			"defExtraNumbers",
+			"this.maxExtraNumbers",
+			"maxExtraNumbers",
+			"this.gameConfig.line.extraNumbers.min",
+			"this.minExtraNumbers",
+			"minExtraNumbers",
+			"maxTickets",
+			"config",
 			">\n",
 			"center",
 			"lines",
@@ -282,6 +373,19 @@
 		"regex": false,
 		"replace_history":
 		[
+			"//console.log",
+			"this.gameConfig.line.price",
+			"this.gameConfig.line.numbers.selectable.max",
+			"this.gameConfig.line.numbers.selectable.min",
+			"this.gameConfig.line.numbers.selectable.default",
+			"this.gameConfig.line.numbers.size",
+			"this.gameConfig.line.extraNumbers.size",
+			"this",
+			"this.gameConfig.line.extraNumbers.selectable.default",
+			"this.gameConfig.line.extraNumbers.selectable.max",
+			"this.gameConfig.line.extraNumbers.selectable.min",
+			"this.gameConfig.line.extraNumbers.min",
+			"currentConfig",
 			"numLines",
 			"\"System 06\"",
 			"//console.log",
@@ -309,7 +413,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -318,15 +422,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6217,
+						"buffer_size": 19729,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3844,
-								3844
+								4386,
+								4386
 							]
 						],
 						"settings":
@@ -335,56 +439,56 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1517.0,
+						"translation.y": 2274.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "app/partials/tickets.html",
+					"file": "app/js/config.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3080,
+						"buffer_size": 3067,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								511,
-								511
+								2391,
+								2391
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"auto_name": "var config = {};",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 450.0,
+						"translation.y": 2986.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "app/partials/edit-ticket.html",
+					"file": "app/partials/topnav.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2001,
+						"buffer_size": 1615,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1473,
-								1473
+								494,
+								494
 							]
 						],
 						"settings":
@@ -401,19 +505,47 @@
 				},
 				{
 					"buffer": 3,
-					"file": "app/index.html",
+					"file": "app/css/app.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1045,
+						"buffer_size": 15178,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								651,
-								651
+								5467,
+								5467
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5794.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/partials/tickets.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4982,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1192,
+								1250
 							]
 						],
 						"settings":
@@ -425,33 +557,33 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "app/css/app.css",
+					"buffer": 5,
+					"file": "app/partials/edit-ticket.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2333,
+						"buffer_size": 3948,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								342,
-								342
+								3878,
+								3878
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 648.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -499,7 +631,7 @@
 	"project": "lot-ticket.sublime-project",
 	"replace":
 	{
-		"height": 86.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

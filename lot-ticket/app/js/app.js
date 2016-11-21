@@ -4,6 +4,9 @@ var ticketApp = angular.module('ticketApp', ['ngRoute', 'ngMaterial']);
 ticketApp.config(['$routeProvider', '$mdIconProvider', '$mdThemingProvider',
 		function ($routeProvider, $mdIconProvider, $mdThemingProvider) {
 
+			$routeProvider.when('/skins/:skin', {
+				templateUrl : 'partials/tickets.html'
+			});
 			$routeProvider.when('/', {
 				templateUrl : 'partials/tickets.html'
 			});
@@ -199,8 +202,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			console.log("$route.current.params.skin=" + $route.current.params.skin);
 			//
 			self.init(skin)
-			self.routeChangeSuccess(); //this will destroy the function
-			console.log ("<$routeChangeSuccess");
+			//self.routeChangeSuccess(); //this will destroy the function
+			//console.log ("<$routeChangeSuccess");
 		});
 		
 		
@@ -699,10 +702,11 @@ ticketApp.controller('LotteryController', function LotteryController($scope, $lo
 		// var url = p + '/?skin=' + skin
 		// 
 		//var url = "/#/?skin=" + skin;
-		var url = "http://demo.trimarkgaming.com/games/lottostore/#/?skin=" + skin;
-		console.log("loadSkin: " + url);
-		$window.location.href = url;
+		//var url = "http://demo.trimarkgaming.com/games/lottostore/#/?skin=" + skin;
+		//console.log("loadSkin: " + url);
+		//$window.location.href = url;
 		//$window.location.reload();
+		$location.path("/skins/" + skin);
 
 	}
 });
@@ -754,17 +758,20 @@ ticketApp.directive('menuNav', function ($location, $window) {
 				// var url = p + '/?skin=' + skin
 				// var url = "/#/?skin=" + skin;
 
-				var url = "http://demo.trimarkgaming.com/games/lottostore/#/?skin=" + skin;
-				console.log("loadSkin: " + url)
+				//var url = "http://demo.trimarkgaming.com/games/lottostore/#/?skin=" + skin;
+				//var url = "/?skin=" + skin;
+				//console.log("loadSkin: " + url)
 				// console.log("--------------");
 				// for (var prop in $window.location){
 				// 	console.log(prop +": " + $window.location[prop])
 				// }
-				$window.location.href = url;
+				//$window.location.href = url;
 				// $(element).removeClass('active');
 				// $('body').removeClass('no-drag');
-				$window.location.reload();
-
+				//$window.location.reload();
+				$location.path("/skins/" + skin);
+				$(element).removeClass('active');
+				$('body').removeClass('no-drag');
 			}
 			scope.linkTo = function(link) {
 				$location.path(link);
