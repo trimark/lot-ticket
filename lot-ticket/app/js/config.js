@@ -499,7 +499,7 @@ config["mega-sena"] =
 		editExtraBallHeader: "",
 		prizeHeader: " million"
 	},
-	jackpot: 3.7,
+	jackpot: 3.2,
 	drawDays: 
 	{ 
 		values: [],
@@ -516,7 +516,7 @@ config["mega-sena"] =
 	{
 			min: 1, 
 			max: 6, 
-			default: 0
+			default: 1
 	},
 	// line configuration:
 	line: 
@@ -525,7 +525,7 @@ config["mega-sena"] =
 		numbers: 
 		{
 			size: 60,
-			selectable: {min: 6, max: 15, default: 6}
+			selectable: {min: 6, max: 6, default: 6}
 		},
 		extraNumbers: 
 		{
@@ -548,6 +548,19 @@ config["mega-sena"] =
 		defaultIndex: 0
 	},
 	options: [
+		{
+		
+			type: "multiplier", 
+			label: "Double the Jackpot",
+			prices: {values: [1.5], defaultIndex: 0},
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: false,
+			multipliers: {values:[2], defaultIndex: 0},
+			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
+		}
+
 	]
 }
 config["megamillions"] =	
