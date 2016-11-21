@@ -420,10 +420,10 @@ config["irishlotto"] =
 		editExtraBallHeader: "",
 		prizeHeader: " million"
 	},
-	jackpot: 9.5,
+	jackpot: 8.2,
 	drawDays: 
 	{ 
-		values: ["monday", "saturday", ["monday", "saturday"]],
+		values: ["wednesday", "saturday", ["wednesday", "saturday"]],
 		defaultIndex: 0
 
 	},
