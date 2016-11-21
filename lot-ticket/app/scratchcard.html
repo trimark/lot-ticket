@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ticketApp">
+
+<head ng-app="linkApp" ng-controller="TicketController as ctrl">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>Trimark</title>
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="css/scratchcard.css" />
+	<link rel="stylesheet" href="lib/css/angular-material/angular-material.css" />
+
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+	<![endif]-->
+
+	<!--[if IE 8]>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/es5-shim/4.0.5/es5-shim.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <style>
+            .ng-hide {
+                display: none !important;
+            }
+        </style>
+    <![endif]-->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-shim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.7/es5-sham.min.js"></script>
+</head>
+
+<body>
+	<h2 class="headline text-center">Scratchcards</h2>
+	<div class="game-list">
+	    <div class="col3">
+	        <a href="http://demo.trimarkgaming.com/games/ngs/scratch/version_9628/lottery.amazing_circus/?langcode=en">
+	            <img src="img/scratchcard/amazingcircus.png">
+	            <p class="gameName">
+	                The Amazing Circus
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a href="http://demo.trimarkgaming.com/games/ngs/scratch/version_9628/lottery.astro/?langcode=en">
+	            <img src="img/scratchcard/astro.png">
+	            <p class="gameName">
+	                Astro
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a  href="http://demo.trimarkgaming.com/games/ngs/scratch/version_9628/lottery.beauty_salon/?langcode=en">
+	            <img src="img/scratchcard/beautysalon.png">
+	            <p class="gameName">
+	                Beauty Salon
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a  href="javascript:;">
+	            <img src="img/scratchcard/geishamemoirs.png">
+	            <p class="gameName">
+	                Geisha Memoirs
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a  href="javascript:;">
+	            <img src="img/scratchcard/hauntedmansion.png">
+	            <p class="gameName">
+	                Haunted Mansion
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a href="javascript:;">
+	            <img src="img/scratchcard/hillbillyhaven.png">
+	            <p class="gameName">
+	                Hillbilly Haven
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a href="javascript:;">
+	            <img src="img/scratchcard/knightsofatlantis.png">
+	            <p class="gameName">
+	                Knights of Atlantis
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a href="http://demo.trimarkgaming.com/games/ngs/scratch/version_9628/lottery.pirates/?langcode=en">
+	            <img src="img/scratchcard/pirates.png">
+	            <p class="gameName">
+	                Pirate's Treasure Trove
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a href="http://demo.trimarkgaming.com/games/ngs/scratch/version_9628/lottery.rockstar/?langcode=en">
+	            <img src="img/scratchcard/rockstarriches.png">
+	            <p class="gameName">
+	                Rockstar Riches
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a  href="javascript:;">
+	            <img src="img/scratchcard/shoppingspree.png">
+	            <p class="gameName">
+	                Shopping Spree
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a  href="javascript:;">
+	            <img src="img/scratchcard/skykingdom.png">
+	            <p class="gameName">
+	                Sky Kingdom
+	            </p>
+	        </a>
+	    </div>
+	    <div class="col3">
+	        <a href="http://demo.trimarkgaming.com/games/ngs/scratch/version_9628/lottery.tiki_treasure/?langcode=en">
+	            <img src="img/scratchcard/tikitreasure.png">
+	            <p class="gameName">
+	                Tiki Treasure
+	            </p>
+	        </a>
+	    </div>
+	</div>
+
+
+
+	<script src="lib/js/jquery/jquery-2.2.4.min.js"></script>
+	<script src="lib/js/angular/angular.js"></script>
+	<script src="lib/js/angular-route/angular-route.js"></script>
+	<script src="lib/js/angular-animate/angular-animate.js"></script>
+	<script src="lib/js/angular-aria/angular-aria.js"></script>
+	<script src="lib/js/angular-material/angular-material.js"></script>
+
+	<script type="text/javascript">
+		// pinch-zoom
+		document.documentElement.addEventListener('touchstart', 
+			function(event)
+			{
+				if (event.touches.length > 1)
+				{
+					event.preventDefault();
+				}
+			}, 
+		false);
+
+		var lastTouchEnd = 0;
+		document.documentElement.addEventListener('touchend', 
+			function(event) 
+			{
+				var now = (new Date()).getTime();
+				if (now - lastTouchEnd <= 300)
+				{
+					event.preventDefault();
+		  		}
+		  		lastTouchEnd = now;
+			}, 
+		false);
+
+		// double-tap-zoom
+		$(this).bind('touchstart', function preventZoom(e)
+		{
+			var t2 = e.timeStamp,
+				t1 = $(this).data('lastTouch') || t2,
+				dt = t2 - t1,
+				fingers = e.originalEvent.touches.length;
+			
+			$(this).data('lastTouch', t2);
+			
+			if (!dt || dt > 500 || fingers > 1) return; // not double-tap
+			$(e.target).trigger("TapClickTouchStart");
+			e.preventDefault();
+			// also synthesize click events we just swallowed up
+			$(this).trigger('click').trigger('click');
+		});
+	</script>
+</body>
+
+</html>
