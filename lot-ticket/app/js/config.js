@@ -10,7 +10,7 @@ config["powerball"] =
 	jackpot: 322,
 	drawDays: 
 	{ 
-		values: ["tuesday", "sunday", ["tuesday", "sunday"]],
+		values: ["thursday", "sunday", ["thursday", "sunday"]],
 		defaultIndex: 1
 
 	},
@@ -1172,7 +1172,7 @@ config["quina"] =
 	numberOfLines: 
 	{
 			min: 1, 
-			max: 6, 
+			max: 5, 
 			default: 3
 	},
 	// line configuration:
