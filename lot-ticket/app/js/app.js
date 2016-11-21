@@ -180,6 +180,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			this.extraNumbers.push(i);
 		}
 		//
+		this.systems = this.gameConfig.systems;
 		this.draws=[];
 		this.selectedDrawIx = 0;
 		//console.log("c=" + this.gameConfig.drawDays.values)
@@ -530,14 +531,14 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		// //console.log(">this.getSystem: ticket=" + ticket);
 		var ret = null;
 		if (ticket) {
-			var numSelected = this.getNumSelected(ticket);
-			//var name = "0" + numSelected.toString();
-			//var numLines = 1 + Math.pow(this.gameConfig.line.numbers.selectable.default, numSelected-this.gameConfig.line.numbers.selectable.default);
-			var sId = "s" + numSelected.toString();
-			// //console.log("sId=" + sId)
-			ret = this.systems[sId];
-
-
+			if (this.systems){
+				var numSelected = this.getNumSelected(ticket);
+				//var name = "0" + numSelected.toString();
+				//var numLines = 1 + Math.pow(this.gameConfig.line.numbers.selectable.default, numSelected-this.gameConfig.line.numbers.selectable.default);
+				var sId = "s" + numSelected.toString();
+				// //console.log("sId=" + sId)
+				ret = this.systems[sId];
+			}
 		}
 		// //console.log("<this.getSystem: ret=" + ret);
 		return ret;

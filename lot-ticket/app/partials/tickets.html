@@ -20,7 +20,7 @@
 					<label class="label-md" style="padding-right: 10px">{{option.label}}</label>
 					<md-checkbox  ng-model="option.selected" aria-label="PowerPlay"></md-checkbox>
 				</div>
-				<div ng-if="tkt.getNumSelected(ticket)>tkt.gameConfig.line.numbers.selectable.default" class="selected-text">{{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
+				<div ng-if="tkt.getNumSelected(ticket)>tkt.gameConfig.line.numbers.selectable.default && tkt.getSystem(ticket).name!=null" class="selected-text">{{tkt.getSystem(ticket).name}} ({{tkt.getSystem(ticket).numLines}} lines)</div>
 			</div>
 
 		</md-list-item>
