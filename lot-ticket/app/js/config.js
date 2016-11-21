@@ -436,8 +436,8 @@ config["irishlotto"] =
 	numberOfLines: 
 	{
 			min: 1, 
-			max: 6, 
-			default: 0
+			max: 12, 
+			default: 2
 	},
 	// line configuration:
 	line: 
