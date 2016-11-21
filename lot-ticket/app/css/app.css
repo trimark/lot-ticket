@@ -323,11 +323,15 @@ md-list.tickets-group {
 
 
 .draw-group .md-button.groupX {
-	min-width: 50px;
+	min-width: 54px;
+}
+
+.draw-group .md-button.groupX.right {
+	min-width: 71px;
 }
 
 .duration-group .md-button.groupX {
-	min-width: 43px;
+	min-width: 45px;
 }
 
 
