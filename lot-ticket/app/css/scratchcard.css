@@ -238,8 +238,8 @@ html, body, h1, h2, h3, h4 {
 }
 
 .action.right {
-    right: -5px;
-    top: 7px;
+    right: -10px;
+    top: 5px;
     width: 40px;
     text-align: center;
 }
