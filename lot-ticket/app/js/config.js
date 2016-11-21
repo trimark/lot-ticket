@@ -492,7 +492,7 @@ config["irishlotto"] =
 		}
 	]
 }
-config["megasena"] =	
+config["mega-sena"] =	
 {
 	title: "Mega-Sena",
 	texts:{
@@ -502,13 +502,13 @@ config["megasena"] =
 	jackpot: 3.7,
 	drawDays: 
 	{ 
-		values: ["monday", "saturday", ["monday", "saturday"]],
+		values: [],
 		defaultIndex: 0
 
 	},
 	durations: 
 	{
-		type: "weeks",
+		type: "draws",
 		values: [1, 2, 4, 6],
 		defaultIndex: 0
 	},
@@ -1075,13 +1075,13 @@ config["quina"] =
 	jackpot: 290000,
 	drawDays: 
 	{ 
-		values: ["monday"],
+		values: [],
 		defaultIndex: 0
 
 	},
 	durations: 
 	{
-		type: "weeks",
+		type: "draws",
 		values: [1, 2, 3, 6],
 		defaultIndex: 0
 	},

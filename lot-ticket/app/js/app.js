@@ -181,6 +181,12 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		}
 		//
 		this.systems = this.gameConfig.systems;
+		this.duration = "";
+		this.durations = this.gameConfig.durations.values;
+		this.durationString = "";
+		this.durationType = this.gameConfig.durations.type;
+		this.selectDuration(this.gameConfig.durations.defaultIndex)
+		//
 		this.draws=[];
 		this.selectedDrawIx = 0;
 		//console.log("c=" + this.gameConfig.drawDays.values)
@@ -201,7 +207,8 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 				this.draws.push(days)
 			}
 		}
-		this.selectDraw(this.gameConfig.drawDays.defaultIndex)
+		
+		this.selectDraw(this.gameConfig.drawDays.defaultIndex);
 		//console.log("this.	draws=" + this.draws);
 		for (var i = 0; i<this.gameConfig.numberOfLines.default; i++){
 			this.addTicket(true);
@@ -577,13 +584,14 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log("this.gameConfig.drawDays.values=" + this.gameConfig.drawDays.values)
 		//console.log("draw=" + draw)
 		//console.log("this.selectedDrawIx=" + this.selectedDrawIx)
-		if (typeof(draw) == "string"){
-			dow = this.dayToNumber(draw)
-		} else {
-			//The following assumes that the days are specified in correct order in the co 
-			dow = this.dayToNumber(draw[0])
+		if (draw!=null){
+			if (typeof(draw) == "string"){
+				dow = this.dayToNumber(draw)
+			} else {
+				//The following assumes that the days are specified in correct order in the co 
+				dow = this.dayToNumber(draw[0])
+			}
 		}
-
 		var d = new Date(this.getNextWeekDay(now, dow).toLocaleDateString());
 		var mm = d.getMonth();
 		var dd = d.getDate();
@@ -650,6 +658,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		//console.log(">this.selectDraw: ix=" +ix);
 		this.selectedDrawIx = ix
 		this.selectedDraw = this.draws[this.selectedDrawIx];
+		this.updateDurationString();
 		//console.log("<this.selectDraw");
 	}
 
@@ -658,17 +667,34 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 
 		this.getSelectedTicket().powerBall = num;
 	}
-
-	this.selectDuration = function (duration, ix) {
-		//console.log(">selectDuration: duration=", duration + ", ix=" +ix);
-
-		this.duration = duration;
+	this.updateDurationString = function(){
+		console.log(">this.updateDurationString");
 		if (this.duration == 1) {
-			this.durationString = "1 week"
+			if (this.durationType == "weeks"){
+				this.durationString = "1 week"
+			} else {
+				this.durationString = "1 draw"
+			}
 		} else {
-			this.durationString = this.duration.toString() + " weeks"
+			if (this.durationType == "weeks"){
+				this.durationString = "1 draws"
+			} else {
+				this.durationString = this.duration.toString() + " weeks"
+			}
 		}
+		if (this.durationType == "weeks"){
+			this.durationString += (" from "+ this.getFirstDrawDate());
+		}
+		console.log("<this.updateDurationString: ret = " + this.durationString)
 	}
+	this.selectDuration = function (ix) {
+		console.log(">selectDuration:  ix=" +ix);
+
+		this.duration = this.durations[ix];
+		this.updateDurationString()
+		
+	}
+
 	this.getShortDayString = function(day){
 		var ret = null;
 		switch (day){
@@ -697,11 +723,10 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 		return ret;
 	}
 
-	this.durationString = "1 week";
+	
 	this.draws = ["Tue", "Thu", "Tue & Thu"];
 	this.selectedDraw = "Tue & Thu";
-	this.duration = "1";
-	this.durations = ["1", "2", "4", "8"];
+	
 	this.defaultCurrencySymbol = "£";
 	//
 	
