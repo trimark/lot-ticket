@@ -3,9 +3,9 @@
 }
 
 .ball {
-	border: 2px solid #39A949;
+	border: 2px solid #f8de00;
 	color: #39A949;
-	
+
 }
 
 .ball.powerballs {
@@ -13,8 +13,8 @@
    border: 2px solid #CECE00;
 }
 .ball.powerballs.selected {
-	border: 2px solid #CECE00;
-	background: #FFF46A;
+	border: 2px solid f8de00;
+	background: #f9e960;
 }
 
 .ball.selected {

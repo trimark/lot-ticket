@@ -307,7 +307,7 @@ config["cash4life"] =
 	{
 			min: 1, 
 			max: 6, 
-			default: 3
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -437,7 +437,7 @@ config["irishlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 2
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -516,7 +516,7 @@ config["mega-sena"] =
 	{
 			min: 1, 
 			max: 6, 
-			default: 1
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -587,7 +587,7 @@ config["megamillions"] =
 	{
 			min: 1, 
 			max: 6, 
-			default: 2
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -667,7 +667,7 @@ config["minilotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 1
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -738,7 +738,7 @@ config["ozmonwedlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 1
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -787,7 +787,7 @@ config["ozmonwedlotto"] =
 //
 config["ozpowerball"] =
 {
-	title: "OZ PowerBall",
+	title: "OZ Powerball",
 	texts:{
 		editExtraBallHeader: "Pick 1 PowerBall",
 		prizeHeader: " million"
@@ -809,7 +809,7 @@ config["ozpowerball"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 12
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -880,7 +880,7 @@ config["ozlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 1
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -951,7 +951,7 @@ config["ozsatlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 1
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -1022,7 +1022,7 @@ config["polishlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 1
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -1102,7 +1102,7 @@ config["superenalotto"] =
 	{
 			min: 1, 
 			max: 6, 
-			default: 6
+			default: 0
 	},
 	// line configuration:
 	line: 
@@ -1173,7 +1173,7 @@ config["quina"] =
 	{
 			min: 1, 
 			max: 5, 
-			default: 3
+			default: 0
 	},
 	// line configuration:
 	line: 
