@@ -26,14 +26,20 @@
 }
 
 button, select, html, textarea, input {
-    font-family: myriadsetpro,Helvetica Neue,Helvetica,Arial,sans-serif !important;
+    font-family: myriadsetpro,"Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
     color: #535353;
 }
 
 html, body {
+ 	font-family: myriadsetpro,"Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
 	background-color: #f2f2f2;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+	font-synthesis: none;
+}
+
+html, body, h1, h2, h3, h4 {
+	font-style: normal;
 	color: #333;
 }
 
@@ -672,6 +678,7 @@ transition-delay: 0
 .view-list-text {
 	font-family: Myriad Set Pro,Helvetica Neue,Helvetica,Arial,sans-serif;
 	font-size: 17px !important;
+    line-height: 20px !important;
 }
 
 
@@ -734,10 +741,11 @@ md-checkbox .md-container {
 
 
 .headline {
-	font-family: myriadsetproultralight,Helvetica Neue,Helvetica,Arial,sans-serif !important;
-	font-size: 52px;
+	font-family: myriadsetpro,Helvetica Neue,Helvetica,Arial,sans-serif !important;
+	font-size: 34px;
 	line-height: 1.07724;
-	letter-spacing: -.016em;
+	letter-spacing: -0.018em;
+	font-weight: 300;
 }
 
 
