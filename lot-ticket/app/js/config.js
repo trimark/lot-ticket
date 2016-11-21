@@ -951,7 +951,7 @@ config["polishlotto"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 3
+			default: 1
 	},
 	// line configuration:
 	line: 
@@ -987,7 +987,7 @@ config["polishlotto"] =
 		
 			type: "multiplier", 
 			label: "Double the Jackpot",
-			prices: {values: [1], defaultIndex: 0},
+			prices: {values: [0.6], defaultIndex: 0},
 			priceMultiplier: "numberOfLines", 
 			application: "global",
 			optional: true,
@@ -1031,7 +1031,7 @@ config["superenalotto"] =
 	{
 			min: 1, 
 			max: 6, 
-			default: 1
+			default: 6
 	},
 	// line configuration:
 	line: 
