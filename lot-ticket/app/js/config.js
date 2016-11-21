@@ -809,7 +809,7 @@ config["ozpowerball"] =
 	{
 			min: 1, 
 			max: 12, 
-			default: 1
+			default: 12
 	},
 	// line configuration:
 	line: 
