@@ -429,3 +429,61 @@ config["irishlotto"] =
 		}
 	]
 }
+config["megasena"] =	
+{
+	title: "Mega-Sena",
+	texts:{
+		editExtraBallHeader: "",
+		prizeHeader: " million"
+	},
+	jackpot: 3.7,
+	drawDays: 
+	{ 
+		values: ["monday", "saturday", ["monday", "saturday"]],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 6],
+		defaultIndex: 0
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 0
+	},
+	// line configuration:
+	line: 
+	{
+		price: 1.5,
+		numbers: 
+		{
+			size: 60,
+			selectable: {min: 6, max: 15, default: 6}
+		},
+		extraNumbers: 
+		{
+			size: 0,
+			selectable: {min: 0, max: 0, default: 0}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+	]
+}
