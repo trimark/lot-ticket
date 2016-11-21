@@ -238,8 +238,8 @@ html, body, h1, h2, h3, h4 {
 }
 
 .action.right {
-    right: -5px;
-    top: 7px;
+    right: -10px;
+    top: 5px;
     width: 40px;
     text-align: center;
 }
@@ -694,6 +694,32 @@ transition-delay: 0
 	font-size: 17px !important;
     line-height: 20px !important;
 }
+
+.game-list {
+	margin: 0 auto;
+	text-align: center;
+}
+
+.game-list .col3 {
+	display: inline-block;
+	text-align: center;
+    height: 190px;
+    vertical-align: text-bottom;
+	width: 24.5%;
+}
+
+.game-list .gameName {
+	font-weight: bold;
+}
+
+.game-list a {
+    text-decoration: none;
+    color: #333;
+ }
+
+ .game-list a:hover {
+ 	color: #666;
+ } 
 
 
 /* start material overrides */
