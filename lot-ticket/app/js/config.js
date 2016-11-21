@@ -135,7 +135,7 @@ config["eurojackpot"] =
 {
 	title: "EuroJackpot",
 	texts:{
-		editExtraBallHeader: "Pick 2 Lucky Star Numbers",
+		editExtraBallHeader: "Pick 2",
 		prizeHeader: " million"
 	},
 	jackpot: 38,
@@ -207,7 +207,7 @@ config["euromillions"] =
 {
 	title: "EuroMillions",
 	texts:{
-		editExtraBallHeader: "Pick 2 Lucky Star Numbers",
+		editExtraBallHeader: "Pick 2 Lucky Stars",
 		prizeHeader: " million"
 	},
 	jackpot: 50,
@@ -346,7 +346,7 @@ config["frenchlotto"] =
 {
 	title: "French Lotto",
 	texts:{
-		editExtraBallHeader: "Pick 2 Lucky Star Numbers",
+		editExtraBallHeader: "Pick 2",
 		prizeHeader: " million"
 	},
 	jackpot: 8,
@@ -420,7 +420,7 @@ config["irishlotto"] =
 		editExtraBallHeader: "",
 		prizeHeader: " million"
 	},
-	jackpot: 8.2,
+	jackpot: 8.2	,
 	drawDays: 
 	{ 
 		values: ["wednesday", "saturday", ["wednesday", "saturday"]],
