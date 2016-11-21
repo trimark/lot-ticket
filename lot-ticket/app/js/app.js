@@ -677,9 +677,9 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			}
 		} else {
 			if (this.durationType == "weeks"){
-				this.durationString = "1 draws"
-			} else {
 				this.durationString = this.duration.toString() + " weeks"
+			} else {
+				this.durationString = this.duration.toString() + " draws"
 			}
 		}
 		if (this.durationType == "weeks"){
