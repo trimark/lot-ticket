@@ -708,3 +708,74 @@ config["ozmonwedlotto"] =
 		}
 	]
 }
+config["ozpowerball"] =
+{
+	title: "OZ PowerBall",
+	texts:{
+		editExtraBallHeader: "Pick 1 PowerBall",
+		prizeHeader: " million"
+	},
+	jackpot: 2,
+	drawDays: 
+	{ 
+		values: ["thursday"],
+		defaultIndex: 0
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 8],
+		defaultIndex: 0
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 12, 
+			default: 1
+	},
+	// line configuration:
+	line: 
+	{
+		price: 1,
+		numbers: 
+		{
+			size: 40,
+			selectable: {min: 6, max: 6, default: 6}
+		},
+		extraNumbers: 
+		{
+			size: 20,
+			selectable: {min: 1, max: 1, default: 1}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+		{
+		
+			type: "multiplier", 
+			label: "Double the Jackpot",
+			prices: {values: [1], defaultIndex: 0},
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: false,
+			multipliers: {values:[2], defaultIndex: 0},
+			format: "multiplier" // The value will be presented as a mulitplier e.g "x2"
+		}
+	]
+}
+//
