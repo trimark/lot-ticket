@@ -648,9 +648,9 @@ config["minilotto"] =
 	title: "MINI Lotto",
 	texts:{
 		editExtraBallHeader: "",
-		prizeHeader: " million"
+		prizeHeader: ""
 	},
-	jackpot: 60,
+	jackpot: 60000,
 	drawDays: 
 	{ 
 		values: ["monday",  "sunday", ["monday", "sunday"]],
@@ -666,8 +666,8 @@ config["minilotto"] =
 	numberOfLines: 
 	{
 			min: 1, 
-			max: 6, 
-			default: 0
+			max: 12, 
+			default: 1
 	},
 	// line configuration:
 	line: 
