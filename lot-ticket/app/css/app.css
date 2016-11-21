@@ -132,24 +132,24 @@ html, body, h1, h2, h3, h4 {
 }
 
 .ball {
-	border: 2px solid #e37f91;
-	min-width: 25px;
-	min-height: 25px;
-	max-width: 25px;
-	max-height: 25px;
-	width: 27px;
-	height: 25px;
-	border-radius: 100px;
-	text-align: center;
-	padding: 4px;
-	font-size: 18px;
-	margin-right: 5px;
-	float: left;
-	box-sizing: content-box !important;
-	line-height: 26px;
-	vertical-align: top;
-	margin-bottom: 4px;
-	outline: 0px solid transparent;
+    border: 2px solid #e37f91;
+    min-width: 20px;
+    min-height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    text-align: center;
+    padding: 4px;
+    font-size: 18px;
+    margin-right: 5px;
+    float: left;
+    box-sizing: content-box !important;
+    line-height: 22px;
+    vertical-align: top;
+    margin-bottom: 4px;
+    outline: 0px solid transparent;
 }
 
 .ball.powerballs {
@@ -228,7 +228,7 @@ html, body, h1, h2, h3, h4 {
 }
 
 .action.right {
-    right: 2px;
+    right: -5px;
     top: 7px;
     width: 40px;
     text-align: center;
@@ -793,6 +793,10 @@ md-checkbox .md-container {
 .no-btn-hover  .md-button:not([disabled]):hover {
 	background: transparent;
 	background-color: transparent;
+}
+
+.tickets-group md-list-item.md-no-proxy, .tickets-group md-list-item .md-no-style {
+	padding: 0;
 }
 
 /* end material overrides */
