@@ -8,19 +8,15 @@
 
 .ball.powerballs {
    color: #3D3916;
-   border: 2px solid #CECE00;
+   border: 2px solid #ffce34;
 }
 .ball.powerballs.selected {
-	border: 2px solid #CECE00;
-	background: #EFE9A0;
-}
-
-.ball.selected {
-	background: #D8E7FE;
+	border: 2px solid #ffce34;
+	background: #fff0c2;
 }
 
 .ball.power-ball {
 	color: #3D3916;
-	border: 2px solid #CECE00;
+	border: 2px solid #ffce34;
 	vertical-align: top;
 }
