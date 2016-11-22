@@ -445,14 +445,22 @@ md-list.tickets-group {
 	transition: visibility 0s linear 1s, transform 0.35s ease-out;
 	padding-top: 15px;
 	transform: translateY(-100%);
-
+	-webkit-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
 }
 
 .main-nav.active .ac-gn-list {
 	visibility: visible;
 	-webkit-transition-delay: 0s;
+	-moz-transition-delay: 0s;
+	-o-transition-delay: 0s;
 	transition-delay: 0s;
+
 	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-o-transform: translateY(0);
+	-ms-transform: translateY(0);
 }
 
 .ac-gn-list  li {
