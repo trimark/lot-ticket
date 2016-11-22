@@ -1,26 +1,26 @@
 .powerball-header {
-	color: #1f79c1;
+	color: #54a0c8;
 }
 
 .ball {
-	border: 2px solid #2B8DD6;
+	border: 2px solid #54a0c8;
 }
 
 .ball.powerballs {
    color: #3D3916;
-   border: 2px solid #CECE00;
+   border: 2px solid #ffce34;
 }
 .ball.powerballs.selected {
-	border: 2px solid #CECE00;
-	background: #EFE9A0;
+	border: 2px solid #ffce34;
+	background: #fff0c2;
 }
 
 .ball.selected {
-	background: #D8E7FE;
+	background: #fff0c2;
 }
 
 .ball.power-ball {
 	color: #3D3916;
-	border: 2px solid #CECE00;
+	border: 2px solid #ffce34;
 	vertical-align: top;
 }
