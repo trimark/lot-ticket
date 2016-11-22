@@ -35,7 +35,7 @@
 		<md-checkbox  ng-model="option.selected" aria-label="PowerPlay"></md-checkbox>
 	</div>
 
-	<div layout="row" layout-align="space-between center" class="draw-group md-row" ng-if="tkt.draws.length>0">
+	<div layout="row" layout-align="space-between center" class="draw-group md-row" ng-if="tkt.draws.length>1">
 		<label class="label-md">Draw</label>
 		<section layout="row" layout-align="end center">
 		  <md-button class="groupX" ng-repeat="num in tkt.draws" ng-class="{'left': $index == 0, 'middle': $index > 0,  'right': $index >= tkt.draws.length - 1, 'active-highlight' : tkt.selectedDraw == num}" ng-click="tkt.selectDraw($index)">{{num}}</md-button>
