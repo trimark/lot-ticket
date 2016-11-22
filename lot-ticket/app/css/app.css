@@ -868,4 +868,8 @@ md-checkbox .md-container {
 	padding: 0;
 }
 
+md-checkbox.md-default-theme.md-checked .md-ink-ripple, md-checkbox.md-checked .md-ink-ripple {
+	color: #328fd9;
+}
+
 /* end material overrides */
