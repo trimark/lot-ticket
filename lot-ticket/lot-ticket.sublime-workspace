@@ -4,6 +4,38 @@
 		"selected_items":
 		[
 			[
+				"wed",
+				"wednesday"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"duration",
+				"durationType"
+			],
+			[
+				"gam",
+				"gameConfig"
+			],
+			[
+				"ga",
+				"gameConfig"
+			],
+			[
+				"t",
+				"tuesday"
+			],
+			[
+				"th",
+				"thursday"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
 				"sel",
 				"selectable"
 			],
@@ -88,56 +120,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/js/app.js",
+			"file": "app/skins/eurojackpot/app.css",
 			"settings":
 			{
-				"buffer_size": 19729,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/js/config.js",
-			"settings":
-			{
-				"buffer_size": 3067,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "var config = {};"
-			}
-		},
-		{
-			"file": "app/partials/topnav.html",
-			"settings":
-			{
-				"buffer_size": 1615,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/css/app.css",
-			"settings":
-			{
-				"buffer_size": 15178,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/partials/tickets.html",
-			"settings":
-			{
-				"buffer_size": 4982,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/partials/edit-ticket.html",
-			"settings":
-			{
-				"buffer_size": 3948,
+				"buffer_size": 378,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -181,12 +167,35 @@
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/powerball"
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/eurojackpot",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/euromillions",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/frenchlotto",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/ozlotto",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/quina"
 	],
 	"file_history":
 	[
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/powerball/configSpec.json",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/euromillions/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/ozlotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/superenalotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/megamillions/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/minilotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/polishlotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/frenchlotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/tickets.html",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/quina/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/irishlotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/mega-sena/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js/config.js",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/eurojackpot/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/cash4life/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/edit-ticket.html",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/ozmonwedlotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/lotteries.html",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js/app.js",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/css/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/topnav.html",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/powerball/configSpec.json",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/index.html",
 		"/D/GitHub/backoffice-client/backoffice-client/app/partials/roles.html",
 		"/D/GitHub/backoffice-client/backoffice-client/app/js/app.js",
@@ -256,6 +265,40 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"default:",
+			"powerb",
+			"editTicketId",
+			"numberOfLines",
+			"lucky star",
+			"lucky star numbers",
+			"sw",
+			"loadSk",
+			"swedi",
+			"oz",
+			"french",
+			"frenchlotto",
+			"eurom",
+			"selectDuration",
+			"this.duration =",
+			"this.duration",
+			"init",
+			"durationString",
+			"getFirstDrawDate",
+			"duration",
+			"week",
+			"getSy",
+			"////console.log",
+			"console.log",
+			"numberOfLines: ",
+			"loadSkin",
+			"button",
+			".relo",
+			"getFirstDrawDate",
+			"getFirstDrawDate(",
+			">ini",
+			"this.selectedDrawIx",
+			"init",
+			"skin",
 			"cash",
 			"Pick",
 			"eurom",
@@ -349,23 +392,7 @@
 			"skinmanif",
 			"translation",
 			"jsflDir",
-			"callFlashProcess",
-			"flashDir",
-			"callFlashProcess",
-			"callInvokeProcess",
-			"lang",
-			"translate",
-			"transl",
-			"_settings",
-			"_onResize",
-			"addEventListener",
-			"addEventL",
-			"_getActive",
-			"ActiveState",
-			"rap",
-			"Api",
-			"rap",
-			"ActiveState"
+			"callFlashProcess"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -373,6 +400,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"Lucky Stars",
 			"//console.log",
 			"this.gameConfig.line.price",
 			"this.gameConfig.line.numbers.selectable.max",
@@ -413,180 +441,36 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/js/app.js",
+					"file": "app/skins/eurojackpot/app.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19729,
+						"buffer_size": 378,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4386,
-								4386
+								155,
+								155
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2274.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/js/config.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3067,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2391,
-								2391
-							]
-						],
-						"settings":
-						{
-							"auto_name": "var config = {};",
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2986.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/partials/topnav.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1615,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								494,
-								494
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/css/app.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15178,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5467,
-								5467
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5794.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/partials/tickets.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4982,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1192,
-								1250
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/partials/edit-ticket.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3948,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3878,
-								3878
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 648.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
 					"type": "text"
 				}
 			]

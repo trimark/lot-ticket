@@ -13,11 +13,11 @@
 }
 .ball.powerballs.selected {
 	border: 2px solid ##D5AD18;
-	background: #FFFF42;
+	background: #fff0c2;
 }
 
 .ball.selected {
-	background: #FFFF42;
+	background: #fff0c2;
 }
 
 .ball.power-ball {
