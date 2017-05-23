@@ -1,5 +1,136 @@
 var config = {};
 //
+config["sample"] =
+{
+	title: "Sample Lotto",
+	texts:{
+		editExtraBallHeader: "Pick 1 Extra ball",
+		prizeHeader: " million"
+	},
+	jackpot: 322,
+	drawDays: 
+	{ 
+		values: ["thursday", "sunday", ["thursday", "sunday"]],
+		defaultIndex: 1
+
+	},
+	durations: 
+	{
+		type: "weeks",
+		values: [1, 2, 4, 8],
+		defaultIndex: 0
+	},
+	numberOfLines: 
+	{
+			min: 1, 
+			max: 6, 
+			default: 0
+	},
+	// line configuration:
+	line: 
+	{
+		price: 2.5,
+		numbers: 
+		{
+			size: 69,
+			selectable: {min: 5, max: 20, default: 5}
+		},
+		extraNumbers: 
+		{
+			size: 26,
+			selectable: {min: 1, max: 1, default: 1}
+		},
+		options: [
+		]
+	},
+	quickPicks: 
+	{
+		values: 
+		[
+			{
+				numbers: 2, 
+				extraNumbers: 1, 
+				label: "QuickPick"
+			}
+		], 
+		defaultIndex: 0
+	},
+	options: [
+		{
+			type: "boolean", 
+			label: "PowerPlay", 
+			prices: {values: [1], defaultIndex: 0}, 
+			priceMultiplier: "numberOfLines", 
+			application: "global",
+			optional: true,
+			selected: true
+		}
+	],
+	systems:
+	{
+		s6 : {
+			name : "System 06",
+			numLines : 6
+		},
+		s7 : {
+			name : "System 07",
+			numLines : 21
+		},
+		s8 : {
+			name : "System 08",
+			numLines : 56
+		},
+		s9 : {
+			name : "System 09",
+			numLines : 126
+		},
+		s10 : {
+			name : "System 10",
+			numLines : 252
+		},
+		s11 : {
+			name : "System 11",
+			numLines : 462
+		},
+		s12 : {
+			name : "System 12",
+			numLines : 792
+		},
+		s13 : {
+			name : "System 13",
+			numLines : 1287
+		},
+		s14 : {
+			name : "System 14",
+			numLines : 2002
+		},
+		s15 : {
+			name : "System 15",
+			numLines : 3003
+		},
+		s16 : {
+			name : "System 16",
+			numLines : 4368
+		},
+		s17 : {
+			name : "System 17",
+			numLines : 6188
+		},
+		s18 : {
+			name : "System 18",
+			numLines : 8568
+		},
+		s19 : {
+			name : "System 19",
+			numLines : 11628
+		},
+		s20 : {
+			name : "System 20",
+			numLines : 15504
+		}
+	}
+}
+//
 config["powerball"] =
 {
 	title: "PowerBall",

@@ -221,7 +221,7 @@ ticketApp.controller('TicketController', function TicketController($scope, $rout
 			//read params here
 			if (!self.skin || $route.current.params.skin)
 			{
-				var skin = $route.current.params.skin ? $route.current.params.skin : "powerball";
+				var skin = $route.current.params.skin ? $route.current.params.skin : "sample";
 				//console.log("$route.current.params.skin=" + $route.current.params.skin);
 				//
 				self.init(skin)
