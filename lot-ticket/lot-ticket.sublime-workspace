@@ -120,10 +120,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/index.html",
+			"file": "app/skins/eurojackpot/app.css",
 			"settings":
 			{
-				"buffer_size": 2985,
+				"buffer_size": 378,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -163,32 +163,40 @@
 	[
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js"
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/eurojackpot",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/euromillions",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/frenchlotto",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/ozlotto",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/quina"
 	],
 	"file_history":
 	[
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/quina/app.css",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js/config.js",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/index.html",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js/app.js",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/ozlotto/app.css",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/polishlotto/app.css",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/minilotto/app.css",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/superenalotto/app.css",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/mega-sena/app.css",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/irishlotto/app.css",
-		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/eurojackpot/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/euromillions/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/ozlotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/superenalotto/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/megamillions/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/minilotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/polishlotto/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/frenchlotto/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/tickets.html",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/quina/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/irishlotto/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/mega-sena/app.css",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js/config.js",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/eurojackpot/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/cash4life/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/edit-ticket.html",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/ozmonwedlotto/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/lotteries.html",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/js/app.js",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/css/app.css",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/partials/topnav.html",
 		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/skins/powerball/configSpec.json",
+		"/D/GitHub/lot-ticket/lot-ticket/lot-ticket/app/index.html",
 		"/D/GitHub/backoffice-client/backoffice-client/app/partials/roles.html",
 		"/D/GitHub/backoffice-client/backoffice-client/app/js/app.js",
 		"/D/GitHub/backoffice-client/backoffice-client/app/index.html",
@@ -257,11 +265,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"ng-if",
-			"power",
-			"powerball",
-			"disabled",
-			"disable",
 			"default:",
 			"powerb",
 			"editTicketId",
@@ -384,7 +387,12 @@
 			"this._value;",
 			"$valueIx",
 			"VALUE_TYPE_MONEY",
-			"mergeXml"
+			"mergeXml",
+			"merge",
+			"skinmanif",
+			"translation",
+			"jsflDir",
+			"callFlashProcess"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -438,28 +446,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/index.html",
+					"file": "app/skins/eurojackpot/app.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2985,
+						"buffer_size": 378,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2942,
-								2942
+								155,
+								155
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1242.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
